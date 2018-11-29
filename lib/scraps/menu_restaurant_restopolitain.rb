@@ -29,7 +29,6 @@ module Scraps
       def get_menu_data(link)
         url = get_link(link)
         p url
-        sleep 5
         html_file = open(url).read
         Nokogiri::HTML(html_file)
       end

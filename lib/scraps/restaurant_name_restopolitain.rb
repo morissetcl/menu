@@ -27,13 +27,15 @@ module Scraps
       def initialize_crawl(page)
         url = "https://www.restopolitan.com/tous-nos-restaurants/page/#{page}"
         p url
+        sleep 5
         html_file = open(url).read
         Nokogiri::HTML(html_file)
       end
 
       def create_restaurant(name)
         restaurant = Restaurant.create(name: name,
-                                       slug: name.parameterize)
+                                       slug: name.parameterize,
+                                       source: 'restopolitain')
       end
 
     end

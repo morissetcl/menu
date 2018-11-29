@@ -7,6 +7,8 @@ module Scraps
       def get_menu(link, restaurant)
         html_file = open(link).read
         html_doc = Nokogiri::HTML(html_file)
+        address = html_doc.css('.address').text
+        restaurant.update(address: address)
         html_doc.css(".menu-index-page__item-content").each do |element|
           restaurant_menu = RestaurantMenu.create(restaurant: restaurant)
           element.search('.menu-index-page__item-title').each do |a|
