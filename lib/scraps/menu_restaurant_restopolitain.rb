@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 require 'nokogiri'
 require 'mechanize'
@@ -9,6 +11,7 @@ module Scraps
         @menu = RestaurantMenu.create!(restaurant_id: restaurant_id)
         get_menu_data(link).search('.catalog__item > span:first').each do |dish|
           next if dish.text.include?('/')
+
           create_dish(@menu, dish)
         end
         address = get_menu_data(link).css('.restaurant__info > p:first > span').text
