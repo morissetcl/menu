@@ -7,35 +7,54 @@ class GetRestaurantDeliverooWorker
   include Sidekiq::Worker
 
   def perform(*_args)
-    ADRESSES.each do |a|
-      url = "https://deliveroo.fr/fr/restaurants/paris/#{a}"
-      p url
-      sleep 5
-      html_file = open(url).read
-      html_doc = Nokogiri::HTML(html_file)
-      html_doc.search('.RestaurantsList-8608590270dc6ae3').each do |element|
-        links = element.css('a')
-        links.each do |restaurant|
-          link = restaurant['href']
-          link_clean = link.scan(/(?<=https:\/\/deliveroo.fr\/menu\/paris\/)(.*)(?=\?day=today&time=ASAP)/)
-          p link_clean
-          restaurant_slug = link_clean.flatten.join.split('/').last
-          p restaurant_slug
-          next if restaurant_slug.blank?
+    DISTRICTS.each do |district|
+      html_doc = fetch_html(district)
+      create_restaurant(html_doc)
+    end
+  end
 
-          restaurant_name = restaurant_slug.tr('-', ' ').humanize
-          restaurant = Restaurant.create(name: restaurant_name,
-                                         slug: restaurant_slug,
-                                         source: 'deliveroo')
-          next if restaurant.id.nil?
+  private
 
-          p restaurant
-          Scraps::RestaurantMenuDeliveroo.get_menu(link, restaurant)
-        end
+  def fetch_html(district)
+    url = "https://deliveroo.fr/fr/restaurants/paris/#{district}"
+    sleep 5
+    html_file = open(url).read
+    Nokogiri::HTML(html_file)
+  end
+
+  def create_restaurant(html_doc)
+    html_doc.search('.RestaurantsList-8608590270dc6ae3').each do |element|
+      links = element.css('a')
+      links.each do |restaurant|
+        next if get_data(restaurant).blank?
+
+        restaurant_created = Restaurant.create(name: get_name(get_data(restaurant)),
+                                               slug: get_data(restaurant),
+                                               source: 'deliveroo')
+        next if restaurant_created.id.nil?
+
+        GetRestaurantMenuDeliverooWorker.perform_async(restaurant['href'],
+                                                       get_data(restaurant))
       end
     end
   end
 
-  ADRESSES = ['5eme-jardin-des-plantes', '6eme-luxembourg', 'invalides',
-              '8eme-madeleine', '9eme-opera', 'paris-10eme-gare-de-lest', '11eme-oberkampf', 'vincennes-chateau', '13eme-place-ditalie', '14eme-mouton-duvernet', 'Vaugirard', 'Auteuil', 'la-fourche', '18eme-poissionniers', '19eme-jaures', 'porte-de-montreuil', 'saint-cloud-centre-ville', 'paris-la-defense', 'courbevoie-centre', 'chatillon-centre-ville', 'le-kremlin-bicetre', 'creteil-prefecture', 'rueil-malmaison-martinets-gare', 'argenteuil-centre-ville', 'boulogne-billancourt'].freeze
+  def get_data(restaurant)
+    link_clean = get_link(restaurant['href'])
+    get_slug(link_clean)
+  end
+
+  def get_link(link)
+    return '' if link.nil?
+
+    link.scan(/(?<=https:\/\/deliveroo.fr\/menu\/paris\/)(.*)(?=\?day=today&time=ASAP)/)
+  end
+
+  def get_slug(link)
+    link.flatten.join.split('/').last
+  end
+
+  def get_name(slug)
+    slug.tr('-', ' ').humanize
+  end
 end
