@@ -4,7 +4,7 @@ class RestaurantInitWorker
   include Sidekiq::Worker
 
   def perform(*args)
-    p 'coucou'
     GetRestaurantDeliverooWorker.perform_async(*args)
+    GetRestaurantRestopolitainWorker.perform_async(*args)
   end
 end

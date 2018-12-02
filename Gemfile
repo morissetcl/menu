@@ -13,6 +13,7 @@ gem 'pg', '~> 0.18.4'
 gem 'hpricot'
 gem 'puma', '~> 3.11'
 gem 'sidekiq'
+gem 'sidekiq-limit_fetch'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
