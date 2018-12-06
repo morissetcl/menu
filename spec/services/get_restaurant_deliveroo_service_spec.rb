@@ -9,7 +9,7 @@ describe GetRestaurantDeliverooService do
     @doc = Nokogiri::HTML(open(Rails.root + 'spec/support/files/response_deliveroo.html'))
   end
 
-  it 'pour un artisan dont la source du changement est phelps' do
+  it 'Create a new restaurant and launch new worker' do
     expect do
       GetRestaurantDeliverooService.call(@doc)
     end.to change{ Restaurant.count }

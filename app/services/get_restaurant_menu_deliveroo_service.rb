@@ -7,7 +7,7 @@ class GetRestaurantMenuDeliverooService
   class << self
 
     def call(link, restaurant_slug)
-      sleep 2
+      sleep 2 unless Rails.env.test?
       restaurant = Restaurant.find_by(slug: restaurant_slug)
       html_file = open(link).read
       html_doc = Nokogiri::HTML(html_file)

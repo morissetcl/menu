@@ -15,14 +15,12 @@ class GetRestaurantDeliverooService
     def create_restaurant(html_doc)
       html_doc.search('.RestaurantsList-8608590270dc6ae3').each do |element|
         links = element.css('a')
-        p links
         links.each do |restaurant|
           next if get_data(restaurant).blank?
 
           restaurant_created = Restaurant.create(name: get_name(get_data(restaurant)),
                                                  slug: get_data(restaurant),
                                                  source: 'deliveroo')
-          p restaurant_created
           next if restaurant_created.id.nil?
           GetRestaurantMenuDeliverooWorker.perform_async(restaurant['href'],
                                                          get_data(restaurant))
