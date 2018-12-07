@@ -4,6 +4,8 @@ require 'open-uri'
 require 'nokogiri'
 
 class GetRestaurantRestopolitainWorker
+  attr_reader :link, :name
+
   include Sidekiq::Worker
 
   def perform(*_args)
@@ -14,8 +16,7 @@ class GetRestaurantRestopolitainWorker
       html_doc.search('.country__cities').each do |element|
         links = element.css('a')
         links.each do |restaurant|
-          link = restaurant['href']
-          name = restaurant.text
+          get_link_and_name(restaurant)
           restaurant = create_restaurant(name)
           next if restaurant.id.nil?
 
@@ -36,8 +37,13 @@ class GetRestaurantRestopolitainWorker
   end
 
   def create_restaurant(name)
-    restaurant = Restaurant.create(name: name,
-                                   slug: name.parameterize,
-                                   source: 'restopolitain')
+    Restaurant.create(name: name,
+                      slug: name.parameterize,
+                      source: 'restopolitain')
+  end
+
+  def get_link_and_name(restaurant)
+    @link = restaurant['href']
+    @name = restaurant.text
   end
 end

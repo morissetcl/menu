@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'sidekiq/testing'
 
@@ -6,13 +8,13 @@ describe GetRestaurantDeliverooService do
   Sidekiq::Testing.fake!
 
   before(:each) do
-    @doc = Nokogiri::HTML(open(Rails.root + 'spec/support/files/response_deliveroo.html'))
+    @doc = Nokogiri::HTML(File.open(Rails.root + 'spec/support/files/response_deliveroo.html'))
   end
 
-  it 'Create a new restaurant and launch new worker' do
+  it 'Create a new restaurant and launch new worker', focus: true do
     expect do
       GetRestaurantDeliverooService.call(@doc)
-    end.to change{ Restaurant.count }
-       .and change(GetRestaurantMenuDeliverooWorker.jobs, :size).by(1)
+    end.to change { Restaurant.count }
+      .and change(GetRestaurantMenuDeliverooWorker.jobs, :size).by(1)
   end
 end
