@@ -11,7 +11,7 @@ describe GetRestaurantDeliverooService do
     @doc = Nokogiri::HTML(File.open(Rails.root + 'spec/support/files/response_deliveroo.html'))
   end
 
-  it 'Create a new restaurant and launch new worker', focus: true do
+  it 'Create a new restaurant and launch new worker' do
     expect do
       GetRestaurantDeliverooService.call(@doc)
     end.to change { Restaurant.count }
