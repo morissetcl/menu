@@ -5,6 +5,6 @@ class RestaurantInitWorker
 
   def perform(*args)
     Deliveroo::GetRestaurantWorker.perform_async(*args)
-    GetRestaurantRestopolitainWorker.perform_async(*args)
+    Restopolitain::GetRestaurantWorker.perform_async(*args)
   end
 end

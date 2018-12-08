@@ -14,6 +14,7 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 require 'sidekiq/testing'
+require 'webmock/rspec'
 
 Sidekiq::Testing.fake!
 
