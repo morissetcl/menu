@@ -1,0 +1,12 @@
+:queues:
+  - default
+  - menu_restopolitain
+  - restaurant_restopolitain
+  - restaurant_deliveroo
+  - menu_deliveroo
+:limits:
+  default: 5
+  menu_restopolitain: 5
+  restaurant_restopolitain: 5
+  restaurant_deliveroo: 5
+  menu_deliveroo: 5
