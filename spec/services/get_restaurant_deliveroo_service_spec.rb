@@ -15,6 +15,6 @@ describe GetRestaurantDeliverooService do
     expect do
       GetRestaurantDeliverooService.call(@doc)
     end.to change { Restaurant.count }
-      .and change(GetRestaurantMenuDeliverooWorker.jobs, :size).by(1)
+      .and change(Deliveroo::GetRestaurantMenuWorker.jobs, :size).by(1)
   end
 end

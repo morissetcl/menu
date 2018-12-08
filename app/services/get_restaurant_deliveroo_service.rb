@@ -22,7 +22,7 @@ class GetRestaurantDeliverooService
                                                  slug: get_data(restaurant),
                                                  source: 'deliveroo')
           next if restaurant_created.id.nil?
-          GetRestaurantMenuDeliverooWorker.perform_async(restaurant['href'],
+          Deliveroo::GetRestaurantMenuWorker.perform_async(restaurant['href'],
                                                          get_data(restaurant))
         end
       end
