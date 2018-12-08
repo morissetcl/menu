@@ -6,7 +6,6 @@ require 'nokogiri'
 module Scraps
   class RestaurantNameDeliveroo
     class << self
-
       def call
         DISTRICTS.each do |district|
           html_doc = fetch_html(district)
@@ -58,7 +57,6 @@ module Scraps
       def get_name(slug)
         slug.tr('-', ' ').humanize
       end
-      
     end
   end
 end
