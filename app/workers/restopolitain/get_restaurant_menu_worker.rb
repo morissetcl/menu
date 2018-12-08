@@ -10,6 +10,5 @@ module Restopolitain
     def perform(link, restaurant_id)
       GetRestaurantMenuRestopolitainService.call(link, restaurant_id)
     end
-
   end
 end

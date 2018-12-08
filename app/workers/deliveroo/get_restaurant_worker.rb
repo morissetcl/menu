@@ -17,10 +17,9 @@ module Deliveroo
     private
 
     def fetch_html(district)
-      p 'lolo'
       url = "https://deliveroo.fr/fr/restaurants/paris/#{district}"
       sleep 5
-      html_file = open(url).read
+      html_file = URI.parse(url).open
       Nokogiri::HTML(html_file)
     end
   end

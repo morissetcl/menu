@@ -5,7 +5,6 @@ require 'nokogiri'
 
 class GetRestaurantDeliverooService
   class << self
-
     def call(html_doc)
       create_restaurant(html_doc)
     end
@@ -18,14 +17,19 @@ class GetRestaurantDeliverooService
         links.each do |restaurant|
           next if get_data(restaurant).blank?
 
-          restaurant_created = Restaurant.create(name: get_name(get_data(restaurant)),
-                                                 slug: get_data(restaurant),
-                                                 source: 'deliveroo')
+          restaurant_created = assign_attributes_to_restaurant(restaurant)
           next if restaurant_created.id.nil?
+
           Deliveroo::GetRestaurantMenuWorker.perform_async(restaurant['href'],
-                                                         get_data(restaurant))
+                                                           get_data(restaurant))
         end
       end
+    end
+
+    def assign_attributes_to_restaurant(restaurant)
+      Restaurant.create(name: get_name(get_data(restaurant)),
+                        slug: get_data(restaurant),
+                        source: 'deliveroo')
     end
 
     def get_data(restaurant)
@@ -46,6 +50,5 @@ class GetRestaurantDeliverooService
     def get_name(slug)
       slug.tr('-', ' ').humanize
     end
-
   end
 end

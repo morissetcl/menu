@@ -16,7 +16,7 @@ class GetRestaurantMenuDeliverooService
     end
 
     def fetch_html(link)
-      html_file = open(link).read
+      html_file = URI.parse(link).open
       Nokogiri::HTML(html_file)
     end
 
@@ -38,6 +38,5 @@ class GetRestaurantMenuDeliverooService
         end
       end
     end
-
   end
 end

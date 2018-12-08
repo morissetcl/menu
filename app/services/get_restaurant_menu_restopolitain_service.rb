@@ -23,8 +23,6 @@ class GetRestaurantMenuRestopolitainService
       get_address(address)
     end
 
-    private
-
     def get_link(link)
       if link.include?('https')
         link
@@ -36,7 +34,7 @@ class GetRestaurantMenuRestopolitainService
     def get_menu_data(link)
       url = get_link(link)
       p url
-      html_file = open(url).read
+      html_file = URI.parse(url).open
       Nokogiri::HTML(html_file)
     end
 

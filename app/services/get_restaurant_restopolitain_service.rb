@@ -8,7 +8,6 @@ class GetRestaurantRestopolitainService
     attr_reader :link, :name
 
     def call(page)
-      p "Page #{page} - " * 20
       html_doc = initialize_crawl(page)
       html_doc.search('.country__cities').each do |element|
         links = element.css('a')
@@ -28,7 +27,7 @@ class GetRestaurantRestopolitainService
       url = "https://www.restopolitan.com/tous-nos-restaurants/page/#{page}"
       p url
       sleep 5
-      html_file = open(url).read
+      html_file = URI.parse(url).open
       Nokogiri::HTML(html_file)
     end
 
