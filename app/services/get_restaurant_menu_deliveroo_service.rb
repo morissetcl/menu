@@ -11,7 +11,6 @@ class GetRestaurantMenuDeliverooService
       html_doc = fetch_html(link)
       get_address_and_update_restaurant(html_doc, restaurant)
       restaurant_menu = create_restaurant_menu(restaurant)
-
       create_dishes(html_doc, restaurant_menu)
     end
 
@@ -31,11 +30,9 @@ class GetRestaurantMenuDeliverooService
 
     def create_dishes(html_doc, restaurant_menu)
       html_doc.css('.menu-index-page__item-content').each do |element|
-        element.search('.menu-index-page__item-title').each do |a|
-          dish_name = a.text
-          element.css('.menu-index-page__item-price').text
-          Dish.create(title: dish_name, restaurant_menu_id: restaurant_menu.id)
-        end
+        title = element.css('.menu-index-page__item-title').text
+        price = element.css('.menu-index-page__item-price').text
+        Dish.create(title: title, restaurant_menu_id: restaurant_menu.id, price: price)
       end
     end
   end
