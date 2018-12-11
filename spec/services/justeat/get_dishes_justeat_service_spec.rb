@@ -11,7 +11,7 @@ describe GetDishesJusteatService do
     @doc = Nokogiri::HTML(open(Rails.root + 'spec/support/files/response_restaurant_menu_justeat.html'))
   end
 
-  it 'Create new dishes'do
+  it 'Create new dishes' do
     resto = Restaurant.create(name: 'Doudou', slug: 'doudou')
     resto_menu = RestaurantMenu.create(restaurant: resto)
     expect do

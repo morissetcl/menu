@@ -1,0 +1,14 @@
+attributes_table_for restaurant do
+  row :name
+  row :slug
+  row :price_range
+  row :address
+  row :source
+end
+
+table_for dishes do
+  column :title
+  column :description
+  column :price
+  column :created_at
+end
