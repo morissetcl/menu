@@ -2,8 +2,14 @@
 
 ActiveAdmin.register Restaurant do
 
+  filter :name
+  filter :source
+  filter :ville
+  filter :address
+  filter :created_at
+
   show do
-    render partial: 'show', locals: { dishes: restaurant_menu.dishes, restaurant: restaurant }
+    render partial: 'show', locals: { dishes: restaurant_menu.dishes.sort, restaurant: restaurant }
   end
 
   controller do

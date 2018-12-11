@@ -16,7 +16,7 @@ gem 'hpricot'
 gem 'puma', '~> 3.11'
 gem 'sidekiq'
 gem 'sidekiq-limit_fetch'
-
+gem 'arctic_admin'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

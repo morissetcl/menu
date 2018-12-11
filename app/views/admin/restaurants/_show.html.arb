@@ -1,14 +1,18 @@
-attributes_table_for restaurant do
-  row :name
-  row :slug
-  row :price_range
-  row :address
-  row :source
+panel "Détails de l'établissement" do
+  attributes_table_for restaurant do
+    row :name
+    row :slug
+    row :price_range
+    row :address
+    row :source
+  end
 end
 
-table_for dishes do
-  column :title
-  column :description
-  column :price
-  column :created_at
+panel "Menu" do
+  table_for dishes do
+    column :title
+    column :description
+    column :price
+    column :created_at
+  end
 end
