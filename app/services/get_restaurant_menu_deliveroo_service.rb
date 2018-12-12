@@ -9,6 +9,11 @@ class GetRestaurantMenuDeliverooService
       sleep 2 unless Rails.env.test?
       restaurant = Restaurant.find_by(slug: restaurant_slug)
       html_doc = fetch_html(link)
+      food_type = []
+      html_doc.css('.food').each do |a|
+        food_type << a.text
+      end
+      restaurant.update!(tags: food_type.join(','))
       get_address_and_update_restaurant(html_doc, restaurant)
       restaurant_menu = create_restaurant_menu(restaurant)
       create_dishes(html_doc, restaurant_menu)

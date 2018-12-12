@@ -3,7 +3,7 @@
 ActiveAdmin.register Restaurant do
 
   filter :name
-  filter :source
+  filter :source, as: :select, collection: proc { Restaurant.pluck(:source).uniq }
   filter :ville
   filter :address
   filter :created_at
