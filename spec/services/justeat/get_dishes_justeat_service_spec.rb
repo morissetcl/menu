@@ -8,7 +8,7 @@ describe GetDishesJusteatService do
   Sidekiq::Testing.fake!
 
   before(:each) do
-    @doc = Nokogiri::HTML(open(Rails.root + 'spec/support/files/response_restaurant_menu_justeat.html'))
+    @doc = Nokogiri::HTML(open(Rails.root + 'spec/support/files/justeat/response_restaurant_menu.html'))
   end
 
   it 'Create new dishes' do

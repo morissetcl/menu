@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 panel "Détails de l'établissement" do
   attributes_table_for restaurant do
     row :name
@@ -8,7 +10,7 @@ panel "Détails de l'établissement" do
   end
 end
 
-panel "Menu" do
+panel 'Menu' do
   table_for dishes do
     column :title
     column :description

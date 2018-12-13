@@ -4,7 +4,6 @@ require 'open-uri'
 require 'nokogiri'
 
 class GetRestaurantMenuRestopolitainService
-
   class << self
     def call(link, restaurant_id)
       @restaurant = Restaurant.find(restaurant_id)

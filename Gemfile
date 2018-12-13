@@ -11,12 +11,12 @@ gem 'rails', '~> 5.2.1'
 gem 'pg', '~> 0.18.4'
 # Use Puma as the app server
 gem 'activeadmin'
+gem 'arctic_admin'
 gem 'devise'
 gem 'hpricot'
 gem 'puma', '~> 3.11'
 gem 'sidekiq'
 gem 'sidekiq-limit_fetch'
-gem 'arctic_admin'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

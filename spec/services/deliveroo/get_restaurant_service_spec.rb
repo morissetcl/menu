@@ -8,7 +8,7 @@ describe GetRestaurantDeliverooService do
   Sidekiq::Testing.fake!
 
   before(:each) do
-    @doc = Nokogiri::HTML(File.open(Rails.root + 'spec/support/files/response_deliveroo.html'))
+    @doc = Nokogiri::HTML(File.open(Rails.root + 'spec/support/files/deliveroo/response.html'))
   end
 
   it 'Create a new restaurant and launch new worker' do

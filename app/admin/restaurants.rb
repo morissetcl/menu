@@ -1,12 +1,19 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Restaurant do
-
   filter :name
   filter :source, as: :select, collection: proc { Restaurant.pluck(:source).uniq }
-  filter :ville
+  filter :tags
   filter :address
   filter :created_at
+
+  index do
+    column :name
+    column :address
+    column :source
+    column :created_at
+    actions
+  end
 
   show do
     render partial: 'show', locals: { dishes: restaurant_menu.dishes.sort, restaurant: restaurant }

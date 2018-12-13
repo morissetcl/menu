@@ -7,7 +7,7 @@ describe GetRestaurantMenuDeliverooService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 
-  let(:reponse_body) { File.open("#{Rails.root}/spec/support/files/response_deliveroo.html").read }
+  let(:reponse_body) { File.open("#{Rails.root}/spec/support/files/deliveroo/response.html").read }
 
   let(:stub_deliveroo) do
     stub_request(:get, 'https://deliveroo.fr/menu/paris/9eme-opera/creperie-21-martorell?day=today&time=ASAP')
