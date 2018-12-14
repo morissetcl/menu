@@ -83,3 +83,10 @@ RSpec::Sidekiq.configure do |config|
   config.enable_terminal_colours = true # default => true
   config.warn_when_jobs_not_processed_by_sidekiq = true # default => true
 end
+
+def sign_in_as_admin(admin)
+  visit admin_user_session_path
+  fill_in :admin_user_email, with: admin.email
+  fill_in :admin_user_password, with: admin.password
+  click_on 'Login'
+end

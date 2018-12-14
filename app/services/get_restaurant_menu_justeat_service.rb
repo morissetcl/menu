@@ -7,7 +7,7 @@ class GetRestaurantMenuJusteatService
       restaurant = Restaurant.find_by(slug: restaurant_slug)
       restaurant_menu = create_restaurant_menu(restaurant)
       html_doc = fetch_html(link)
-      p '----------------'*20
+      p '----------------' * 20
       GetDishesJusteatService.call(html_doc, restaurant_menu)
     end
 

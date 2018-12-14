@@ -3,12 +3,12 @@
 require 'open-uri'
 require 'nokogiri'
 
-module Deliveroo
+module Foodin
   class GetRestaurantMenuWorker
     include Sidekiq::Worker
 
-    def perform(link, restaurant_slug)
-      GetRestaurantMenuDeliverooService.call(link, restaurant_slug)
+    def perform(link, restaurant_id)
+      GetRestaurantMenuFoodinService.call(link, restaurant_id)
     end
   end
 end

@@ -7,7 +7,7 @@ xdescribe GetRestaurantMenuJusteatService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 
-  let(:url) { "#{Rails.root}/spec/support/files/response_restaurant_menu_justeat.html" }
+  let(:url) { "#{Rails.root}/spec/support/files/justeat/response_restaurant_menu.html" }
   let(:reponse_body) { File.open(url).read }
 
   let(:stub_restaurant_menu_justeat) do
