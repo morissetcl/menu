@@ -7,8 +7,8 @@ module Foodin
   class GetRestaurantMenuWorker
     include Sidekiq::Worker
 
-    def perform(link, restaurant)
-      GetRestaurantMenuFoodinService.call(link, restaurant)
+    def perform(link, restaurant_id)
+      GetRestaurantMenuFoodinService.call(link, restaurant_id)
     end
   end
 end

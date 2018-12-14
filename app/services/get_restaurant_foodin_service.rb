@@ -7,8 +7,7 @@ class GetRestaurantFoodinService
   class << self
     def call(city)
       html_doc = fetch_html(city)
-      restaurant = create_restaurant(html_doc)
-      Foodin::GetRestaurantMenuWorker.perform_async(@link, restaurant)
+      create_restaurant(html_doc)
     end
 
     private
@@ -21,11 +20,13 @@ class GetRestaurantFoodinService
     end
 
     def create_restaurant(html_doc)
-      html_doc.css('.panel-default').each do |restaurant|
-        name = restaurant.css('.name-restaurant-value').text
-        tags = restaurant.css('.speciality').text
+      html_doc.css('.restaurant-container').each do |restaurant|
+        name = restaurant.css('.name-restaurant-value').text.strip
+        tags = restaurant.css('.speciality').text.strip
         get_link(restaurant)
-        Restaurant.create(name: name, slug: name.parameterize, tags: tags, source: 'foodin')
+        resto = Restaurant.create(name: name, slug: name.parameterize, tags: tags, source: 'foodin')
+        Foodin::GetRestaurantMenuWorker.perform_async(@link, resto.id)
+        p resto
       end
     end
 

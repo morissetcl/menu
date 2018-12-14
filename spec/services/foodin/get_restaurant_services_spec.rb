@@ -7,7 +7,7 @@ describe GetRestaurantFoodinService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 
-  let(:url) { "#{Rails.root}/spec/support/files/response_restaurant_foodin.html" }
+  let(:url) { "#{Rails.root}/spec/support/files/foodin/response_restaurant.html" }
   let(:reponse_body) { File.open(url).read }
 
   let(:stub_restaurant_foodin) do
