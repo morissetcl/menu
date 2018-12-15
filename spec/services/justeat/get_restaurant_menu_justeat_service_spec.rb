@@ -24,6 +24,6 @@ xdescribe GetRestaurantMenuJusteatService do
     link = 'https://www.just-eat.fr/restaurant-livraison-a-domicile/restaurant/planet-s-burger/carte'
     expect do
       GetRestaurantMenuJusteatService.call(link, restaurant.slug)
-    end.change { RestaurantMenu.count }
+    end.to change(RestaurantMenu, :count)
   end
 end

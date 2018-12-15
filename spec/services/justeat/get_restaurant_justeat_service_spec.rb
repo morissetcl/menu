@@ -22,6 +22,6 @@ describe GetRestaurantJusteatService do
   it 'Create a new restaurant and launch new worker' do
     expect do
       GetRestaurantJusteatService.call(19)
-    end.to change { Restaurant.count }
+    end.to change(Restaurant, :count)
   end
 end

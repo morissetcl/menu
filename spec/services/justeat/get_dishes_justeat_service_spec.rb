@@ -8,7 +8,8 @@ describe GetDishesJusteatService do
   Sidekiq::Testing.fake!
 
   before(:each) do
-    @doc = Nokogiri::HTML(open(Rails.root + 'spec/support/files/justeat/response_restaurant_menu.html'))
+    path = 'spec/support/files/justeat/response_restaurant_menu.html'
+    @doc = Nokogiri::HTML(open(Rails.root + path))
   end
 
   it 'Create new dishes' do
@@ -16,6 +17,6 @@ describe GetDishesJusteatService do
     resto_menu = RestaurantMenu.create(restaurant: resto)
     expect do
       GetDishesJusteatService.call(@doc, resto_menu)
-    end.to change { Dish.count }
+    end.to change(Dish, :count)
   end
 end

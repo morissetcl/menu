@@ -15,7 +15,8 @@ class GetDishesJusteatService
         title = element.css('h4').text.strip
         price = element.css('.price').text
         description = element.css('.description').text
-        dish = Dish.create!(title: title, restaurant_menu_id: restaurant_menu.id, price: price, description: description)
+        Dish.create!(title: title, restaurant_menu_id: restaurant_menu.id,
+                     price: price, description: description)
       end
     end
 

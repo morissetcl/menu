@@ -23,6 +23,6 @@ describe GetRestaurantMenuDeliverooService do
     link = 'https://deliveroo.fr/menu/paris/9eme-opera/creperie-21-martorell?day=today&time=ASAP'
     expect do
       GetRestaurantMenuDeliverooService.call(link, restaurant.slug)
-    end.to change { RestaurantMenu.count }
+    end.to change(RestaurantMenu, :count)
   end
 end

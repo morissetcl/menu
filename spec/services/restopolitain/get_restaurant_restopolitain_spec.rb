@@ -21,6 +21,6 @@ describe GetRestaurantRestopolitainService do
   it 'Create a new restaurant and launch new worker' do
     expect do
       GetRestaurantRestopolitainService.call(1)
-    end.to change { Restaurant.count }.by(60)
+    end.to change(Restaurant, :count).by(60)
   end
 end

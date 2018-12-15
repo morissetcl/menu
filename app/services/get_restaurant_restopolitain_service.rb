@@ -25,7 +25,6 @@ class GetRestaurantRestopolitainService
 
     def initialize_crawl(page)
       url = "https://www.restopolitan.com/tous-nos-restaurants/page/#{page}"
-      p url
       sleep 5
       html_file = URI.parse(url).open
       Nokogiri::HTML(html_file)

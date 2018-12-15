@@ -42,7 +42,6 @@ class GetRestaurantMenuRestopolitainService
 
     def get_menu_data(link)
       url = get_link(link)
-      p url
       html_file = URI.parse(url).open
       Nokogiri::HTML(html_file)
     end

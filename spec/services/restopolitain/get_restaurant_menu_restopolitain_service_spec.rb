@@ -24,6 +24,6 @@ describe GetRestaurantRestopolitainService do
     link = 'https://www.restopolitan.es/restaurante/barcelona-162105/al-cafe-310275.html'
     expect do
       GetRestaurantMenuRestopolitainService.call(link, restaurant.id)
-    end.to change { RestaurantMenu.count }
+    end.to change(RestaurantMenu, :count)
   end
 end
