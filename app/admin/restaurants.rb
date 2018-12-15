@@ -9,7 +9,9 @@ ActiveAdmin.register Restaurant do
 
   index do
     column :name
-    column :address
+    column :street
+    column :zip_code
+    column :city
     column :source
     column :created_at
     actions
