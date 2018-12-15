@@ -26,7 +26,7 @@ class GetRestaurantMenuFoodinService
       restaurant.update(address: address.strip)
     end
 
-    def create_dish(html_doc, restaurant, restaurant_menu)
+    def create_dish(_html_doc, restaurant, restaurant_menu)
       title = restaurant.css('.title-cart-block').text.strip
       description = restaurant.css('.discription-cart-block').text.strip
       price = restaurant.css('.price-plat').text.strip

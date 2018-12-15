@@ -10,8 +10,8 @@ namespace :scrap do
 
   desc 'scrap test'
   task alloresto: :environment do
-    link = 'https://www.just-eat.fr/livraison/paris/paris/?page=1'
+    link = 'https://www.resto-in.fr/livraison-a-domicile-paris'
     html_file = URI.parse(link).open
-    Nokogiri::HTML(html_file)
+    ok = Nokogiri::HTML(html_file)
   end
 end
