@@ -4,7 +4,8 @@ ActiveAdmin.register Restaurant do
   filter :name
   filter :source, as: :select, collection: proc { Restaurant.pluck(:source).uniq }
   filter :tags
-  filter :address
+  filter :city
+  filter :zip_code
   filter :created_at
 
   index do

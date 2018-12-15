@@ -5,7 +5,7 @@ class RestaurantObserver < ActiveRecord::Observer
     @restaurant = restaurant
     @address = restaurant.address
     p need_to_be_update?
-    return if need_to_be_update?
+    return unless need_to_be_update?
 
     fill_address_column_cleanly_justeat
   end
