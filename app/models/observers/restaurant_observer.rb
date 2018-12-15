@@ -10,23 +10,40 @@ class RestaurantObserver < ActiveRecord::Observer
     return if need_to_be_update?
     return if restaurant.address.nil?
 
-    fill_address_column_cleanly
+    fill_fields
   end
 
   private
 
+  def fill_fields
+    if source == 'foodin'
+      fill_address_column_cleanly_foodin
+    else
+      fill_address_column_cleanly
+    end
+  end
+
   def retrieve_city(zip_code)
-    return address.delete(zip_code).split(',')[-1].strip if source == 'justeat'
-    return address.delete(zip_code).split(',')[1].strip if source == 'deliveroo'
+    adresse_split = address.delete(zip_code).split(',')
+    return adresse_split[-1] if source == 'justeat'
+    return adresse_split[1] if source == 'deliveroo'
 
     ''
   end
 
+  def fill_address_column_cleanly_foodin
+    adresse_split = address.split(',')
+    zip_code = adresse_split[1].match(/(.*?)(\d+)/)[2]
+    city = adresse_split[1].delete(zip_code)
+    street = adresse_split.shift
+    restaurant.update(zip_code: zip_code, city: city.strip, street: street)
+  end
+
   def fill_address_column_cleanly
     zip_code = address.last(5).strip
-    city = retrieve_city(zip_code).capitalize
+    city = retrieve_city(zip_code).strip
     street = address.split(',')[0].strip
-    restaurant.update(zip_code: zip_code, city: city, street: street)
+    restaurant.update(zip_code: zip_code, city: city.capitalize, street: street)
   end
 
   def need_to_be_update?
