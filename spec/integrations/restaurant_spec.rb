@@ -39,7 +39,7 @@ describe 'Restaurant', type: :integration do
     end
   end
 
-  context 'With an address from Foodin', focus: true do
+  context 'With an address from Foodin' do
     it 'Fill address columns cleanly' do
       expect(restaurant_foodin.zip_code).to eq 72_100
       expect(restaurant_foodin.street).to eq '1 Avenue du Dr Jean Mac'
