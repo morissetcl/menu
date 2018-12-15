@@ -1,26 +1,28 @@
 class RestaurantObserver < ActiveRecord::Observer
-  attr_reader :restaurant, :address
+  attr_reader :restaurant, :address, :source
 
-  def before_save(restaurant)
+  def after_create(restaurant)
     @restaurant = restaurant
+    @source = restaurant.source
     @address = restaurant.address
-    p need_to_be_update?
-    return unless need_to_be_update?
-
-    fill_address_column_cleanly_justeat
+    return if need_to_be_update?
+    return if restaurant.address.nil?
+    fill_address_column_cleanly
   end
 
   private
 
-  def fill_address_column_cleanly_justeat
-    zip_code = address.last(5)
-                      .strip
-    city     = address.delete(zip_code)
-                      .split(',')[-1]
-                      .strip
-    street   = address.split(',')[0]
-                      .strip
-    restaurant.update(zip_code: zip_code, city: city.capitalize, street: street)
+  def retrieve_city(zip_code)
+    return address.delete(zip_code).split(',')[-1].strip if source == 'justeat'
+    return address.delete(zip_code).split(',')[1].strip if source == 'deliveroo'
+    return ''
+  end
+
+  def fill_address_column_cleanly
+    zip_code = address.last(5).strip
+    city = retrieve_city(zip_code).capitalize
+    street   = address.split(',')[0].strip
+    restaurant.update(zip_code: zip_code, city: city, street: street)
   end
 
   def need_to_be_update?

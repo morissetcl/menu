@@ -14,6 +14,7 @@ ActiveAdmin.register Restaurant do
     column :zip_code
     column :city
     column :source
+    column :address
     column :created_at
     actions
   end
