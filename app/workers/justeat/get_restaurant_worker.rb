@@ -11,7 +11,7 @@ module Justeat
       pages = (1..19)
       pages.each do |page|
         p page
-        GetRestaurantJusteatService.call(page)
+        Justeat::GetRestaurantService.call(page)
         sleep 5
       end
     end

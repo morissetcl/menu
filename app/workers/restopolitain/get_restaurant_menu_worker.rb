@@ -8,7 +8,7 @@ module Restopolitain
     include Sidekiq::Worker
 
     def perform(link, restaurant_id)
-      GetRestaurantMenuRestopolitainService.call(link, restaurant_id)
+      Restopolitain::GetRestaurantMenuService.call(link, restaurant_id)
     end
   end
 end

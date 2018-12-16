@@ -24,6 +24,6 @@ describe GetRestaurantMenuGlovoService do
     restaurant = Restaurant.create(name: 'semsema 2', slug: 'semsema-2')
     expect do
       GetRestaurantMenuGlovoService.call(restaurant.id, link)
-    end.to change { Dish.count }
+    end.to change(Dish, :count)
   end
 end

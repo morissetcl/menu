@@ -25,7 +25,7 @@ describe GetRestaurantMenuFoodinService do
     expect do
       GetRestaurantMenuFoodinService.call(link, restaurant.id)
       p restaurant
-    end.to change { RestaurantMenu.count }
-      .and change { Dish.count }
+    end.to change(RestaurantMenu, :count)
+      .and change(Dish, :count)
   end
 end

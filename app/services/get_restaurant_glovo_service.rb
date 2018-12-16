@@ -22,7 +22,10 @@ class GetRestaurantGlovoService
         name = restaurant.css('.title').text
         tags = restaurant.css('.description').text
         link = restaurant.first[1]
-        restaurant = Restaurant.create(name: name, slug: name.parameterize, tags: tags, source: 'glovo')
+        restaurant = Restaurant.create(name: name,
+                                       slug: name.parameterize,
+                                       tags: tags,
+                                       source: 'glovo')
         Glovo::GetRestaurantMenuWorker.perform_async(restaurant.id, link)
       end
     end

@@ -26,7 +26,6 @@ class GetRestaurantFoodinService
         get_link(restaurant)
         resto = Restaurant.create(name: name, slug: name.parameterize, tags: tags, source: 'foodin')
         Foodin::GetRestaurantMenuWorker.perform_async(@link, resto.id)
-        p resto
       end
     end
 

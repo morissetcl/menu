@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'sidekiq/testing'
 
-describe GetRestaurantRestopolitainService do
+describe Restopolitain::GetRestaurantService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 
@@ -20,7 +20,7 @@ describe GetRestaurantRestopolitainService do
 
   it 'Create a new restaurant and launch new worker' do
     expect do
-      GetRestaurantRestopolitainService.call(1)
-    end.to change { Restaurant.count }.by(60)
+      Restopolitain::GetRestaurantService.call(1)
+    end.to change(Restaurant, :count).by(60)
   end
 end

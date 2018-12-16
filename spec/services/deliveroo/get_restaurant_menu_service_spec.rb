@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'sidekiq/testing'
 
-describe GetRestaurantMenuDeliverooService do
+describe Deliveroo::GetRestaurantMenuService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 
@@ -22,7 +22,7 @@ describe GetRestaurantMenuDeliverooService do
     restaurant = Restaurant.create!(name: 'creperie 21 martorell', slug: 'creperie-21-martorell')
     link = 'https://deliveroo.fr/menu/paris/9eme-opera/creperie-21-martorell?day=today&time=ASAP'
     expect do
-      GetRestaurantMenuDeliverooService.call(link, restaurant.slug)
-    end.to change { RestaurantMenu.count }
+      Deliveroo::GetRestaurantMenuService.call(link, restaurant.slug)
+    end.to change(RestaurantMenu, :count)
   end
 end

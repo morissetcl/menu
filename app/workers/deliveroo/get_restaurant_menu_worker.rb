@@ -8,7 +8,7 @@ module Deliveroo
     include Sidekiq::Worker
 
     def perform(link, restaurant_slug)
-      GetRestaurantMenuDeliverooService.call(link, restaurant_slug)
+      Deliveroo::GetRestaurantMenuService.call(link, restaurant_slug)
     end
   end
 end

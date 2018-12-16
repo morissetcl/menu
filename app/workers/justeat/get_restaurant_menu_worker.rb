@@ -8,7 +8,7 @@ module Justeat
     include Sidekiq::Worker
 
     def perform(link, restaurant_slug)
-      GetRestaurantMenuJusteatService.call(link, restaurant_slug)
+      Justeat::GetRestaurantMenuService.call(link, restaurant_slug)
     end
   end
 end

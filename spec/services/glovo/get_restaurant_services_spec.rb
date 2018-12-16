@@ -23,6 +23,6 @@ describe GetRestaurantGlovoService do
     address = 'https://glovoapp.com/fr/shz/category/RESTAURANT'
     expect do
       GetRestaurantGlovoService.call(address)
-    end.to change { Restaurant.count }
+    end.to change(Restaurant, :count)
   end
 end
