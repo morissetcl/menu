@@ -53,6 +53,7 @@ class GetRestaurantMenuRestopolitainService
     def get_address(address)
       restaurant = @menu.restaurant
       restaurant.update(address: address)
+      FormatAddressesService.call(restaurant)
     end
   end
 end

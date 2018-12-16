@@ -13,6 +13,6 @@ module Menu
     config.time_zone = 'Europe/Paris'
     config.generators.system_tests = nil
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{*/}')]
-    config.active_record.observers = [:restaurant_observer]
+    config.autoload_paths += Dir[Rails.root.join('app', 'services', '{*/}')]
   end
 end

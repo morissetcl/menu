@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'sidekiq/testing'
 
-describe 'Restaurant', type: :integration do
+describe FormatAddressesService, focus: true do
   let!(:restaurant_justeat) do
     create :restaurant, name: "El Rancho #{rand(8)}",
                         slug: "el-rancho #{rand(8)}",
@@ -32,14 +33,16 @@ describe 'Restaurant', type: :integration do
 
   context 'With an address from Justeat' do
     it 'Fill address columns cleanly' do
-      expect(restaurant_restopolitain.city).to eq 'Castres'
-      expect(restaurant_restopolitain.zip_code).to eq 81_100
-      expect(restaurant_restopolitain.street).to eq '1 place Jean Jaurès'
+      FormatAddressesService.call(restaurant_justeat)
+      expect(restaurant_justeat.city).to eq 'Montreuil'
+      expect(restaurant_justeat.zip_code).to eq 93_100
+      expect(restaurant_justeat.street).to eq '1 Avenue Gabriel Péri'
     end
   end
 
   context 'With an address from Deliveroo' do
     it 'Fill address columns cleanly' do
+      FormatAddressesService.call(restaurant_deliveroo)
       expect(restaurant_deliveroo.zip_code).to eq 75_014
       expect(restaurant_deliveroo.street).to eq '1 impasse de la Gaité'
       expect(restaurant_deliveroo.city).to eq 'Paris'
@@ -48,6 +51,7 @@ describe 'Restaurant', type: :integration do
 
   context 'With an address from Foodin' do
     it 'Fill address columns cleanly' do
+      FormatAddressesService.call(restaurant_foodin)
       expect(restaurant_foodin.zip_code).to eq 72_100
       expect(restaurant_foodin.street).to eq '1 Avenue du Dr Jean Mac'
       expect(restaurant_foodin.city).to eq 'Le Mans'
@@ -56,9 +60,10 @@ describe 'Restaurant', type: :integration do
 
   context 'With an address from Restopolitain' do
     it 'Fill address columns cleanly' do
-      expect(restaurant_foodin.zip_code).to eq 72_100
-      expect(restaurant_foodin.street).to eq '1 Avenue du Dr Jean Mac'
-      expect(restaurant_foodin.city).to eq 'Le Mans'
+      FormatAddressesService.call(restaurant_restopolitain)
+      expect(restaurant_restopolitain.zip_code).to eq 81_100
+      expect(restaurant_restopolitain.street).to eq '1 place Jean Jaurès'
+      expect(restaurant_restopolitain.city).to eq 'Castres'
     end
   end
 end

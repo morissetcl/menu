@@ -28,6 +28,7 @@ class GetDishesJusteatService
       end
       restaurant = Restaurant.find restaurant_menu.restaurant.id
       restaurant.update!(tags: food_type.join(','))
+      FormatAddressesService.call(restaurant)
     end
   end
 end

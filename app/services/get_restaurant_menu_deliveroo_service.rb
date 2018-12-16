@@ -21,6 +21,7 @@ class GetRestaurantMenuDeliverooService
         food_type << a.text
       end
       restaurant.update!(tags: food_type.join(','))
+      FormatAddressesService.call(restaurant)
     end
 
     def fetch_html(link)

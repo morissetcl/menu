@@ -24,6 +24,7 @@ class GetRestaurantMenuFoodinService
       restaurant = Restaurant.find restaurant_id
       address = html_doc.css('.text-adr').first.text
       restaurant.update(address: address.strip)
+      FormatAddressesService.call(restaurant)
     end
 
     def create_dish(_html_doc, restaurant, restaurant_menu)
