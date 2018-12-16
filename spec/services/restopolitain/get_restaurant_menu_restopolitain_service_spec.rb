@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'sidekiq/testing'
 
-describe GetRestaurantRestopolitainService do
+describe Restopolitain::GetRestaurantService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 
@@ -23,7 +23,7 @@ describe GetRestaurantRestopolitainService do
     restaurant = Restaurant.create!(name: 'creperie 21 martorell', slug: 'creperie-21-martorell')
     link = 'https://www.restopolitan.es/restaurante/barcelona-162105/al-cafe-310275.html'
     expect do
-      GetRestaurantMenuRestopolitainService.call(link, restaurant.id)
+      Restopolitain::GetRestaurantMenuService.call(link, restaurant.id)
     end.to change(RestaurantMenu, :count)
   end
 end

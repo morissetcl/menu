@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'sidekiq/testing'
 
-describe GetRestaurantDeliverooService do
+describe Deliveroo::GetRestaurantService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 
@@ -13,7 +13,7 @@ describe GetRestaurantDeliverooService do
 
   it 'Create a new restaurant and launch new worker' do
     expect do
-      GetRestaurantDeliverooService.call(@doc)
+      Deliveroo::GetRestaurantService.call(@doc)
     end.to change { Restaurant.count }
       .and change(Deliveroo::GetRestaurantMenuWorker.jobs, :size).by(1)
   end

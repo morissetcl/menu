@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'sidekiq/testing'
 
-describe FormatAddressesService, focus: true do
+describe FormatAddressesService do
   let!(:restaurant_justeat) do
     create :restaurant, name: "El Rancho #{rand(8)}",
                         slug: "el-rancho #{rand(8)}",

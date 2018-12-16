@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'sidekiq/testing'
 
-describe GetDishesJusteatService do
+describe Justeat::GetDishesService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 
@@ -16,7 +16,7 @@ describe GetDishesJusteatService do
     resto = Restaurant.create(name: 'Doudou', slug: 'doudou')
     resto_menu = RestaurantMenu.create(restaurant: resto)
     expect do
-      GetDishesJusteatService.call(@doc, resto_menu)
+      Justeat::GetDishesService.call(@doc, resto_menu)
     end.to change(Dish, :count)
   end
 end

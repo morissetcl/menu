@@ -10,7 +10,7 @@ module Deliveroo
     def perform(*_args)
       DISTRICTS.each do |district|
         html_doc = fetch_html(district)
-        GetRestaurantDeliverooService.call(html_doc)
+        Deliveroo::GetRestaurantService.call(html_doc)
       end
     end
 

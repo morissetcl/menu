@@ -10,7 +10,7 @@ module Restopolitain
     def perform(*_args)
       pages = (1..43)
       pages.each do |page|
-        GetRestaurantRestopolitainService.call(page)
+        Restopolitain::GetRestaurantService.call(page)
       end
     end
   end
