@@ -44,9 +44,10 @@ class FormatAddressesService
 
     def fill_address_column_cleanly_restopolitain
       address_split = @address.split(',')
-      zip_code = address_split[1].match(/(.*?)(\d+)/)[2]
-      city = address_split[1].delete(zip_code)
-      street = address_split.shift
+      zip_code = address_split[2].match(/(.*?)(\d+)/)[2]
+      city = address_split.last.split.last
+      street = address_split.first(2).join.strip
+
       @restaurant.update(zip_code: zip_code, city: city.strip, street: street)
     end
 

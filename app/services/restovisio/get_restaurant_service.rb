@@ -26,7 +26,7 @@ module Restovisio
           tags = restaurant.css('.etb_cat_amb').text.strip
           price = restaurant.css('.etb_price_range').text.strip
           get_link(restaurant)
-          resto = Restaurant.create!(name: name, slug: name.parameterize, tags: tags, price_range: price, source: 'restovisio')
+          resto = Restaurant.create(name: name, slug: name.parameterize, tags: tags, price_range: price, source: 'restovisio')
           add_address_to_restaurant(html_doc, resto)
           Restovisio::GetRestaurantMenuWorker.perform_async(@link, resto.id)
         end
