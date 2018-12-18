@@ -22,18 +22,21 @@ module Restovisio
 
       def create_restaurant(html_doc)
         html_doc.css('.item_infos').each do |restaurant|
-          name = restaurant.css('span').text.strip
+          name = restaurant.css('h3_st').text.strip
           tags = restaurant.css('.etb_cat_amb').text.strip
           price = restaurant.css('.etb_price_range').text.strip
           get_link(restaurant)
           resto = Restaurant.create(name: name, slug: name.parameterize, tags: tags, price_range: price, source: 'restovisio')
+          p resto
           Restovisio::GetRestaurantMenuWorker.perform_async(@link, resto.id)
         end
       end
 
       def get_link(restaurant)
         restaurant.css('a:first').each do |link|
-          @link = link['href']
+          link = link['href']
+  
+          @link = "#{link.chomp("#bookings").chomp("#mobile")}#menu"
         end
       end
     end

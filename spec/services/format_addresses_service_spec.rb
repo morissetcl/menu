@@ -31,6 +31,13 @@ describe FormatAddressesService do
                         source: 'restopolitain'
   end
 
+  let!(:restaurant_restovisio) do
+    create :restaurant, name: "El Vaco #{rand(8)}",
+                        slug: "el-vaco #{rand(8)}",
+                        address: '1, place Jean Jaurès, 81100 Castres',
+                        source: 'restopolitain'
+  end
+
   context 'With an address from Justeat' do
     it 'Fill address columns cleanly' do
       FormatAddressesService.call(restaurant_justeat)

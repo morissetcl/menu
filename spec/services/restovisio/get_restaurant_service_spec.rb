@@ -18,7 +18,7 @@ describe Restovisio::GetRestaurantService do
     stub_restaurant_restovisio
   end
 
-  it 'Create a new restaurant and launch new worker' do
+  it 'Create a new restaurant and launch new worker', focus: true do
     expect do
       Restovisio::GetRestaurantService.call(1)
     end.to change(Restaurant, :count)

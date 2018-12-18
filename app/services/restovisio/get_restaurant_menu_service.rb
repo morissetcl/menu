@@ -15,7 +15,7 @@ module Restovisio
       end
 
       def fetch_html(link)
-        url = "http://www.restovisio.com#{link}#menu"
+        url = "http://www.restovisio.com#{link}"
         html_file = URI.parse(url).open
         Nokogiri::HTML(html_file)
       end
