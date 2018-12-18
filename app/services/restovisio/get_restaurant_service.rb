@@ -22,7 +22,8 @@ module Restovisio
 
       def create_restaurant(html_doc)
         html_doc.css('.item_infos').each do |restaurant|
-          name = restaurant.css('h3_st').text.strip
+          name = restaurant.css('a').first.text.strip
+          p name
           tags = restaurant.css('.etb_cat_amb').text.strip
           price = restaurant.css('.etb_price_range').text.strip
           get_link(restaurant)
