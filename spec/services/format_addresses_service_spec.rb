@@ -34,8 +34,8 @@ describe FormatAddressesService do
   let!(:restaurant_restovisio) do
     create :restaurant, name: "El Vaco #{rand(8)}",
                         slug: "el-vaco #{rand(8)}",
-                        address: '1, place Jean Jaurès, 81100 Castres',
-                        source: 'restopolitain'
+                        address: '17 chemin de Ghesles 59700 Marcq-en-Barœul',
+                        source: 'restovisio'
   end
 
   context 'With an address from Justeat' do
@@ -71,6 +71,15 @@ describe FormatAddressesService do
       expect(restaurant_restopolitain.zip_code).to eq 81_100
       expect(restaurant_restopolitain.street).to eq '1 place Jean Jaurès'
       expect(restaurant_restopolitain.city).to eq 'Castres'
+    end
+  end
+
+  context 'With an address from Restovisio' do
+    it 'Fill address columns cleanly' do
+      FormatAddressesService.call(restaurant_restovisio)
+      expect(restaurant_restovisio.zip_code).to eq 59_700
+      expect(restaurant_restovisio.street).to eq '17 chemin de Ghesles'
+      expect(restaurant_restovisio.city).to eq 'Marcq-en-Barœul'
     end
   end
 end

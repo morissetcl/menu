@@ -8,7 +8,7 @@ module Restovisio
     class << self
       def call(link, restaurant_id)
         html_doc = fetch_html(link)
-        restaurant_menu = RestaurantMenu.create(restaurant_id: restaurant_id)
+        restaurant_menu = RestaurantMenu.create!(restaurant_id: restaurant_id)
         html_doc.css('.menu_block_content').each do |restaurant|
           create_dish(restaurant, restaurant_menu)
         end

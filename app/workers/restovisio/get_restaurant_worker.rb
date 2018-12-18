@@ -8,8 +8,10 @@ module Restovisio
     include Sidekiq::Worker
 
     def perform(*_args)
-      pages = (1..2)
+      pages = (1..50)
       pages.each do |page|
+        p "page n°#{page}"
+        sleep(3)
         Restovisio::GetRestaurantService.call(page)
       end
     end
