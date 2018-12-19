@@ -9,5 +9,6 @@ class RestaurantInitWorker
     Foodin::GetRestaurantWorker.perform_async(*args)
     Restopolitain::GetRestaurantWorker.perform_async(*args)
     Glovo::GetRestaurantWorker.perform_async(*args)
+    Restovisio::GetRestaurantWorker.perform_async(*args)
   end
 end

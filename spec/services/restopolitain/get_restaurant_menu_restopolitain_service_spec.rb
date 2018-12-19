@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'sidekiq/testing'
 
-describe Restopolitain::GetRestaurantService do
+describe Restopolitain::GetRestaurantMenuService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 

@@ -19,6 +19,8 @@ class FormatAddressesService
         fill_address_column_cleanly_foodin
       elsif @source == 'restopolitain'
         fill_address_column_cleanly_restopolitain
+      elsif @source == 'restovisio'
+        fill_address_column_cleanly_restovisio
       else
         fill_address_column_cleanly
       end
@@ -42,10 +44,18 @@ class FormatAddressesService
 
     def fill_address_column_cleanly_restopolitain
       address_split = @address.split(',')
-      zip_code = address_split.last.split[0]
-      city = @address.split.last
-      street = address_split.first(2).join
-      @restaurant.update(zip_code: zip_code, city: city, street: street)
+      zip_code = address_split[2].match(/(.*?)(\d+)/)[2]
+      city = address_split.last.split.last
+      street = address_split.first(2).join.strip
+
+      @restaurant.update(zip_code: zip_code, city: city.strip, street: street)
+    end
+
+    def fill_address_column_cleanly_restovisio
+      city = @address.split.last.strip
+      zip_code = @address.chomp(city).split.last.strip
+      street = @address.chomp(city).strip
+      @restaurant.update(zip_code: zip_code, city: city, street: street.chomp(zip_code).strip)
     end
 
     def fill_address_column_cleanly
