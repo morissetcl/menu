@@ -22,26 +22,32 @@ module Restovisio
 
       def create_restaurant(html_doc)
         html_doc.css('.item_infos').each do |restaurant|
-          name = restaurant.css('a').first.text.strip
-          tags = restaurant.css('.etb_cat_amb').text.strip
-          price = restaurant.css('.etb_price_range').text.strip
+          resto = get_all_data(restaurant)
           get_link(restaurant)
-          resto = Restaurant.create(name: name, slug: name.parameterize, tags: tags, price_range: price, source: 'restovisio')
-          add_address_to_restaurant(html_doc, resto)
+          retrieve_address(resto)
+          sleep(2)
           Restovisio::GetRestaurantMenuWorker.perform_async(@link, resto.id)
         end
       end
 
-      def add_address_to_restaurant(html_doc, restaurant)
-        address = html_doc.css('.etb_location_info').first.text
-        restaurant.update(address: address.strip)
-        FormatAddressesService.call(restaurant)
+      def get_all_data(restaurant)
+        name = restaurant.css('a').first.text.strip
+        tags = restaurant.css('.etb_cat_amb').text.strip
+        price = restaurant.css('.etb_price_range').text.strip
+        address = restaurant.css('.etb_location_info').text.strip
+        Restaurant.create(name: name, slug: name.parameterize,
+                          address: address, tags: tags,
+                          price_range: price, source: 'restovisio')
+      end
+
+      def retrieve_address(resto)
+        FormatAddressesService.call(resto)
       end
 
       def get_link(restaurant)
         restaurant.css('a:first').each do |link|
           link = link['href']
-          @link = "#{link.chomp("#bookings").chomp("#mobile")}#menu"
+          @link = "#{link.chomp('#bookings').chomp('#mobile')}#menu"
         end
       end
     end
