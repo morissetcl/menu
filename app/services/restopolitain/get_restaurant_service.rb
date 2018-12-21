@@ -13,10 +13,10 @@ module Restopolitain
         html_doc.search('.country__cities').each do |element|
           links = element.css('a')
           links.each do |restaurant|
+            sleep 5
             get_link_and_name(restaurant)
             restaurant = create_restaurant(name)
             next if restaurant.id.nil?
-
             Restopolitain::GetRestaurantMenuWorker.perform_async(link, restaurant.id)
           end
         end
@@ -26,7 +26,6 @@ module Restopolitain
 
       def initialize_crawl(page)
         url = "https://www.restopolitan.com/tous-nos-restaurants/page/#{page}"
-        sleep 5
         html_file = URI.parse(url).open
         Nokogiri::HTML(html_file)
       end

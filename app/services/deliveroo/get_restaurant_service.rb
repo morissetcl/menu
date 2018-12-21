@@ -20,7 +20,7 @@ module Deliveroo
 
             restaurant_created = assign_attributes_to_restaurant(restaurant)
             next if restaurant_created.id.nil?
-
+            sleep 3
             Deliveroo::GetRestaurantMenuWorker.perform_async(restaurant['href'],
                                                              get_data(restaurant))
           end

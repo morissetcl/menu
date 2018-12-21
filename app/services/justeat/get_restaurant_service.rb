@@ -18,7 +18,7 @@ module Justeat
                                                  address: @address, source: 'justeat')
 
           next if restaurant_created.id.nil?
-
+          sleep 3
           Justeat::GetRestaurantMenuWorker.perform_async(@link, @name.parameterize)
         end
       end
