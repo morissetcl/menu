@@ -26,6 +26,7 @@ class GetRestaurantGlovoService
                                        slug: name.parameterize,
                                        tags: tags,
                                        source: 'glovo')
+        sleep 3
         Glovo::GetRestaurantMenuWorker.perform_async(restaurant.id, link)
       end
     end

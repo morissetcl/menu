@@ -25,6 +25,7 @@ class GetRestaurantFoodinService
         tags = restaurant.css('.speciality').text.strip
         get_link(restaurant)
         resto = Restaurant.create(name: name, slug: name.parameterize, tags: tags, source: 'foodin')
+        sleep 3
         Foodin::GetRestaurantMenuWorker.perform_async(@link, resto.id)
       end
     end
