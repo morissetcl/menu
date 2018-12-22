@@ -15,7 +15,7 @@ module Restovisio
 
       def fetch_html(page)
         url = "http://www.restovisio.com/restaurants/#{page}.htm"
-        sleep 5
+        sleep 3 unless Rails.env.test?
         html_file = URI.parse(url).open
         Nokogiri::HTML(html_file)
       end
@@ -25,7 +25,7 @@ module Restovisio
           resto = get_all_data(restaurant)
           get_link(restaurant)
           retrieve_address(resto)
-          sleep(2)
+          sleep 2 unless Rails.env.test?
           Restovisio::GetRestaurantMenuWorker.perform_async(@link, resto.id)
         end
       end

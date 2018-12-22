@@ -26,7 +26,7 @@ class GetRestaurantGlovoService
                                        slug: name.parameterize,
                                        tags: tags,
                                        source: 'glovo')
-        sleep 3
+        sleep 2 unless Rails.env.test?
         Glovo::GetRestaurantMenuWorker.perform_async(restaurant.id, link)
       end
     end
