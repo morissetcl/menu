@@ -10,9 +10,8 @@ module Justeat
     def perform(*_args)
       pages = (1..19)
       pages.each do |page|
-        p page
         Justeat::GetRestaurantService.call(page)
-        sleep 5
+        sleep 3 unless Rails.env.test?
       end
     end
   end

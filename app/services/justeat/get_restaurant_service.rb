@@ -9,9 +9,7 @@ module Justeat
 
     class << self
       def call(page)
-        link = "https://www.just-eat.fr/livraison/paris/paris/?page=#{page}"
-        html_file = URI.parse(link).open
-        html_doc = Nokogiri::HTML(html_file)
+        html_doc = initialize_crawl(page)
         html_doc.css('.restaurantDetails').each do |element|
           get_link_and_name(element)
           restaurant_created = Restaurant.create(name: @name, slug: @name.parameterize,
@@ -21,6 +19,12 @@ module Justeat
 
           Justeat::GetRestaurantMenuWorker.perform_async(@link, @name.parameterize)
         end
+      end
+
+      def initialize_crawl page
+        link = "https://www.just-eat.fr/livraison/paris/paris/?page=#{page}"
+        html_file = URI.parse(link).open
+        html_doc = Nokogiri::HTML(html_file)
       end
 
       def get_link_and_name(element)

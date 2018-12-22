@@ -18,7 +18,7 @@ module Deliveroo
 
     def fetch_html(district)
       url = "https://deliveroo.fr/fr/restaurants/paris/#{district}"
-      sleep 5
+      sleep 3 unless Rails.env.test?
       html_file = URI.parse(url).open
       Nokogiri::HTML(html_file)
     end

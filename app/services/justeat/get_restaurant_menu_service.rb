@@ -19,7 +19,6 @@ module Justeat
       end
 
       def create_restaurant_menu(restaurant)
-        p "create restaurant menu #{restaurant.name}"
         RestaurantMenu.create!(restaurant: restaurant)
       end
     end

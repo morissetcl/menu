@@ -14,7 +14,6 @@ class GetRestaurantFoodinService
 
     def fetch_html(city)
       url = "https://foodin.fr/nos-restaurants/#{city}"
-      sleep 5
       html_file = URI.parse(url).open
       Nokogiri::HTML(html_file)
     end
@@ -25,6 +24,7 @@ class GetRestaurantFoodinService
         tags = restaurant.css('.speciality').text.strip
         get_link(restaurant)
         resto = Restaurant.create(name: name, slug: name.parameterize, tags: tags, source: 'foodin')
+        sleep 2 unless Rails.env.test?
         Foodin::GetRestaurantMenuWorker.perform_async(@link, resto.id)
       end
     end
