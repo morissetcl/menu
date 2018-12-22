@@ -1,34 +1,6 @@
-
-<div class="container">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-
-    <div class="row z-depth-5 form-card">
-      <h3 class='title'>S'inscrire</h3>
-
-      <div class="input-field col s12 m8 offset-m2">
-        <label for="email">Email</label>
-        <%= f.email_field :email, type: 'email', class:'validate', autocomplete: 'email' %>
-        <span class="helper-text" data-error="Veuillez rentrer un format d'email valide"></span>
-      </div>
-
-      <div class="input-field col s12 m8 offset-m2">
-        <label for="password">Mot de passe</label>
-        <%= f.password_field :password, autocomplete: 'new-password' %>
-      </div>
-
-      <div class="input-field col s12 m8 offset-m2">
-        <label for="password_confirmation">Confirmation mot de passe</label>
-        <%= f.password_field :password_confirmation %>
-      </div>
-
-      <div class="actions center-align col s12 m8 offset-m2">
-        <a class="waves-effect waves-light btn"><%= f.submit "S'inscrire" %></a>
-      </div>
-
-      <div class="col s12 m8 offset-m2 sub-form-links">
-        <%= link_to "Se connecter", new_session_path(resource_name) %><br />
-      </div>
-    <% end %>
+<div class="container col s12">
+  <div class="row ">
+    <%= render 'form'%>
+    <%= render 'registration-interests'%>
   </div>
 </div>
