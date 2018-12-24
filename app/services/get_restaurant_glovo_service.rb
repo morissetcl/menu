@@ -22,10 +22,8 @@ class GetRestaurantGlovoService
         name = restaurant.css('.title').text
         tags = restaurant.css('.description').text
         link = restaurant.first[1]
-        restaurant = Restaurant.create(name: name,
-                                       slug: name.parameterize,
-                                       tags: tags,
-                                       source: 'glovo')
+        restaurant = Restaurant.create(name: name, slug: name.parameterize,
+                                       tags: tags, source: 'glovo')
         sleep 2 unless Rails.env.test?
         Glovo::GetRestaurantMenuWorker.perform_async(restaurant.id, link)
       end

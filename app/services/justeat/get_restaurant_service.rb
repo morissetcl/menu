@@ -24,7 +24,7 @@ module Justeat
       def initialize_crawl page
         link = "https://www.just-eat.fr/livraison/paris/paris/?page=#{page}"
         html_file = URI.parse(link).open
-        html_doc = Nokogiri::HTML(html_file)
+        Nokogiri::HTML(html_file)
       end
 
       def get_link_and_name(element)

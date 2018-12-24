@@ -34,7 +34,11 @@
 
 .form-card {
   padding: 20px;
-  border-radius: 50px;
-  margin-top: 50px;
+  border-radius: 0px 0px 50px 50px;
   background: white;
+}
+
+#tabs-swipe-demo {
+  margin-top: 50px;
+  border-radius: 10px 10px 0px 0px;
 }
