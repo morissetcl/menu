@@ -13,8 +13,9 @@ Rails.application.routes.draw do
 
   # authentication
   devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
 
   # public-routes
   root to: 'home#show'
+  resources :user, path: 'dashboard', except: [:index]
 end

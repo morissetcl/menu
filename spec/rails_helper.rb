@@ -90,3 +90,13 @@ def sign_in_as_admin(admin)
   fill_in :admin_user_password, with: admin.password
   click_on 'Login'
 end
+
+def sign_as_user
+  visit new_user_session_path
+  within find('#test1') do
+    fill_in :user_email, with: 'albert@email.fr'
+    fill_in :user_password, with: 'password'
+    fill_in :user_password_confirmation, with: 'password'
+    click_on "S'inscrire"
+  end
+end
