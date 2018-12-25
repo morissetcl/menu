@@ -21,7 +21,7 @@ module Justeat
         end
       end
 
-      def initialize_crawl page
+      def initialize_crawl(page)
         link = "https://www.just-eat.fr/livraison/paris/paris/?page=#{page}"
         html_file = URI.parse(link).open
         Nokogiri::HTML(html_file)

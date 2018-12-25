@@ -13,7 +13,7 @@ describe 'Authentication - User', type: :feature do
         fill_in :user_password, with: 'password'
         fill_in :user_password_confirmation, with: 'password'
         click_on "S'inscrire"
-      end.to change { User.count }
+      end.to change(User, :count)
       expect(current_path).to eq user_path User.last
     end
   end
