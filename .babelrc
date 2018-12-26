@@ -16,7 +16,6 @@
   "plugins": [
     "syntax-dynamic-import",
     "react-html-attrs",
-    "@babel/plugin-transform-react-inline-elements"
     "transform-object-rest-spread",
     [
       "transform-class-properties",

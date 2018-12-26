@@ -14,7 +14,6 @@ class User extends Component {
     };
 
     $.getJSON('/recherche?q=' + this.state.term)
-      console.log(response)
       .then(response => this.setState({ autoCompleteResults: response.restaurants }))
   }
 
@@ -29,7 +28,6 @@ class User extends Component {
 
   render(){
     let autoCompleteList = this.state.autoCompleteResults.map((response, index) => {
-      console.log(response)
       return <div key={index} className='restaurant-wrapper'>
           <h4 className='titre-restaurant'>{response.name}</h4>
           <p>{response.street}</p>
