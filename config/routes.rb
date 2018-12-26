@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   # public-routes
   root to: 'home#show'
+  resources :user, path: 'dashboard', except: [:index]
 end

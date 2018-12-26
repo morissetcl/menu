@@ -4,9 +4,9 @@
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-      <li><a href="collapsible.html">Javascript</a></li>
+      <li><%= link_to 'Concept' %></li>
       <% if user_signed_in? %>
+        <li><%= link_to 'Dashboard', user_path(current_user) %></li>
         <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to 'Connexion', new_user_session_path %></li>
@@ -16,8 +16,11 @@
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-  <li><a href="sass.html">Sass</a></li>
-  <li><a href="badges.html">Components</a></li>
-  <li><a href="collapsible.html">Javascript</a></li>
-  <li><a href="mobile.html">Mobile</a></li>
+  <li><%= link_to 'Concept' %></li>
+  <% if user_signed_in? %>
+    <li><%= link_to 'Dashboard', user_path(current_user) %></li>
+    <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
+  <% else %>
+    <li><%= link_to 'Connexion', new_user_session_path %></li>
+  <% end %>
 </ul>

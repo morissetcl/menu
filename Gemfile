@@ -12,6 +12,7 @@ gem 'pg', '~> 0.18.4'
 # Use Puma as the app server
 gem 'activeadmin'
 gem 'arctic_admin'
+gem 'cancancan', '~> 2.0'
 gem 'devise'
 gem 'hpricot'
 gem 'puma', '~> 3.11'
