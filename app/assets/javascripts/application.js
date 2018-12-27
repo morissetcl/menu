@@ -14,6 +14,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require activestorage
+//= require jquery-ui/widgets/autocomplete
+//= require autocomplete-rails
 
 $(document).ready(function(){
   $('.sidenav').sidenav();

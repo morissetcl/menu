@@ -18,6 +18,9 @@ gem 'hpricot'
 gem 'puma', '~> 3.11'
 gem 'sidekiq'
 gem 'sidekiq-limit_fetch'
+gem 'webpacker'
+gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'kaminari'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -30,6 +33,9 @@ gem 'rails-observers'
 gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
+gem 'rails-jquery-autocomplete'
+gem 'jquery-ui-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
