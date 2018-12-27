@@ -41,7 +41,8 @@ class FormatAddressesService
       street = address_split.shift
       department = DEPARTMENTS[zip_code.first(2)]
 
-      @restaurant.update(zip_code: zip_code, city: city.strip, street: street, department: department)
+      @restaurant.update(zip_code: zip_code, city: city.strip,
+                         street: street, department: department)
     end
 
     def fill_address_column_cleanly_restopolitain
@@ -51,7 +52,8 @@ class FormatAddressesService
       street = address_split.first(2).join.strip
       department = DEPARTMENTS[zip_code.first(2)]
 
-      @restaurant.update(zip_code: zip_code, city: city.strip, street: street, department: department)
+      @restaurant.update(zip_code: zip_code, city: city.strip,
+                         street: street, department: department)
     end
 
     def fill_address_column_cleanly_restovisio
@@ -60,7 +62,8 @@ class FormatAddressesService
       street = @address.chomp(city).strip
       department = DEPARTMENTS[zip_code.first(2)]
 
-      @restaurant.update(zip_code: zip_code, city: city, street: street.chomp(zip_code).strip, department: department)
+      @restaurant.update(zip_code: zip_code, city: city,
+                         street: street.chomp(zip_code).strip, department: department)
     end
 
     def fill_address_column_cleanly
@@ -68,8 +71,9 @@ class FormatAddressesService
       city = retrieve_city(zip_code).strip
       street = @address.split(',')[0].strip
       department = DEPARTMENTS[zip_code.first(2)]
-      
-      @restaurant.update(zip_code: zip_code, city: city.capitalize, street: street, department: department)
+
+      @restaurant.update(zip_code: zip_code, city: city.capitalize,
+                         street: street, department: department)
     end
 
     def need_to_be_update?
@@ -84,20 +88,20 @@ class FormatAddressesService
       '01' => 'Ain',
       '02' => 'Aisne',
       '03' => 'Allier',
-      '04' => "Alpes-de-Haute-Provence",
-      '05' => "Hautes-Alpes",
+      '04' => 'Alpes-de-Haute-Provence',
+      '05' => 'Hautes-Alpes',
       '06' => 'Alpes-Maritimes',
       '07' => 'Ardèche',
       '08' => 'Ardennes',
       '09' => 'Ariège',
-      '10' => "Aube",
-      '11' => "Aude",
+      '10' => 'Aube',
+      '11' => 'Aude',
       '12' => 'Aveyron',
       '13' => 'Bouches-du-Rhône',
       '14' => 'Calvados',
       '15' => 'Cantal',
-      '16' => "Charente",
-      '17' => "Charente-Maritime",
+      '16' => 'Charente',
+      '17' => 'Charente-Maritime',
       '18' => 'Cher',
       '19' => 'Corrèze',
       '2B' => 'Haute-Corse',
@@ -157,7 +161,7 @@ class FormatAddressesService
       '73' => 'Savoie',
       '74' => 'Haute-Savoie',
       '75' => 'Paris',
-      '76' => "Seine-Maritime",
+      '76' => 'Seine-Maritime',
       '77' => 'Seine-et-Marne',
       '78' => 'Yvelines',
       '79' => 'Deux-Sèvres',
