@@ -15,7 +15,6 @@
   ],
   "plugins": [
     "syntax-dynamic-import",
-    "react-html-attrs",
     "transform-object-rest-spread",
     [
       "transform-class-properties",
