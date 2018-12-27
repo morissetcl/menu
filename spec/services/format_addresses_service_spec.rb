@@ -44,6 +44,7 @@ describe FormatAddressesService do
       expect(restaurant_justeat.city).to eq 'Montreuil'
       expect(restaurant_justeat.zip_code).to eq 93_100
       expect(restaurant_justeat.street).to eq '1 Avenue Gabriel Péri'
+      expect(restaurant_justeat.department).to eq 'Seine-Saint-Denis'
     end
   end
 
@@ -53,6 +54,7 @@ describe FormatAddressesService do
       expect(restaurant_deliveroo.zip_code).to eq 75_014
       expect(restaurant_deliveroo.street).to eq '1 impasse de la Gaité'
       expect(restaurant_deliveroo.city).to eq 'Paris'
+      expect(restaurant_deliveroo.department).to eq 'Paris'
     end
   end
 
@@ -62,6 +64,7 @@ describe FormatAddressesService do
       expect(restaurant_foodin.zip_code).to eq 72_100
       expect(restaurant_foodin.street).to eq '1 Avenue du Dr Jean Mac'
       expect(restaurant_foodin.city).to eq 'Le Mans'
+      expect(restaurant_foodin.department).to eq 'Sarthe'
     end
   end
 
@@ -71,6 +74,7 @@ describe FormatAddressesService do
       expect(restaurant_restopolitain.zip_code).to eq 81_100
       expect(restaurant_restopolitain.street).to eq '1 place Jean Jaurès'
       expect(restaurant_restopolitain.city).to eq 'Castres'
+      expect(restaurant_restopolitain.department).to eq 'Tarn'
     end
   end
 
@@ -80,6 +84,7 @@ describe FormatAddressesService do
       expect(restaurant_restovisio.zip_code).to eq 59_700
       expect(restaurant_restovisio.street).to eq '17 chemin de Ghesles'
       expect(restaurant_restovisio.city).to eq 'Marcq-en-Barœul'
+      expect(restaurant_restovisio.department).to eq 'Nord'
     end
   end
 end
