@@ -4,6 +4,6 @@ import Routes from '../routes';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Routes />, document.getElementById('example-app'),
+    <Routes />, document.getElementById('livesearch-container'),
   )
 });

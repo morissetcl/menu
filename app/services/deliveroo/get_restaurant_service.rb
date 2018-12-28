@@ -41,7 +41,7 @@ module Deliveroo
       def get_link(link)
         return '' if link.nil?
 
-        link.scan(/(?<=https:\/\/deliveroo.fr\/menu\/paris\/)(.*)(?=\?day=today&time=ASAP)/)
+        link.scan(%r{(?<=https://deliveroo.fr/menu/paris/)(.*)(?=\?day=today&time=ASAP)})
       end
 
       def get_slug(link)

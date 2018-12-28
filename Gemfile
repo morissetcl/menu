@@ -11,6 +11,7 @@ gem 'rails', '~> 5.2.1'
 gem 'pg', '~> 0.18.4'
 # Use Puma as the app server
 gem 'activeadmin'
+gem 'activeadmin_addons'
 gem 'arctic_admin'
 gem 'cancancan', '~> 2.0'
 gem 'devise'
