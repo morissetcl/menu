@@ -6,7 +6,7 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     after(:create) do |user|
-      create_list(:department, 1,  user_id: user.id)
+      create_list(:department, 1, user_id: user.id)
     end
   end
 end
