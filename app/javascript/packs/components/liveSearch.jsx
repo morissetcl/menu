@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-class User extends Component {
+class LiveSearch extends Component {
 
   constructor(props) {
     super(props);
@@ -54,9 +54,4 @@ class User extends Component {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <User />,
-    document.body.appendChild(document.createElement('div')),
-  )
-});
+export default LiveSearch
