@@ -54,9 +54,4 @@ class LiveSearch extends Component {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <LiveSearch />,
-    document.body.appendChild(document.createElement('div')),
-  )
-});
+export default LiveSearch

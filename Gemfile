@@ -21,6 +21,10 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'sidekiq'
 gem 'sidekiq-limit_fetch'
 gem 'webpacker'
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jquery-rails'
 gem 'mechanize'
@@ -44,11 +48,6 @@ gem 'rails-jquery-autocomplete'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-group :assets do
-  gem 'therubyracer'
-  gem 'uglifier'
-  gem 'sass-rails', '~> 5.0'
-end
 
 group :development, :test do
   gem 'dotenv-rails'
