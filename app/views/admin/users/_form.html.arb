@@ -1,0 +1,15 @@
+active_admin_form_for [:admin, resource] do |f|
+  f.inputs 'User' do
+    f.input :email
+    f.input :department_ids, as: :tags, collection: Department.all
+  end
+
+  f.inputs 'Connexion' do
+    f.input :email
+    f.input :password
+    f.input :password_confirmation
+  end
+  f.actions do
+    f.action :submit
+  end
+end

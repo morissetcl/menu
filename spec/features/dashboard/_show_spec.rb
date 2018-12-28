@@ -7,7 +7,7 @@ describe 'Authentication - User', type: :feature do
 
   before { sign_as_user }
 
-  scenario 'can access to my dashboard', focus: true do
+  scenario 'can access to my dashboard' do
     current_user = User.last
     visit user_path current_user
     expect(current_path).to eq user_path current_user
