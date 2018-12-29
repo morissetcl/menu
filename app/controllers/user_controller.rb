@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UserController < ApplicationController
+  layout 'users'
+
   before_action :authenticate_user!
   load_and_authorize_resource
 

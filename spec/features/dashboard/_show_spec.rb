@@ -9,13 +9,12 @@ describe 'Authentication - User', type: :feature do
 
   scenario 'can access to my dashboard' do
     current_user = User.last
-    visit user_path current_user
-    expect(current_path).to eq user_path current_user
-
+    visit dashboard_path current_user
+    expect(current_path).to eq dashboard_path current_user
   end
 
   xscenario "can't access to dashboard if its not my own" do
-    visit user_path other_user
-    expect{get :index}.to raise_error(CanCan::AccessDenied)
+    visit dashboard_path other_user
+    expect { get :index }.to raise_error(CanCan::AccessDenied)
   end
 end

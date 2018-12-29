@@ -6,7 +6,7 @@
       <li><a href="sass.html">Sass</a></li>
       <li><%= link_to 'Concept' %></li>
       <% if user_signed_in? %>
-        <li><%= link_to 'Dashboard', user_path(current_user) %></li>
+        <li><%= link_to 'Dashboard', dashboard_path(current_user) %></li>
         <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to 'Connexion', new_user_session_path %></li>
@@ -18,7 +18,7 @@
 <ul class="sidenav" id="mobile-demo">
   <li><%= link_to 'Concept' %></li>
   <% if user_signed_in? %>
-    <li><%= link_to 'Dashboard', user_path(current_user) %></li>
+    <li><%= link_to 'Dashboard', dashboard_path(current_user) %></li>
     <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
   <% else %>
     <li><%= link_to 'Connexion', new_user_session_path %></li>

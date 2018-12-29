@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.restaurants do
   json.array!(@restaurants) do |restaurant|
     json.id restaurant.id
