@@ -29,7 +29,7 @@ ActiveAdmin.register User do
     helper_method :departments
 
     def departments(user)
-      Department.where(zip_code: user.department_ids)
+      Department.where(id: user.department_ids)
                 .pluck(:name)
                 .join(', ')
     end
