@@ -39,7 +39,10 @@ class FormatAddressesService
       zip_code = address_split[1].match(/(.*?)(\d+)/)[2]
       city = address_split[1].delete(zip_code)
       street = address_split.shift
-      @restaurant.update(zip_code: zip_code, city: city.strip, street: street)
+      department = DEPARTMENTS[zip_code.first(2)]
+
+      @restaurant.update(zip_code: zip_code, city: city.strip,
+                         street: street, department: department)
     end
 
     def fill_address_column_cleanly_restopolitain
@@ -47,22 +50,30 @@ class FormatAddressesService
       zip_code = address_split[2].match(/(.*?)(\d+)/)[2]
       city = address_split.last.split.last
       street = address_split.first(2).join.strip
+      department = DEPARTMENTS[zip_code.first(2)]
 
-      @restaurant.update(zip_code: zip_code, city: city.strip, street: street)
+      @restaurant.update(zip_code: zip_code, city: city.strip,
+                         street: street, department: department)
     end
 
     def fill_address_column_cleanly_restovisio
       city = @address.split.last.strip
       zip_code = @address.chomp(city).split.last.strip
       street = @address.chomp(city).strip
-      @restaurant.update(zip_code: zip_code, city: city, street: street.chomp(zip_code).strip)
+      department = DEPARTMENTS[zip_code.first(2)]
+
+      @restaurant.update(zip_code: zip_code, city: city,
+                         street: street.chomp(zip_code).strip, department: department)
     end
 
     def fill_address_column_cleanly
       zip_code = @address.last(5).strip
       city = retrieve_city(zip_code).strip
       street = @address.split(',')[0].strip
-      @restaurant.update(zip_code: zip_code, city: city.capitalize, street: street)
+      department = DEPARTMENTS[zip_code.first(2)]
+
+      @restaurant.update(zip_code: zip_code, city: city.capitalize,
+                         street: street, department: department)
     end
 
     def need_to_be_update?

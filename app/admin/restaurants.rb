@@ -13,6 +13,7 @@ ActiveAdmin.register Restaurant do
     column :street
     column :zip_code
     column :city
+    column :department
     column :source
     column :tags
     column :created_at
