@@ -37,7 +37,7 @@ class LiveSearch extends Component {
     });
 
     return (
-      <div class='coucou'>
+      <div class='filter-container'>
         <input ref={ (input) => { this.searchBar = input } } value={ this.state.term } onChange={ this.getAutoCompleteResults.bind(this) } type='text' placeholder='Recherche par nom ou ville' className='recherche-input' />
         <h4 className='counter'> { autoCompleteList.length } </h4>
         { autoCompleteList }
@@ -55,3 +55,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(new_row),
   )
 });
+
+export default LiveSearch

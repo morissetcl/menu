@@ -8,7 +8,6 @@ class DashboardController < ApplicationController
   def index; end
 
   def recherche
-    p 'uuu'
     @restaurants = Restaurant.ransack(name_or_address_cont: params[:q])
                              .result(distinct: true).page params[:page]
   end
