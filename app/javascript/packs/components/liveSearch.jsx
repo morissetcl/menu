@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new_row.setAttribute("class", "livesearch-container" );
 
   ReactDOM.render(
-    <User />,
+    <LiveSearch />,
     document.body.appendChild(new_row),
   )
 });
