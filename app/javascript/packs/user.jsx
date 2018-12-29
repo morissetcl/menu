@@ -13,7 +13,7 @@ class User extends Component {
       showItemSelected: false
     };
 
-    $.getJSON('/recherche?q=' + this.state.term)
+    $.getJSON('/user/:user_id/dashboard/recherche?q=' + this.state.term)
       .then(response => this.setState({ autoCompleteResults: response.restaurants }))
   }
 
@@ -21,7 +21,7 @@ class User extends Component {
     this.setState({
       term: e.target.value
     }, () => {
-      $.getJSON('/recherche?q=' + this.state.term)
+      $.getJSON('/user/:user_id/dashboard/recherche?q=' + this.state.term)
         .then(response => this.setState({ autoCompleteResults: response.restaurants }))
     });
   }
