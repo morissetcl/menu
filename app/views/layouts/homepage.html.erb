@@ -24,3 +24,9 @@
     <li><%= link_to 'Connexion', new_user_session_path %></li>
   <% end %>
 </ul>
+
+<% content_for :content do %>
+  <%= content_for?(:homepage_content) ? yield(:homepage_content) : yield %>
+<% end %>
+
+<%= render template: "layouts/application" %>
