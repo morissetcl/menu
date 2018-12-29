@@ -1,7 +1,8 @@
-<div class="private-nav">
+<div class="private-nav z-depth-5">
   <li>Recherche rapide</li>
   <li>doudou</li>
-  <li>lolo</li>
+  <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
+
 </div>
 
 <% content_for :content do %>
