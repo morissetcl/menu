@@ -1,4 +1,6 @@
 @import "activeadmin_addons/all";
+@import "font-awesome";
+
 @import "components/form";
 @import "typography";
 
@@ -12,6 +14,7 @@ body { background: #eeeeee; }
   width: 85%;
   float: right;
   padding-right: 30px !important;
+  margin-top: 30px;
 }
 
 .private-nav {
@@ -21,6 +24,7 @@ body { background: #eeeeee; }
   width: 15%;
   display: block;
   position: fixed;
+  text-align: center;
 }
 
 nav {
@@ -31,6 +35,37 @@ nav {
   display: none;
 }
 
-.coucou {
+.coucou.card {
   min-height: 200px;
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: all 0.25s ease;
+  border-radius: 10px;
+  &:hover {
+    cursor: pointer;
+    border: 2px solid #26a69a;
+    top: -5px;
+    cursor: pointer;
+    box-shadow: 0 3px 7px 1px rgba(#26a69a, 0.5);
+  }
+}
+
+.header-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 30px;
+}
+
+input.recherche-input {
+  width: 80% !important;
+}
+
+.padding-10 {
+  padding-top: 10px !important;
+}
+
+li {
+  list-style-type: none;
 }

@@ -1,12 +1,26 @@
 <div class="private-nav z-depth-5">
-  <li>Recherche rapide</li>
-  <li>doudou</li>
-  <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
-
+  <li>
+    <%= link_to destroy_user_session_path, method: :delete, class:'icon-nav hide-on-med-and-up' do %>
+      <%= fa_icon "search" %>
+    <% end %>
+    <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class: 'hide-on-small-only' %>
+  </li>
+  <li>
+    <%= link_to destroy_user_session_path, method: :delete, class:'icon-nav hide-on-med-and-up' do %>
+      <%= fa_icon "search" %>
+    <% end %>
+    <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class: 'hide-on-small-only' %>
+  </li>
+  <li>
+    <%= link_to destroy_user_session_path, method: :delete, class:'icon-nav hide-on-med-and-up' do %>
+      <%= fa_icon "search" %>
+    <% end %>
+    <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class: 'hide-on-small-only' %>
+  </li>
 </div>
 
 <% content_for :content do %>
-  <div id="right_menu">Right menu items here</div>
   <%= content_for?(:users_content) ? yield(:users_content) : yield %>
 <% end %>
+
 <%= render template: "layouts/application" %>

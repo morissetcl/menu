@@ -24,8 +24,8 @@ $(document).ready(function(){
   $('.tabs').tabs();
 });
 
-$(document).ready(function () {
-  if(window.location.href.indexOf("dashboard") > -1) {
-    $('nav').addClass('hidden')
-  }
-});
+// $(document).ready(function () {
+//   if(window.location.href.indexOf("dashboard") > -1) {
+//     $('nav').addClass('hidden')
+//   }
+// });

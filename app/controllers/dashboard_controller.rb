@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class DashboardController < ApplicationController
+  layout false
   layout 'users'
+  
   before_action :authenticate_user!
   load_and_authorize_resource
 
