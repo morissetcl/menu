@@ -7,3 +7,25 @@ body { background: #eeeeee; }
 .collapsible {
   margin-top: 50px !important;
 }
+
+.filter-container {
+  width: 85%;
+  float: right;
+}
+
+.private-nav {
+  background-color: white;
+  height: 100vh;
+  float: left;
+  width: 15%;
+  display: block;
+  position: fixed;
+}
+
+nav {
+  position: fixed;
+}
+
+.hidden {
+  display: none;
+}

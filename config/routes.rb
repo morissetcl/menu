@@ -17,6 +17,11 @@ Rails.application.routes.draw do
 
   # public-routes
   root to: 'home#show'
-  resources :user, path: 'dashboard', except: [:index]
-  get :recherche, controller: :user
+  resources :user, path: 'private', except: [:index] do
+    resources :dashboard, only: [:index] do
+      collection do
+        get :recherche
+      end
+    end
+  end
 end

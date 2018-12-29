@@ -13,7 +13,7 @@ class LiveSearch extends Component {
       showItemSelected: false
     };
 
-    $.getJSON('/recherche?q=' + this.state.term)
+    $.getJSON('/private/:user_id/dashboard/recherche?q=' + this.state.term)
       .then(response => this.setState({ autoCompleteResults: response.restaurants }))
   }
 
@@ -21,7 +21,7 @@ class LiveSearch extends Component {
     this.setState({
       term: e.target.value
     }, () => {
-      $.getJSON('/recherche?q=' + this.state.term)
+      $.getJSON('/private/:user_id/dashboard/recherche?q=' + this.state.term)
         .then(response => this.setState({ autoCompleteResults: response.restaurants }))
     });
   }
@@ -37,21 +37,23 @@ class LiveSearch extends Component {
     });
 
     return (
-      <div>
-        <div id='namer'>
-          <div id="namer-input">
-            <input ref={ (input) => { this.searchBar = input } } value={ this.state.term } onChange={ this.getAutoCompleteResults.bind(this) } type='text' placeholder='Recherche par nom ou ville' className='recherche-input' />
-          </div>
-        </div>
+      <div class='filter-container'>
+        <input ref={ (input) => { this.searchBar = input } } value={ this.state.term } onChange={ this.getAutoCompleteResults.bind(this) } type='text' placeholder='Recherche par nom ou ville' className='recherche-input' />
         <h4 className='counter'> { autoCompleteList.length } </h4>
-        <div class='restaurants-container'>
-          <div className='restaurants-content'>
-            { autoCompleteList }
-          </div>
-        </div>
+        { autoCompleteList }
       </div>
     )
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  var new_row = document.createElement("div");
+  new_row.setAttribute("class", "livesearch-container" );
+
+  ReactDOM.render(
+    <LiveSearch />,
+    document.body.appendChild(new_row),
+  )
+});
 
 export default LiveSearch

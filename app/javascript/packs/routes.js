@@ -9,7 +9,7 @@ import LiveSearch from './components/liveSearch';
 const App = (props) => (
   <Router>
     <div>
-      <Route exact path='/dashboard/:id' component={LiveSearch} />
+      <Route exact path='/private/:id/dashboard' component={LiveSearch} />
     </div>
   </Router>
 )
