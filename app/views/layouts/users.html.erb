@@ -1,0 +1,11 @@
+<div class="private-nav">
+  <li>Recherche rapide</li>
+  <li>doudou</li>
+  <li>lolo</li>
+</div>
+
+<% content_for :content do %>
+  <div id="right_menu">Right menu items here</div>
+  <%= content_for?(:users_content) ? yield(:users_content) : yield %>
+<% end %>
+<%= render template: "layouts/application" %>
