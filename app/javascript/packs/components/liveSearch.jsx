@@ -28,19 +28,21 @@ class LiveSearch extends Component {
 
   render(){
     let autoCompleteList = this.state.autoCompleteResults.map((response, index) => {
-      return <div key={index} className='restaurant-wrapper'>
-          <h4 className='titre-restaurant'>{response.name}</h4>
-          <p>{response.street}</p>
-          <p>{response.city}</p>
-          <p>{response.zip_code}</p>
-        </div>
+      return <div key={index} className='restaurant-wrapper col s12 m4'>
+               <div class= 'coucou card'>
+                 <div className='titre-restaurant'>{response.name}</div>
+                 <span>{response.street}</span>
+                 <span>{response.city}</span>
+                 <span>{response.zip_code}</span>
+               </div>
+             </div>
     });
 
     return (
-      <div class='filter-container'>
+      <div class='filter-container col s10 offset-s2'>
         <input ref={ (input) => { this.searchBar = input } } value={ this.state.term } onChange={ this.getAutoCompleteResults.bind(this) } type='text' placeholder='Recherche par nom ou ville' className='recherche-input' />
         <h4 className='counter'> { autoCompleteList.length } </h4>
-        { autoCompleteList }
+          { autoCompleteList }
       </div>
     )
   }
@@ -48,7 +50,7 @@ class LiveSearch extends Component {
 
 document.addEventListener('DOMContentLoaded', () => {
   var new_row = document.createElement("div");
-  new_row.setAttribute("class", "livesearch-container" );
+  new_row.setAttribute("class", "livesearch-container row" );
 
   ReactDOM.render(
     <LiveSearch />,

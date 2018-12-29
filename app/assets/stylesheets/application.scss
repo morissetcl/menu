@@ -11,6 +11,7 @@ body { background: #eeeeee; }
 .filter-container {
   width: 85%;
   float: right;
+  padding-right: 30px !important;
 }
 
 .private-nav {
@@ -28,4 +29,8 @@ nav {
 
 .hidden {
   display: none;
+}
+
+.coucou {
+  min-height: 200px;
 }
