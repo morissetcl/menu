@@ -49,10 +49,10 @@ class LiveSearch extends Component {
         ) : (
           <span className='counter'>{ autoCompleteList.length }</span>
         )}
-
-
       </div>
+      <div className="result-wrapper row">
           { autoCompleteList }
+      </div>
       </div>
     )
   }

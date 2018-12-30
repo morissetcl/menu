@@ -8,6 +8,18 @@ GIT
       activesupport (>= 5.0)
       i18n
 
+GIT
+  remote: https://github.com/reactjs/react-rails.git
+  revision: 4c3dc73e8b6c9697f2fbfeffe939414ee064c7b2
+  branch: master
+  specs:
+    react-rails (2.4.7)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -82,6 +94,10 @@ GEM
       jquery-rails
     arel (9.0.0)
     ast (2.4.0)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bcrypt (3.1.12)
     better_errors (2.5.0)
       coderay (>= 1.0.0)
@@ -463,6 +479,7 @@ DEPENDENCIES
   rails-jquery-autocomplete
   rails-observers
   ransack!
+  react-rails!
   rspec-rails (~> 3.7)
   rspec-sidekiq
   rubocop
