@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import RestaurantCard from './RestaurantCard'
 
 class LiveSearch extends Component {
 
@@ -29,14 +30,7 @@ class LiveSearch extends Component {
   render(){
     let autoCompleteList = this.state.autoCompleteResults.map((response, index) => {
       return <div key={index} className='restaurant-wrapper col s12 m3'>
-                <div className=" coucou card">
-                  <div className="card-content">
-                    <span className="card-title grey-text text-darken-4">{response.name}</span>
-                    <span>{response.street}</span>
-                    <span>{response.city}</span>
-                    <span>{response.zip_code}</span>
-                  </div>
-                </div>
+              <RestaurantCard response= { response }/>
              </div>
     });
 
