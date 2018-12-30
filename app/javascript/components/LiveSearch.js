@@ -29,9 +29,9 @@ class LiveSearch extends Component {
   render(){
     let autoCompleteList = this.state.autoCompleteResults.map((response, index) => {
       return <div key={index} className='restaurant-wrapper col s12 m4'>
-                <div class=" coucou card">
-                  <div class="card-content">
-                    <span class="card-title grey-text text-darken-4">{response.name}</span>
+                <div className=" coucou card">
+                  <div className="card-content">
+                    <span className="card-title grey-text text-darken-4">{response.name}</span>
                     <span>{response.street}</span>
                     <span>{response.city}</span>
                     <span>{response.zip_code}</span>
@@ -41,7 +41,7 @@ class LiveSearch extends Component {
     });
 
     return (
-      <div class='filter-container col s10 offset-s2'>
+      <div className='filter-container col s10 offset-s2'>
       <div className='header-filter'>
         <input ref={ (input) => { this.searchBar = input } } value={ this.state.term } onChange={ this.getAutoCompleteResults.bind(this) } type='text' placeholder="Recherche par nom ou adresse" className='recherche-input' />
         {autoCompleteList.length == 500 ? (
