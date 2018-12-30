@@ -4,7 +4,10 @@
 @import "components/form";
 @import "typography";
 
-body { background: #eeeeee; }
+body {
+  background: #eeeeee;
+  overflow: scroll;
+}
 
 .collapsible {
   margin-top: 50px !important;

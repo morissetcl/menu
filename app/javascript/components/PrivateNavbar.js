@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { faSearch} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-class PrivateNavbar extends Component{
+class PrivateNavbar extends React.Component{
 
    constructor(props, context) {
       super(props, context);
