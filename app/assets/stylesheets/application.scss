@@ -14,7 +14,6 @@ body {
 }
 
 .filter-container {
-  width: 82%;
   float: right;
   padding-right: 30px !important;
   margin-top: 30px;
@@ -32,6 +31,7 @@ body {
 
 nav {
   position: fixed;
+  z-index: 200000;
 }
 
 .hidden {
@@ -56,6 +56,8 @@ nav {
 
 .header-filter {
   margin-bottom: 30px;
+  display: flex;
+  justify-content: initial;
 }
 
 input.recherche-input {
