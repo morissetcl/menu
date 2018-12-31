@@ -6,26 +6,33 @@ import Restaurant from './Restaurant'
 
 class RestaurantCard extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      showComponent: false,
+    };
+    this._onButtonClick = this._onButtonClick.bind(this);
+  }
+
+  _onButtonClick() {
+    this.setState({
+      showComponent: !this.state.showComponent
+    })
+  }
+
   render(){
     return (
       <div>
-        <Link to={`/private/${this.props.userId}/dashboard/restaurant/${this.props.response.id}`}>
-          <div className="coucou card">
-            <div className="card-content">
-              <span className="card-title grey-text text-darken-4">{this.props.response.name}</span>
-              <span>{this.props.response.street}</span>
-              <span>{this.props.response.city}</span>
-              <span>{this.props.response.zip_code}</span>
-            </div>
+        <div className={this.state.showComponent ? 'coucou card keep' : 'coucou card'} onClick={this._onButtonClick}>
+          <div className="card-content">
+            <span className="card-title grey-text text-darken-4">{this.props.response.name}</span>
+            <span>{this.props.response.street}</span>
+            <span>{this.props.response.city}</span>
+            <span>{this.props.response.zip_code}</span>
           </div>
-        </Link>
-        <div className='col s10'>
-          <div className='loulou'>
-            <Route
-              path='/private/:userId/dashboard/restaurant/:id'
-              render={(props) => <Restaurant {...props} restaurantResponse={this.props.response} />}
-            />
-          </div>
+        </div>
+        <div>
+          {this.state.showComponent ?  <Restaurant resto={this.props.response.name}/> : null }
         </div>
       </div>
     )
