@@ -20,7 +20,12 @@ class RestaurantCard extends Component {
           </div>
         </Link>
         <div className='col s10'>
-          <Restaurant/>
+          <div className='loulou'>
+            <Route
+              path='/private/:userId/dashboard/restaurant/:id'
+              render={(props) => <Restaurant {...props} restaurantResponse={this.props.response} />}
+            />
+          </div>
         </div>
       </div>
     )
