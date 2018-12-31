@@ -1,10 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import LiveSearch from './LiveSearch'
 
 
 class PrivateNavbar extends Component {
+
   constructor(props) {
+    console.log('private navbar')
     super(props);
   };
 
@@ -30,8 +32,9 @@ class PrivateNavbar extends Component {
           <div className='col s10'>
             <div className='loulou'>
               <Route
-                path='/private/:userId/dashboard'
+                exact path='/private/:userId/dashboard'
                 component={LiveSearch}
+                userId={this.props.userId}
               />
             </div>
           </div>

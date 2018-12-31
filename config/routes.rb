@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   resources :user, path: 'private', except: [:index] do
     resources :dashboard, only: [:index] do
       collection do
+        get '/restaurant/:id', to: "restaurant#show"
+      end
+      collection do
         get :recherche
       end
     end
