@@ -23,7 +23,8 @@ class DashboardController < ApplicationController
   private
 
   def authorized_departments
-    Department.where(id: current_user.department_ids).pluck(:name)
+    Department.where(id: current_user.department_ids)
+              .pluck(:name)
   end
 
   def force_json

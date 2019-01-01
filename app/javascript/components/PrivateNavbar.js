@@ -38,6 +38,15 @@ class PrivateNavbar extends Component {
               />
             </div>
           </div>
+          <div className='col s10'>
+            <div className='loulou'>
+              <Route
+                exact path='/bouyaka'
+                component={LiveSearch}
+                userId={this.props.userId}
+              />
+            </div>
+          </div>
         </div>
       </Router>
     )
