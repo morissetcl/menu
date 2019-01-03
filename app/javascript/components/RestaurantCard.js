@@ -11,7 +11,7 @@ class RestaurantCard extends Component {
 
   render(){
     return (
-      <a href={'/private/' + this.props.userId + '/dashboard/restaurant/' + this.props.response.id}>
+      <Link to={'/restaurant/' + this.props.response.id}>
         <div className='coucou card'>
           <div className="card-content">
             <span className="card-title grey-text text-darken-4">{this.props.response.name}</span>
@@ -20,19 +20,9 @@ class RestaurantCard extends Component {
             <span>{this.props.response.zip_code}</span>
           </div>
         </div>
-      </a>
-    )
+      </Link>
+    );
   };
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  var new_row = document.createElement("div");
-  new_row.setAttribute("class", "livesearch-container row" );
-
-  ReactDOM.render(
-    <RestaurantCard />,
-    document.body.appendChild(new_row),
-  )
-});
 
 export default RestaurantCard

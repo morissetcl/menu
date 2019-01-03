@@ -4,14 +4,30 @@ import ReactDOM from 'react-dom'
 class Restaurant extends Component {
 
   constructor(props) {
-    console.log(props)
     super(props);
+    this.state = {
+      restaurant: [],
+    };
   }
+
+  componentWillMount() {
+    if(this.props.match === undefined) {
+      ''
+    } else {
+      $.getJSON('/restaurant/' + this.props.match.params.id,
+      (res) =>
+      {
+        this.setState({restaurant: jQuery.parseJSON(JSON.stringify(res))});
+      });
+    }
+  }
+
+
 
   render(){
     return (
-      <div className='filter-container col s12'>
-        <li>{this.props.restaurant.address}</li>
+      <div className='restaurant-show'>
+        <li>{this.state.restaurant.name}</li>
       </div>
     )
   }

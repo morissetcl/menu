@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import LiveSearch from './LiveSearch'
+import Restaurant from './Restaurant'
 
 
 class PrivateNavbar extends Component {
@@ -30,22 +31,24 @@ class PrivateNavbar extends Component {
             </div>
           </div>
           <div className='col s10'>
-            <div className='loulou'>
-              <Route
-                exact path='/private/:userId/dashboard'
-                component={LiveSearch}
-                userId={this.props.userId}
-              />
-            </div>
+            <Route
+              exact path='/private/:userId/dashboard'
+              component={LiveSearch}
+              userId={this.props.userId}
+            />
           </div>
           <div className='col s10'>
-            <div className='loulou'>
-              <Route
-                exact path='/bouyaka'
-                component={LiveSearch}
-                userId={this.props.userId}
-              />
-            </div>
+            <Route
+              exact path='/bouyaka'
+              component={LiveSearch}
+              userId={this.props.userId}
+            />
+          </div>
+          <div className='col s10 offset-s2'>
+            <Route
+              exact path='/restaurant/:id'
+              component={Restaurant}
+            />
           </div>
         </div>
       </Router>
