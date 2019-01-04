@@ -24,4 +24,5 @@ Rails.application.routes.draw do
       end
     end
   end
+  get '/restaurant/:id', to: "restaurant#show"
 end

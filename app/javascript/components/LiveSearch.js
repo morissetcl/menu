@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import RestaurantCard from './RestaurantCard'
 
 class LiveSearch extends Component {
 
@@ -29,14 +30,7 @@ class LiveSearch extends Component {
   render(){
     let autoCompleteList = this.state.autoCompleteResults.map((response, index) => {
       return <div key={index} className='restaurant-wrapper col s12 m3'>
-                <div className=" coucou card">
-                  <div className="card-content">
-                    <span className="card-title grey-text text-darken-4">{response.name}</span>
-                    <span>{response.street}</span>
-                    <span>{response.city}</span>
-                    <span>{response.zip_code}</span>
-                  </div>
-                </div>
+              <RestaurantCard response= { response } userId= { this.props.match.params.userId }/>
              </div>
     });
 
@@ -44,7 +38,7 @@ class LiveSearch extends Component {
       <div className='filter-container col s12'>
       <div className='header-filter'>
         <input ref={ (input) => { this.searchBar = input } } value={ this.state.term } onChange={ this.getAutoCompleteResults.bind(this) } type='text' placeholder="Recherche par nom ou adresse" className='recherche-input' />
-        {autoCompleteList.length == 500 ? (
+        {autoCompleteList.length == 250 ? (
           <span className='counter'>+ de { autoCompleteList.length }</span>
         ) : (
           <span className='counter'>{ autoCompleteList.length }</span>

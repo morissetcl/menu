@@ -7,8 +7,10 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
 
-  def index
-    p authorized_departments
+  def index; end
+
+  def restaurant
+    @restaurant = Restaurant.find params[:id]
   end
 
   def recherche
@@ -21,7 +23,8 @@ class DashboardController < ApplicationController
   private
 
   def authorized_departments
-    Department.where(id: current_user.department_ids).pluck(:name)
+    Department.where(id: current_user.department_ids)
+              .pluck(:name)
   end
 
   def force_json
