@@ -32,9 +32,25 @@ class Restaurant extends Component {
         <li>{this.state.restaurant.city}</li>
         <li>{this.state.restaurant.zip_code}</li>
         <li>{this.state.restaurant.tags}</li>
-        <ul>
-          {this.state.dishes.map((item,i) => <li key={i}>{item.title}</li>)}
-       </ul>
+        <table className='responsive-table highlight'>
+          <thead>
+            <tr>
+              <th>Intitulé</th>
+              <th>Description</th>
+              <th>Prix</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.dishes.map(function (item, i) {
+              return  <tr key={i}>
+                         <td>{item.title}</td>
+                         <td>{item.description}</td>
+                         <td>{item.price} €</td>
+                       </tr>
+
+            })}
+          </tbody>
+          </table>
       </div>
     )
   }

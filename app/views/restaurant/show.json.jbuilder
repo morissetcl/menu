@@ -6,6 +6,6 @@ json.city @restaurant.city
 json.zip_code @restaurant.zip_code
 json.tags @restaurant.tags
 
-json.dishes @restaurant.dishes do |dish|
+json.dishes @dishes do |dish|
   json.(dish, :title, :price)
 end
