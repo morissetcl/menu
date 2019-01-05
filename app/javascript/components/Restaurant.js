@@ -27,30 +27,32 @@ class Restaurant extends Component {
   render(){
     return (
       <div className='restaurant-show'>
-        <li>{this.state.restaurant.name}</li>
-        <li>{this.state.restaurant.street}</li>
-        <li>{this.state.restaurant.city}</li>
-        <li>{this.state.restaurant.zip_code}</li>
-        <li>{this.state.restaurant.tags}</li>
-        <table className='responsive-table highlight'>
-          <thead>
-            <tr>
-              <th>Intitulé</th>
-              <th>Description</th>
-              <th>Prix</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div className='row'>
+          <div className='col s12'>
+            <div className='restaurant-container col s12'>
+              <div className='restaurant-content'>
+                <li>{this.state.restaurant.name}</li>
+                <li>{this.state.restaurant.street}</li>
+                <li>{this.state.restaurant.city}</li>
+                <li>{this.state.restaurant.zip_code}</li>
+                <li>{this.state.restaurant.tags}</li>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col s12 m8'>
             {this.state.dishes.map(function (item, i) {
-              return  <tr key={i}>
-                         <td>{item.title}</td>
-                         <td>{item.description}</td>
-                         <td>{item.price} €</td>
-                       </tr>
-
+              return <div className='restaurant-wrapper col s12 m6'>
+                        <div key={i} className='card dish-card'>
+                          <p>{item.title}</p>
+                          <p>{item.description}</p>
+                          <p>{item.price} €</p>
+                        </div>
+                      </div>
             })}
-          </tbody>
-          </table>
+          </div>
+        </div>
       </div>
     )
   }
