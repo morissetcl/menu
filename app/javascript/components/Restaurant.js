@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import GoogleMap from './GoogleMap'
+import GoogleMapReact from 'google-map-react';
 
 class Restaurant extends Component {
 
@@ -51,6 +53,16 @@ class Restaurant extends Component {
                         </div>
                       </div>
             })}
+          </div>
+          <div className='col s12 m4'>
+            <div style={{ height: '400px', width: '100%', marginTop: '7.5px' }}>
+              <GoogleMapReact
+                bootstrapURLKeys={{ key: 'AIzaSyD6onCxu0qL4pWkQuZ4vSy27tKvUXxu7VA' }}
+                defaultCenter={{lat: 22, lng: 33}}
+                defaultZoom={11}
+              >
+              </GoogleMapReact>
+            </div>
           </div>
         </div>
       </div>
