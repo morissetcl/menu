@@ -16,6 +16,7 @@ gem 'arctic_admin'
 gem 'cancancan', '~> 2.0'
 gem 'devise'
 gem 'font-awesome-rails'
+gem 'geocoder'
 gem 'hpricot'
 gem 'kaminari'
 gem 'puma', '~> 3.11'
@@ -24,7 +25,6 @@ gem 'react-rails', git: 'https://github.com/reactjs/react-rails.git', branch: 'm
 gem 'sidekiq'
 gem 'sidekiq-limit_fetch'
 gem 'webpacker'
-gem 'geocoder'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
