@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import GoogleMap from './GoogleMap'
 import GoogleMapReact from 'google-map-react';
 
 class Restaurant extends Component {
@@ -43,7 +42,7 @@ class Restaurant extends Component {
           </div>
         </div>
         <div className='row'>
-          <div className='col s12 m8'>
+          <div className='col s12 m8 offset-m4'>
             {this.state.dishes.map(function (item, i) {
               return <div className='restaurant-wrapper col s12 m6'>
                         <div key={i} className='card dish-card'>
@@ -54,8 +53,8 @@ class Restaurant extends Component {
                       </div>
             })}
           </div>
-          <div className='col s12 m4'>
-            <div style={{ height: '400px', width: '100%', marginTop: '7.5px' }}>
+          <div className='col s12 m4 map-wrapper'>
+            <div style={{ height: '350px', width: '85%', marginTop: '7.5px' , paddingLeft: '10px', paddingBottom: '10px'}}>
               <GoogleMapReact
                 bootstrapURLKeys={{ key: 'AIzaSyD6onCxu0qL4pWkQuZ4vSy27tKvUXxu7VA' }}
                 defaultCenter={{lat: 22, lng: 33}}
