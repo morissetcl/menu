@@ -27,14 +27,32 @@ class Restaurant extends Component {
   render(){
     return (
       <div className='restaurant-show'>
-        <li>{this.state.restaurant.name}</li>
-        <li>{this.state.restaurant.street}</li>
-        <li>{this.state.restaurant.city}</li>
-        <li>{this.state.restaurant.zip_code}</li>
-        <li>{this.state.restaurant.tags}</li>
-        <ul>
-          {this.state.dishes.map((item,i) => <li key={i}>{item.title}</li>)}
-       </ul>
+        <div className='row'>
+          <div className='col s12'>
+            <div className='restaurant-container col s12'>
+              <div className='restaurant-content'>
+                <li>{this.state.restaurant.name}</li>
+                <li>{this.state.restaurant.street}</li>
+                <li>{this.state.restaurant.city}</li>
+                <li>{this.state.restaurant.zip_code}</li>
+                <li>{this.state.restaurant.tags}</li>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col s12 m8'>
+            {this.state.dishes.map(function (item, i) {
+              return <div className='restaurant-wrapper col s12 m6'>
+                        <div key={i} className='card dish-card'>
+                          <p>{item.title}</p>
+                          <p>{item.description}</p>
+                          <p>{item.price} €</p>
+                        </div>
+                      </div>
+            })}
+          </div>
+        </div>
       </div>
     )
   }
