@@ -1,0 +1,16 @@
+.restaurant-card.card {
+  min-height: 200px;
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: all 0.25s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  &:hover {
+    cursor: pointer;
+    border: 2px solid #26a69a;
+    top: -5px;
+    cursor: pointer;
+    box-shadow: 0 3px 7px 1px rgba(#26a69a, 0.5);
+  }
+}

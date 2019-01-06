@@ -1,0 +1,18 @@
+.map-wrapper {
+  padding-left: 0px 11.25px 23px 0px !important;
+  position: absolute;
+}
+
+.cluster-map {
+  color: #3fc1c9;
+  font-size: 8px;
+  background: #3fc1c9;
+  padding: 5px;
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #102D3D;
+  border-radius: 50px;
+  transform: translate(-50%, -50%)
+}
