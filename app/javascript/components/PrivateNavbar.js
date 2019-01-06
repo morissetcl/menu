@@ -37,17 +37,17 @@ class PrivateNavbar extends Component {
               userId={this.props.userId}
             />
           </div>
+          <div className='col s10 offset-s2'>
+            <Route
+              exact path='/restaurant/:id'
+              component={Restaurant}
+            />
+          </div>
           <div className='col s10'>
             <Route
               exact path='/bouyaka'
               component={LiveSearch}
               userId={this.props.userId}
-            />
-          </div>
-          <div className='col s10 offset-s2'>
-            <Route
-              exact path='/restaurant/:id'
-              component={Restaurant}
             />
           </div>
         </div>

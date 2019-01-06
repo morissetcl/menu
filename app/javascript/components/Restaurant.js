@@ -12,21 +12,17 @@ class Restaurant extends Component {
     };
   }
 
-  componentWillMount() {
-    if(this.props.match === undefined) {
-      ''
-    } else {
-      $.getJSON('/restaurant/' + this.props.match.params.id,
-      (res) =>
-      {
-        this.setState({restaurant: jQuery.parseJSON(JSON.stringify(res))});
-        this.setState({dishes: this.state.restaurant.dishes});
-      });
-    }
+  componentDidMount() {
+    $.getJSON('/restaurant/' + this.props.match.params.id,
+    (res) =>
+    {
+      this.setState({restaurant: jQuery.parseJSON(JSON.stringify(res))});
+      this.setState({dishes: this.state.restaurant.dishes});
+    });
   }
 
   render(){
-    const AnyReactComponent = ({ text }) => (
+    const MarkerMap = ({ text }) => (
       <div className='cluster-map'> </div>
     );
 
@@ -58,13 +54,20 @@ class Restaurant extends Component {
             })}
           </div>
           <div className='col s12 m4 map-wrapper'>
-            <div style={{ height: '335px', width: '85%', marginTop: '7.5px' , paddingLeft: '10px', paddingBottom: '10px'}}>
+            <div className='restaurant-information-mobile hidden'>
+                <li>{this.state.restaurant.name}</li>
+                <li>{this.state.restaurant.street}</li>
+                <li>{this.state.restaurant.city}</li>
+                <li>{this.state.restaurant.zip_code}</li>
+                <li>{this.state.restaurant.tags}</li>
+            </div>
+            <div style={{ height: '335px', width: '85%', marginTop: '7.5px', paddingBottom: '10px'}}>
               <GoogleMapReact
                 bootstrapURLKeys={{ key: '' }}
                 center={{lat: this.state.restaurant.latitude, lng: this.state.restaurant.longitude}}
                 defaultZoom={15}
               >
-              <AnyReactComponent/>
+                <MarkerMap/>
               </GoogleMapReact>
             </div>
           </div>

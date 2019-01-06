@@ -27,8 +27,10 @@ $(document).ready(function(){
     var scroll = $(window).scrollTop();
     if (scroll >= 150) {
       $(".map-wrapper").addClass("fixed");
+      $(".restaurant-information-mobile").removeClass("hidden");
     } else {
       $(".map-wrapper").removeClass("fixed");
+      $(".restaurant-information-mobile").addClass("hidden");
     }
   });
 });
