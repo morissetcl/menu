@@ -25,12 +25,10 @@ $(document).ready(function(){
 
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
-    if (scroll >= 150) {
+    if (scroll >= 21) {
       $(".map-wrapper").addClass("fixed");
-      $(".restaurant-information-mobile").removeClass("hidden");
     } else {
       $(".map-wrapper").removeClass("fixed");
-      $(".restaurant-information-mobile").addClass("hidden");
     }
   });
 });
