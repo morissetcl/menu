@@ -14,5 +14,6 @@ module Menu
     config.generators.system_tests = nil
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{*/}')]
     config.autoload_paths += Dir[Rails.root.join('app', 'services', '{*/}')]
+    config.active_record.observers = :dish_observer
   end
 end

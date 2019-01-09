@@ -20,6 +20,7 @@ gem 'geocoder'
 gem 'hpricot'
 gem 'kaminari'
 gem 'puma', '~> 3.11'
+gem 'rails-observers'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'react-rails', git: 'https://github.com/reactjs/react-rails.git', branch: 'master'
 gem 'sidekiq'
@@ -32,7 +33,6 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jquery-rails'
 gem 'mechanize'
-gem 'rails-observers'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

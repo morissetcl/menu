@@ -9,5 +9,5 @@ json.latitude @restaurant.latitude
 json.longitude @restaurant.longitude
 
 json.dishes @dishes do |dish|
-  json.(dish, :title, :price)
+  json.call(dish, :title, :price, :description)
 end

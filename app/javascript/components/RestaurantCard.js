@@ -18,6 +18,7 @@ class RestaurantCard extends Component {
             <span>{this.props.response.street}</span>
             <span>{this.props.response.city}</span>
             <span>{this.props.response.zip_code}</span>
+            <p>{this.props.response.dishes_count}</p>
           </div>
         </div>
       </Link>

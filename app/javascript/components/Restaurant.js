@@ -35,15 +35,15 @@ class Restaurant extends Component {
                 <tr>
                   <th>Titre</th>
                   <th>Description</th>
-                  <th>Prix</th>
+                  <th>Prix (€)</th>
                 </tr>
               </thead>
                 <tbody>
                 {this.state.dishes.map(function (item, i) {
                   return <tr key={i}>
                             <td>{item.title}</td>
-                            <td>{item.description}</td>
-                            <td>{item.price} €</td>
+                            <td className='dish-description'>{item.description}</td>
+                            <td>{item.price}</td>
                           </tr>
 
                 })}
