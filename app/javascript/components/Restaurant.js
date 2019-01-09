@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import GoogleMapReact from 'google-map-react';
+import FavoriteStar from './FavoriteStar';
 
 class Restaurant extends Component {
 
@@ -52,6 +53,7 @@ class Restaurant extends Component {
           </div>
           <div className='col s12 m3 map-wrapper'>
             <div className='restaurant-content' style={{ width: '85%' }}>
+              <FavoriteStar/>
               <li>{this.state.restaurant.name}</li>
               <li>{this.state.restaurant.street}</li>
               <li>{this.state.restaurant.city}</li>

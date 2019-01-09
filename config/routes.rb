@@ -23,6 +23,7 @@ Rails.application.routes.draw do
         get :recherche
       end
     end
+    resources :favorite, only: [:index]
   end
   get '/restaurant/:id', to: "restaurant#show"
 end

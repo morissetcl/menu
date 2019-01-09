@@ -22,7 +22,7 @@ class PrivateNavbar extends Component {
                   <Link to={`/private/${this.props.userId}/dashboard`}>Recherche</Link>
                 </li>
                 <li>
-                  <Link to="/bouyaka">Recherche</Link>
+                  <Link to={`/private/${this.props.userId}/favorite`}>Favoris</Link>
                 </li>
                 <li>
                   <a href='/users/sign_out' data-method="delete" rel="nofollow">Déconnexion</a>
@@ -45,9 +45,7 @@ class PrivateNavbar extends Component {
           </div>
           <div className='col s10'>
             <Route
-              exact path='/bouyaka'
-              component={LiveSearch}
-              userId={this.props.userId}
+              exact path='/private/:userId/favorite'
             />
           </div>
         </div>
