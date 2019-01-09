@@ -12,12 +12,13 @@ class RestaurantCard extends Component {
   render(){
     return (
       <Link to={'/restaurant/' + this.props.response.id}>
-        <div className='coucou card'>
-          <div className="card-content">
+        <div className='restaurant-card card'>
+          <div>
             <span className="card-title grey-text text-darken-4">{this.props.response.name}</span>
             <span>{this.props.response.street}</span>
             <span>{this.props.response.city}</span>
             <span>{this.props.response.zip_code}</span>
+            <p>{this.props.response.dishes_count}</p>
           </div>
         </div>
       </Link>

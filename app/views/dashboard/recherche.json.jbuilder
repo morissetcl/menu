@@ -7,5 +7,6 @@ json.restaurants do
     json.street restaurant.street
     json.city restaurant.city
     json.zip_code restaurant.zip_code
+    json.dishes_count restaurant.dishes_count
   end
 end

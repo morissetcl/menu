@@ -100,3 +100,62 @@ def sign_as_user
     click_on "S'inscrire"
   end
 end
+
+Geocoder.configure(lookup: :test)
+
+addresses = [
+  '1 impasse de la Gaité, Paris, 75014',
+  '1 Avenue du Dr Jean Mac, 72100 Le Mans, France',
+  '1, place Jean Jaurès, 81100 Castres',
+  '17 chemin de Ghesles 59700 Marcq-en-Barœul',
+  "2 ruelle d'Ascq 59650 Villeneuve-d'Ascq",
+  'Calle de Minerva, 11, 08006 Barcelona',
+  '64b Rue Jean Jaurès, NOISY LE SEC 93130',
+  '23 rue Dunkerque 75010 Paris',
+  '43 Rue des Bruyères, LES LILAS 93260',
+  '2 place de Rouen 76000 Rouen',
+  '18 Quai de la Tourelle 95000 Cergy',
+  '163 Avenue Jean Jaurès, AUBERVILLIERS 93300',
+  '34 Rue Notre Dame de Recouvrance, 45000 Orléans, France',
+  '4 Avenue de Verdun, ROMAINVILLE 93230',
+  'Sous Le Pont De Fresnes, Entre Villey Saint Etienne et Liverdun 54200 Villey-Saint-Étienne',
+  '180 Avenue du Général Leclerc, PANTIN 93500',
+  '262 Rue Sainte Catherine 33000 Bordeaux',
+  '25 allée Antoine Pinay - chemin de Halage, La Barthelasse 84000 Avignon',
+  '16B Rue Floréal, BAGNOLET 93170',
+  '23 Rue Louise Michel, BAGNOLET 93170',
+  '22 rue Cambacérès 75008 Paris',
+  '22 Boulevard Rouget de Lisle, MONTREUIL 93100',
+  '167 Boulevard de la Boissière, MONTREUIL 93100',
+  '55 Rue Sadi Carnot, BAGNOLET 93170',
+  'Le Faubourg, rue Olympe de Gouges 60740 Saint-Maximin',
+  '110 avenue Jean-Baptiste Clément 92100 Boulogne-Billancourt',
+  "10 Place de l'Hôtel de Ville 02100 Saint-Quentin",
+  '2 rue Léon Bancal 13011 Marseille',
+  '225 rue Faubourg Saint Honoré 75008 Paris',
+  '33, boulevard du Maréchal-Foch Angers 49100 Angers',
+  '19 rue de miromesnil 75008 Paris',
+  '18 Quai de Rive Neuve 13007 Marseille',
+  '2 Place de la Gare 59380 Bergues',
+  '142 avenue Pierre Mendes 13008 Marseille',
+  '117 rue de Claye 77400 Thorigny-sur-Marne',
+  '5 rue du Teinturin 33970 Lège-Cap-Ferret',
+  '660 avenue du Général de Gaulle 59910 Bondues',
+  '1 Avenue Gabriel Péri, MONTREUIL 93100'
+]
+
+addresses.each do |adresse|
+  Geocoder::Lookup::Test.add_stub(
+    adresse, [
+      {
+        'latitude' => 40.7143528,
+        'longitude' => -74.0059731,
+        'address' => 'New York, NY, USA',
+        'state' => 'New York',
+        'state_code' => 'NY',
+        'country' => 'United States',
+        'country_code' => 'US'
+      }
+    ]
+  )
+end

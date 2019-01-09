@@ -22,4 +22,13 @@ $(document).ready(function(){
   M.updateTextFields();
   $('.collapsible').collapsible();
   $('.tabs').tabs();
+
+  $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+    if (scroll >= 21) {
+      $(".map-wrapper").addClass("fixed");
+    } else {
+      $(".map-wrapper").removeClass("fixed");
+    }
+  });
 });

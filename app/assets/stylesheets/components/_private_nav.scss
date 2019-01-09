@@ -1,0 +1,19 @@
+.private-nav {
+  background-color: #102D3D;
+  height: 100vh;
+  float: left;
+  width: 15%;
+  display: block;
+  position: fixed;
+  text-align: center;
+  z-index: 200;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+nav {
+  position: fixed;
+  z-index: 200;
+}

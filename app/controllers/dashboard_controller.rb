@@ -18,6 +18,7 @@ class DashboardController < ApplicationController
                              .ransack(name_or_address_or_dishes_title_cont: params[:q])
                              .result(distinct: true)
                              .page(params[:page])
+    fresh_when(@restaurants)
   end
 
   private
