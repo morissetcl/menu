@@ -11,7 +11,7 @@ describe 'Dish', type: :integration do
     expect(restaurant.dishes_count).to eq 1
   end
 
-  scenario 'Update dish_count after destroying a dish', focus: true do
+  scenario 'Update dish_count after destroying a dish' do
     dish = create :dish, title: 'Raclette', price: 20, restaurant_menu: restaurant_menu
     dish.destroy!
     expect(restaurant.dishes_count).to eq 0
