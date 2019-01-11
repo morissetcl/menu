@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import LiveSearch from './LiveSearch'
 import Restaurant from './Restaurant'
+import Favorite from './Favorite'
 
 
 class PrivateNavbar extends Component {
@@ -46,6 +47,7 @@ class PrivateNavbar extends Component {
           <div className='col s10'>
             <Route
               exact path='/private/:userId/favorite'
+              component={Favorite}
             />
           </div>
         </div>

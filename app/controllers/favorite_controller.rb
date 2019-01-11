@@ -6,7 +6,8 @@ class FavoriteController < ApplicationController
   layout 'users'
 
   def index
-    render json: Favorite.all
+    @favorites = Favorite.all
+    render :index
   end
 
   def create
