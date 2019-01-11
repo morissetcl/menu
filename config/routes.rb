@@ -23,7 +23,8 @@ Rails.application.routes.draw do
         get :recherche
       end
     end
-    resources :favorite, only: [:index]
+    resources :favorite, except: [:new, :create]
   end
+  post '/favorite', to: "favorite#create"
   get '/restaurant/:id', to: "restaurant#show"
 end

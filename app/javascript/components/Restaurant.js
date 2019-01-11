@@ -9,7 +9,8 @@ class Restaurant extends Component {
     super(props);
     this.state = {
       restaurant: [],
-      dishes: []
+      dishes: [],
+      current_user: ''
     };
   }
 
@@ -19,6 +20,8 @@ class Restaurant extends Component {
     {
       this.setState({restaurant: jQuery.parseJSON(JSON.stringify(res))});
       this.setState({dishes: this.state.restaurant.dishes});
+      this.setState({current_user: this.state.restaurant.user_id});
+
     });
   }
 
@@ -53,7 +56,10 @@ class Restaurant extends Component {
           </div>
           <div className='col s12 m3 map-wrapper'>
             <div className='restaurant-content' style={{ width: '85%' }}>
-              <FavoriteStar/>
+              <FavoriteStar
+                restaurantId={this.state.restaurant.id}
+                userId={this.state.current_user}
+                ></FavoriteStar>
               <li>{this.state.restaurant.name}</li>
               <li>{this.state.restaurant.street}</li>
               <li>{this.state.restaurant.city}</li>

@@ -7,6 +7,7 @@ class RestaurantController < ApplicationController
   def show
     @restaurant = Restaurant.find params[:id]
     @dishes = @restaurant.dishes.reverse
+    @current_user_id = current_user.id
     render :show
   end
 end
