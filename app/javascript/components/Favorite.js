@@ -27,11 +27,9 @@ class Favorite extends Component {
     });
 
     return (
-      <div className='restaurant-show'>
-        <div className='row'>
-          <div className='col s12 m9 offset-m3'>
-            { favoritesRestaurants }
-          </div>
+      <div className='row'>
+        <div className='col s12'>
+          { favoritesRestaurants }
         </div>
       </div>
     )

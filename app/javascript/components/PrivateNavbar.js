@@ -43,7 +43,7 @@ class PrivateNavbar extends Component {
               component={Restaurant}
             />
           </div>
-          <div className='col s10'>
+          <div className='col s10 offset-s2'>
             <Route
               path='/private/:userId/favorite'
               component={Favorite}
