@@ -1,5 +1,8 @@
 json.(@favorites) do |favorite|
   json.id favorite.id
-  json.restaurant_id favorite.restaurant_id
-  json.user_id favorite.user_id
+  json.name favorite.name
+  json.street favorite.street
+  json.city favorite.city
+  json.zip_code favorite.zip_code
+  json.dishes_count favorite.dishes_count
 end
