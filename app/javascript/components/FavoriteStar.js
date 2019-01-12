@@ -37,7 +37,7 @@ class FavoriteStar extends Component {
   render(){
     return (
       <div>
-        <span onClick={() => { this.handleFormSubmit(this.props.restaurantId, this.props.userId) }}><FontAwesomeIcon icon={faStar}/> </span>
+        <span className='star' onClick={() => { this.handleFormSubmit(this.props.restaurantId, this.props.userId) }}><FontAwesomeIcon icon={faStar}/> </span>
       </div>
     )
   }
