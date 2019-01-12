@@ -21,7 +21,6 @@ class Restaurant extends Component {
       this.setState({restaurant: jQuery.parseJSON(JSON.stringify(res))});
       this.setState({dishes: this.state.restaurant.dishes});
       this.setState({current_user: this.state.restaurant.user_id});
-
     });
   }
 

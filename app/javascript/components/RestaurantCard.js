@@ -10,8 +10,9 @@ class RestaurantCard extends Component {
   }
 
   render(){
+    var restaurantId= this.props.response.restaurant_id ? this.props.response.restaurant_id : this.props.response.id
     return (
-      <Link to={'/restaurant/' + this.props.response.id}>
+      <Link to={'/restaurant/' + restaurantId }>
         <div className='restaurant-card card'>
           <div>
             <span className="card-title grey-text text-darken-4">{this.props.response.name}</span>

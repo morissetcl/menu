@@ -8,7 +8,6 @@ import Favorite from './Favorite'
 class PrivateNavbar extends Component {
 
   constructor(props) {
-    console.log('private navbar')
     super(props);
   };
 
@@ -46,8 +45,9 @@ class PrivateNavbar extends Component {
           </div>
           <div className='col s10'>
             <Route
-              exact path='/private/:userId/favorite'
+              path='/private/:userId/favorite'
               component={Favorite}
+              userId={this.props.userId}
             />
           </div>
         </div>

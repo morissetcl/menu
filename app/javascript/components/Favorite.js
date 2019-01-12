@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import RestaurantCard from './RestaurantCard'
 
 class Favorite extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      favoriteResults: []
-    };
+      favoriteResults: [],
+      userId: '1'
+    }
   }
 
   componentDidMount() {
-    $.getJSON('/private/1/favorite', (res) =>
+    $.getJSON('/private/1/favorite',(res) =>
     {
       this.setState({favoriteResults: jQuery.parseJSON(JSON.stringify(res))});
     });
@@ -19,7 +21,9 @@ class Favorite extends Component {
 
   render(){
     let favoritesRestaurants = this.state.favoriteResults.map((response, index) => {
-      return <p key={index}>{response.restaurant_id}</p>
+      return <div key={index} className='restaurant-wrapper col s12 m4'>
+              <RestaurantCard response= { response } userId= { this.state.userId }/>
+             </div>
     });
 
     return (
