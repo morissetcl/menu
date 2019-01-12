@@ -22,6 +22,9 @@ class Restaurant extends Component {
       this.setState({dishes: this.state.restaurant.dishes});
       this.setState({current_user: this.state.restaurant.user_id});
     });
+    $('#infoClick').click(function () {
+      iziToast.info({icon: 'fa fa-info-circle', message: 'Ajouté à vos favoris'});
+    });
   }
 
   render(){
@@ -57,6 +60,7 @@ class Restaurant extends Component {
             <div className='restaurant-content' style={{ width: '85%' }}>
               <FavoriteStar
                 restaurantId={this.state.restaurant.id}
+                restaurantName={this.state.restaurant.name}
                 userId={this.state.current_user}
                 ></FavoriteStar>
               <li>{this.state.restaurant.name}</li>

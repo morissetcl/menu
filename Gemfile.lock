@@ -199,6 +199,7 @@ GEM
       railties (>= 4.2, < 5.3)
       responders
     io-like (0.3.0)
+    izitoast (1.4.0)
     jaro_winkler (1.5.1)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
@@ -464,6 +465,7 @@ DEPENDENCIES
   guard-rspec
   guard-rubocop
   hpricot
+  izitoast
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails
