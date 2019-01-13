@@ -1,4 +1,6 @@
-json.(@favorites) do |favorite|
+# frozen_string_literal: true
+
+json.call(@favorites) do |favorite|
   json.id favorite.id
   json.name favorite.name
   json.street favorite.street
