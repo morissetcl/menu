@@ -5,6 +5,7 @@
 @import "typography";
 @import "reset_materialize";
 @import "restaurants/*";
+@import "iziToast";
 
 .padding-10 {
   padding-top: 10px !important;
@@ -17,4 +18,15 @@
 
 .dish-table {
   background: white;
+}
+
+.wrapper-loader {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.trash-favorite {
+  cursor: pointer;
+  color: red;
 }

@@ -16,13 +16,13 @@
 //= require activestorage
 //= require jquery-ui/widgets/autocomplete
 //= require autocomplete-rails
+//= require iziToast
 
 $(document).ready(function(){
   $('.sidenav').sidenav();
   M.updateTextFields();
   $('.collapsible').collapsible();
   $('.tabs').tabs();
-
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
     if (scroll >= 21) {

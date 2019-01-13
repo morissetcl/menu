@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import LiveSearch from './LiveSearch'
 import Restaurant from './Restaurant'
+import Favorite from './Favorite'
 
 
 class PrivateNavbar extends Component {
 
   constructor(props) {
-    console.log('private navbar')
     super(props);
   };
 
@@ -22,7 +22,7 @@ class PrivateNavbar extends Component {
                   <Link to={`/private/${this.props.userId}/dashboard`}>Recherche</Link>
                 </li>
                 <li>
-                  <Link to="/bouyaka">Recherche</Link>
+                  <Link to={`/private/${this.props.userId}/favorite`}>Favoris</Link>
                 </li>
                 <li>
                   <a href='/users/sign_out' data-method="delete" rel="nofollow">Déconnexion</a>
@@ -43,10 +43,10 @@ class PrivateNavbar extends Component {
               component={Restaurant}
             />
           </div>
-          <div className='col s10'>
+          <div className='col s10 offset-s2'>
             <Route
-              exact path='/bouyaka'
-              component={LiveSearch}
+              path='/private/:userId/favorite'
+              component={Favorite}
               userId={this.props.userId}
             />
           </div>
