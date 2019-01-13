@@ -5,7 +5,6 @@ import RestaurantCard from './RestaurantCard'
 class Favorite extends Component {
 
   constructor(props) {
-    console.log(props)
     super(props);
     this.state = {
       favoriteResults: []
@@ -21,7 +20,7 @@ class Favorite extends Component {
   }
 
   handleDelete(id){
-   iziToast.info({icon: 'fa fa-info-circle', message: 'Restaurant retiré de vos favoris'});
+   iziToast.success({icon: 'fa fa-trash', message: 'Restaurant retiré de vos favoris'});
    fetch(`/private/1/favorite/${id}`,
    {
      method: 'DELETE',
