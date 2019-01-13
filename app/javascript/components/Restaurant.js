@@ -32,7 +32,7 @@ class Restaurant extends Component {
   componentDidUpdate() {
     $('#infoClick').click(function () {
       $(this).addClass('already-favorite')
-      iziToast.info({icon: 'fa fa-info-circle', message: 'Ajouté à vos favoris'});
+      iziToast.success({icon: 'fa fa-star', message: 'Ajouté à vos favoris'});
     });
   }
 
