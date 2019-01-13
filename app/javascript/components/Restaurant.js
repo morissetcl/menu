@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import GoogleMapReact from 'google-map-react';
 import FavoriteStar from './FavoriteStar';
+import Loader from './Loader';
 
 class Restaurant extends Component {
 
@@ -94,17 +95,7 @@ class Restaurant extends Component {
               </div>
             </div>
           </div>
-          :  <div class="preloader-wrapper big active">
-              <div class="spinner-layer spinner-blue">
-                <div class="circle-clipper left">
-                  <div class="circle"></div>
-                </div><div class="gap-patch">
-                  <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                  <div class="circle"></div>
-                </div>
-              </div>
-            </div>
+          :  <Loader/>
            }
       </div>
     )

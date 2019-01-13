@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import RestaurantCard from './RestaurantCard'
+import Loader from './Loader';
 
 class LiveSearch extends Component {
 
@@ -11,11 +12,12 @@ class LiveSearch extends Component {
       term: '',
       autoCompleteResults: [],
       itemSelected: {},
-      showItemSelected: false
+      showItemSelected: false,
+      loaded: false
     };
 
     $.getJSON('/private/:user_id/dashboard/recherche?q=' + this.state.term)
-      .then(response => this.setState({ autoCompleteResults: response.restaurants }))
+      .then(response => this.setState({ autoCompleteResults: response.restaurants, loaded: true }))
   }
 
   getAutoCompleteResults(e){
@@ -44,9 +46,12 @@ class LiveSearch extends Component {
           <span className='counter'>{ autoCompleteList.length }</span>
         )}
       </div>
-      <div className="result-wrapper row">
+      {this.state.loaded ?
+        <div className="result-wrapper row">
           { autoCompleteList }
-      </div>
+        </div>
+        :  <Loader/>
+      }
       </div>
     )
   }
