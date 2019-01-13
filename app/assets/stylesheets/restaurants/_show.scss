@@ -37,3 +37,13 @@ tbody tr {
     max-width: 60%;
   }
 }
+
+.already-favorite {
+  pointer-events: none;
+  color: #26a69a;
+}
+
+.not-yet-favorite {
+  color: black;
+  cursor: pointer;
+}

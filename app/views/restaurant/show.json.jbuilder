@@ -14,3 +14,4 @@ json.dishes @dishes do |dish|
 end
 
 json.user_id @current_user_id
+json.favorite @favorite
