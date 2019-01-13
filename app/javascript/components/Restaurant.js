@@ -88,9 +88,11 @@ class Restaurant extends Component {
                 <GoogleMapReact
                   bootstrapURLKeys={{ key: '' }}
                   center={{lat: this.state.restaurant.latitude, lng: this.state.restaurant.longitude}}
-                  defaultZoom={15}
-                >
-                  <MarkerMap/>
+                  defaultZoom={15}>
+                  <MarkerMap
+                    lat={this.state.restaurant.latitude}
+                    lng={this.state.restaurant.longitude}
+                  />
                 </GoogleMapReact>
               </div>
             </div>
