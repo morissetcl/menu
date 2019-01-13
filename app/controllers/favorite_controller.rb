@@ -16,6 +16,12 @@ class FavoriteController < ApplicationController
     render json: favorite
   end
 
+  def destroy
+    favorite = Favorite.find_by(restaurant_id: params[:id],
+                                user: current_user)
+    favorite.destroy
+  end
+
   private
 
   def favorite_params

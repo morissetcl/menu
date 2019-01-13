@@ -5,24 +5,41 @@ import RestaurantCard from './RestaurantCard'
 class Favorite extends Component {
 
   constructor(props) {
+    console.log(props)
     super(props);
     this.state = {
-      favoriteResults: [],
-      userId: '1'
+      favoriteResults: []
     }
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
-  componentDidMount() {
+  getFavorites() {
     $.getJSON('/private/1/favorite',(res) =>
     {
       this.setState({favoriteResults: jQuery.parseJSON(JSON.stringify(res))});
     });
   }
 
+  handleDelete(id){
+   fetch(`/private/1/favorite/${id}`,
+   {
+     method: 'DELETE',
+     headers: {
+       'Content-Type': 'application/json'
+     }
+   }).then((response) => {
+       this.getFavorites()
+     })
+  }
+
+  componentDidMount() {
+    this.getFavorites()
+  }
+
   render(){
     let favoritesRestaurants = this.state.favoriteResults.map((response, index) => {
       return <div key={index} className='restaurant-wrapper col s12 m4'>
-              <RestaurantCard response= { response } userId= { this.state.userId }/>
+              <RestaurantCard response= { response } fromFavorite={true} handleDelete={this.handleDelete}/>
              </div>
     });
 

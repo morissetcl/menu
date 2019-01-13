@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import LiveSearch from './LiveSearch'
 import Restaurant from './Restaurant'
 
@@ -12,6 +14,7 @@ class RestaurantCard extends Component {
   render(){
     var restaurantId= this.props.response.restaurant_id ? this.props.response.restaurant_id : this.props.response.id
     return (
+      <div>
       <Link to={'/restaurant/' + restaurantId }>
         <div className='restaurant-card card'>
           <div>
@@ -23,6 +26,13 @@ class RestaurantCard extends Component {
           </div>
         </div>
       </Link>
+      { this.props.fromFavorite
+        ? <div className='trash-favorite'onClick={() => this.props.handleDelete(restaurantId)}>
+            <FontAwesomeIcon icon={faTrashAlt}/>
+          </div>
+        : null
+      }
+      </div>
     );
   };
 }
