@@ -1,5 +1,5 @@
 .private-nav {
-  background-color: #102D3D;
+  background-color: #f4f5f5;
   height: 100vh;
   float: left;
   width: 15%;
@@ -7,13 +7,30 @@
   position: fixed;
   text-align: center;
   z-index: 200;
+  padding-top: 5px;
   a {
-    color: white;
     text-decoration: none;
+  }
+  li {
+    color: #7d7d7d;
+    padding: 10px;
+    margin: 5px 0px;
   }
 }
 
 nav {
   position: fixed;
   z-index: 200;
+}
+
+.navbar-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  svg { margin-right: 10px; }
+}
+.navbar-link.active-link {
+  background-color: #26a69a;
+  border-radius: 5px;
+  color: white;
 }
