@@ -6,7 +6,7 @@ class FavoriteController < ApplicationController
   layout 'users'
 
   def index
-    restaurant_ids = Favorite.where(user: current_user).pluck(:restaurant_id)
+    restaurant_ids = Favorite.where(user: current_user).select(:restaurant_id)
     @favorites = Restaurant.where(id: restaurant_ids)
     render :index
   end
