@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faSearch, signOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faSearch, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import LiveSearch from './LiveSearch'
 import Restaurant from './Restaurant'
 import Favorite from './Favorite'
@@ -38,10 +38,9 @@ class PrivateNavbar extends Component {
                     Mes favoris
                   </li>
                 </Link>
-                <li>
-                  <FontAwesomeIcon icon={faSearch}/>
-                  <a href='/users/sign_out' data-method="delete" rel="nofollow"><li>Déconnexion</li></a>
-                </li>
+                <a href='/users/sign_out' data-method="delete" rel="nofollow">
+                  <li className='navbar-link'><FontAwesomeIcon icon={faSignOutAlt}/>Déconnexion</li>
+                </a>
               </ul>
             </div>
           </div>
