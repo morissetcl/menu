@@ -27,7 +27,6 @@ gem 'react-rails', git: 'https://github.com/reactjs/react-rails.git', branch: 'm
 gem 'sidekiq'
 gem 'sidekiq-limit_fetch'
 gem 'webpacker'
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

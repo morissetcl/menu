@@ -1,29 +1,4 @@
-<nav class="brown darken-1">
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
-    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="sass.html">Sass</a></li>
-      <li><%= link_to 'Concept' %></li>
-      <% if user_signed_in? %>
-        <li><%= link_to 'Dashboard', user_dashboard_index_path(current_user) %></li>
-        <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to 'Connexion', new_user_session_path %></li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
-
-<ul class="sidenav" id="mobile-demo">
-  <li><%= link_to 'Concept' %></li>
-  <% if user_signed_in? %>
-    <li><%= link_to 'Dashboard', user_dashboard_index_path(current_user) %></li>
-    <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
-  <% else %>
-    <li><%= link_to 'Connexion', new_user_session_path %></li>
-  <% end %>
-</ul>
+<%= react_component 'PublicNavbar', userSignedIn: user_signed_in?, currentUser: current_user%>
 
 <% content_for :content do %>
   <%= content_for?(:homepage_content) ? yield(:homepage_content) : yield %>
