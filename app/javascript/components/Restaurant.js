@@ -32,7 +32,13 @@ class Restaurant extends Component {
   componentDidUpdate() {
     $('#infoClick').click(function () {
       $(this).addClass('already-favorite')
-      iziToast.success({icon: 'fa fa-star', message: 'Ajouté à vos favoris'});
+      iziToast.show({
+        backgroundColor: 'rgba(238,110,115,0.9)',
+        theme: 'dark',
+        icon: 'fa fa-star',
+        message: 'Ajouté à vos favoris',
+        timeout: 2500
+      })
     });
   }
 

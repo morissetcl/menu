@@ -20,7 +20,13 @@ class Favorite extends Component {
   }
 
   handleDelete(id){
-   iziToast.success({icon: 'fa fa-trash', message: 'Restaurant retiré de vos favoris'});
+   iziToast.show({
+     backgroundColor: 'rgba(238,110,115,0.9)',
+     theme: 'dark',
+     icon: 'fa fa-trash',
+     message: 'Restaurant retiré de vos favoris',
+     timeout: 2500
+   })
    fetch(`/private/1/favorite/${id}`,
    {
      method: 'DELETE',

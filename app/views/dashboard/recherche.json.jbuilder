@@ -8,5 +8,6 @@ json.restaurants do
     json.city restaurant.city
     json.zip_code restaurant.zip_code
     json.dishes_count restaurant.dishes_count
+    json.full_address restaurant.full_address
   end
 end
