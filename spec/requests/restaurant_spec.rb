@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 xdescribe 'Favorite' do
-  describe 'GET restaurant', focus: true do
+  describe 'GET restaurant' do
     let!(:user) { create :user }
     let!(:restaurant) { create :restaurant, name: 'Burger Factory', slug: 'burger-factory', city: 'Paris' }
     let(:restaurant_menu) { create :restaurant_menu, restaurant: restaurant }
