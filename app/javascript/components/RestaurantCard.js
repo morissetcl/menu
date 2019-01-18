@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faUtensils } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import LiveSearch from './LiveSearch'
 import Restaurant from './Restaurant'
 
@@ -17,12 +19,12 @@ class RestaurantCard extends Component {
       <div>
       <Link to={'/restaurant/' + restaurantId }>
         <div className='restaurant-card card'>
-          <div>
-            <span className="card-title grey-text text-darken-4">{this.props.response.name}</span>
-            <span>{this.props.response.street}</span>
-            <span>{this.props.response.city}</span>
-            <span>{this.props.response.zip_code}</span>
-            <p>{this.props.response.dishes_count}</p>
+          <div className='restaurant-name'>
+            <span className="grey-text text-darken-4 truncate">{this.props.response.name}</span>
+          </div>
+          <div className='restaurant-informations'>
+            <span><FontAwesomeIcon icon={faMapMarkerAlt}/>{this.props.response.full_address}</span>
+            <p><FontAwesomeIcon icon={faUtensils}/> {this.props.response.dishes_count}</p>
           </div>
         </div>
       </Link>

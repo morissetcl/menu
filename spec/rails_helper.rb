@@ -46,6 +46,8 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
   config.filter_run_excluding :slow
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.render_views = true
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
