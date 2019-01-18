@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Favorite' do
+xdescribe 'Favorite' do
   describe 'GET restaurant', focus: true do
     let!(:user) { create :user }
     let!(:restaurant) { create :restaurant, name: 'Burger Factory', slug: 'burger-factory', city: 'Paris' }
@@ -16,7 +16,7 @@ describe 'Favorite' do
     end
 
     it do
-      p @json
+      @json
     end
   end
 end
