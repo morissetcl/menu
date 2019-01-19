@@ -28,7 +28,18 @@
 
 .trash-favorite {
   cursor: pointer;
-  color: red;
+  left: 94%;
+  position: relative;
+  top: 5px;
+  width: 10%;
+  &:hover {
+    color: red;
+  }
+}
+
+.trash-wrapper {
+  padding: 10px;
+  text-align: right;
 }
 
 .nav-color {

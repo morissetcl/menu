@@ -17,8 +17,14 @@ class RestaurantCard extends Component {
     var restaurantId= this.props.response.restaurant_id ? this.props.response.restaurant_id : this.props.response.id
     return (
       <div>
+      <div className='restaurant-card card'>
+      { this.props.fromFavorite
+        ? <div className='trash-favorite'onClick={() => this.props.handleDelete(restaurantId)}>
+            <FontAwesomeIcon icon={faTrashAlt}/>
+          </div>
+        : null
+      }
       <Link to={'/restaurant/' + restaurantId }>
-        <div className='restaurant-card card'>
           <div className='restaurant-name'>
             <span className="grey-text text-darken-4 truncate">{this.props.response.name}</span>
           </div>
@@ -34,14 +40,8 @@ class RestaurantCard extends Component {
               })}
             </div>
           </div>
-        </div>
-      </Link>
-      { this.props.fromFavorite
-        ? <div className='trash-favorite'onClick={() => this.props.handleDelete(restaurantId)}>
-            <FontAwesomeIcon icon={faTrashAlt}/>
-          </div>
-        : null
-      }
+          </Link>
+      </div>
       </div>
     );
   };
