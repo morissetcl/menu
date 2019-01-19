@@ -11,4 +11,8 @@ class Restaurant < ApplicationRecord
   def full_address
     "#{street}, #{zip_code} #{city}"
   end
+
+  def first_three_tags
+    tags.first(3)
+  end
 end

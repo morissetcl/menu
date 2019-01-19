@@ -9,5 +9,5 @@ json.call(@favorites) do |favorite|
   json.dishes_count favorite.dishes_count
   json.tags favorite.tags
   json.full_address favorite.full_address
-  json.tags favorite.tags
+  json.tags favorite.first_three_tags
 end
