@@ -28,7 +28,7 @@ module Justeat
           food_type << food.text
         end
         restaurant = Restaurant.find restaurant_menu.restaurant.id
-        restaurant.update!(tags: food_type.join(','))
+        restaurant.update!(tags: food_type)
         FormatAddressesService.call(restaurant)
       end
     end

@@ -25,6 +25,14 @@ class RestaurantCard extends Component {
           <div className='restaurant-informations'>
             <span><FontAwesomeIcon icon={faMapMarkerAlt}/>{this.props.response.full_address}</span>
             <p><FontAwesomeIcon icon={faUtensils}/> {this.props.response.dishes_count}</p>
+            <div className='badges-wrapper'>
+              {this.props.response.tags.map(function (item, i) {
+                return <div key={i} className='badge truncate'>
+                          {item}
+                        </div>
+
+              })}
+            </div>
           </div>
         </div>
       </Link>
