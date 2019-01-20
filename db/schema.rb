@@ -69,8 +69,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_101756) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.datetime "date"
     t.bigint "restaurant_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false

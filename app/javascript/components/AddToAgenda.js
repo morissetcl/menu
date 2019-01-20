@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarWeek } from '@fortawesome/free-solid-svg-icons'
 
 class AddToAgenda extends Component {
 
@@ -14,17 +16,7 @@ class AddToAgenda extends Component {
   render(){
     return (
       <div>
-      <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-      <div id="modal1" class="modal">
-        <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-      </div>
+        <FontAwesomeIcon icon={faCalendarWeek}/><input type="text" class="datepicker"/>
       </div>
     )
   }

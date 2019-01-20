@@ -45,8 +45,8 @@ class Calendar extends Component {
            step={60}
            timeevents={1}
            localizer={localizer}
-           startAccessor="start_date"
-           endAccessor="end_date"
+           startAccessor="date"
+           endAccessor="date"
         />
         </div>
       </div>

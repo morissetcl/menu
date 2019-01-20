@@ -41,6 +41,7 @@ class Restaurant extends Component {
         timeout: 2500
       })
     });
+    $('.datepicker').datepicker();
   }
 
   render(){
