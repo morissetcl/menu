@@ -6,7 +6,6 @@ class EventController < ApplicationController
   layout 'users'
 
   def create
-    p params
     event = Event.create!(event_params)
     render json: event
   end
@@ -18,6 +17,6 @@ class EventController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:id, :user_id, :restaurant_id, :date, :title)
+    params.require(:event).permit(:title, :id, :user_id, :restaurant_id, :date)
   end
 end

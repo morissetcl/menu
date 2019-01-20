@@ -11,20 +11,24 @@ class AddToAgenda extends Component {
       date: '',
       restaurantId: 80435,
       userId: 1,
+      title: '',
       events: []
     };
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   };
 
+
   handleDateChange() {
     var date = $('#date_event').val();
-    this.setState({date: date});
-    this.handleFormSubmit(date)
+    var title = $('#title_event').val();
+    this.setState({date: date, title: title});
+    this.handleFormSubmit(date, title)
   }
 
-  handleFormSubmit(date){
-    let body = JSON.stringify({event: {date: date, user_id: this.state.userId, restaurant_id: this.state.restaurantId} })
+  handleFormSubmit(date, title){
+    console.log(title)
+    let body = JSON.stringify({event: {date: date, user_id: this.state.userId, restaurant_id: this.state.restaurantId, title: title }})
 
   fetch('http://localhost:3000/event', {
       method: 'POST',
@@ -54,7 +58,10 @@ class AddToAgenda extends Component {
         <FontAwesomeIcon icon={faCalendarWeek}/>
         <input
           type="text"
-          onChange={this.handleDateChange}
+          id='title_event'
+        />
+        <input
+          type="text"
           className='datepicker'
           id='date_event'
         />
