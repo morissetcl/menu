@@ -39,7 +39,7 @@ class PrivateNavbar extends Component {
                     Mes favoris
                   </li>
                 </Link>
-                <Link to={`/private/${this.props.userId}/calendrier`}>
+                <Link to={`/private/${this.props.userId}/calendar`}>
                   <li className='navbar-link'>
                     <FontAwesomeIcon icon={faStar}/>
                     Calendrier
@@ -73,7 +73,7 @@ class PrivateNavbar extends Component {
           </div>
           <div className='col s10 offset-s2'>
             <Route
-              path='/private/:userId/calendrier'
+              path='/private/:userId/calendar'
               component={Calendar}
               userId={this.props.userId}
             />

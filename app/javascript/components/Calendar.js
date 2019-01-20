@@ -8,21 +8,18 @@ class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      eventsList: []
+      eventsList: [],
+      mounted: false
     }
   }
 
-  getEvents() {
-    $.getJSON('/private/1/calendrier',(res) =>
+  componentDidMount() {
+    $.getJSON('/private/1/calendar',(res) =>
     {
       this.setState({eventsList: [...this.state.eventsList, jQuery.parseJSON(JSON.stringify(res))]});
+      this.setState({mounted: true})
     });
   }
-
-  componentDidMount() {
-    this.getEvents()
-  }
-
 
   render(){
     const localizer = BigCalendar.momentLocalizer(moment);
@@ -37,17 +34,21 @@ class Calendar extends Component {
     return (
       <div className='row'>
         <div className='col s12'>
-         <BigCalendar
-           events={myEventsList}
-           defaultView='month'
-           views={['month']}
-           selectable
-           step={60}
-           timeevents={1}
-           localizer={localizer}
-           startAccessor="date"
-           endAccessor="date"
-        />
+        {this.state.mounted ? (
+          <BigCalendar
+            events={myEventsList}
+            defaultView='month'
+            views={['month']}
+            selectable
+            step={60}
+            timeevents={1}
+            localizer={localizer}
+            startAccessor="date"
+            endAccessor="date"
+         />
+        ) : (
+          ''
+        )}
         </div>
       </div>
     )
