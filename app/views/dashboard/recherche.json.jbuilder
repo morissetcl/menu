@@ -9,5 +9,6 @@ json.restaurants do
     json.zip_code restaurant.zip_code
     json.dishes_count restaurant.dishes_count
     json.full_address restaurant.full_address
+    json.tags restaurant.first_three_tags
   end
 end

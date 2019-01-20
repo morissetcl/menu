@@ -21,7 +21,7 @@ class GetRestaurantFoodinService
     def create_restaurant(html_doc)
       html_doc.css('.restaurant-container').each do |restaurant|
         name = restaurant.css('.name-restaurant-value').text.strip
-        tags = restaurant.css('.speciality').text.strip
+        tags = restaurant.css('.speciality').text.split('-')
         get_link(restaurant)
         resto = Restaurant.create(name: name, slug: name.parameterize, tags: tags, source: 'foodin')
         sleep 2 unless Rails.env.test?

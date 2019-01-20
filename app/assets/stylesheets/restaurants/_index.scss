@@ -21,3 +21,18 @@ input.recherche-input {
 #hidden {
   display: none;
 }
+
+.badges-wrapper {
+  display: flex;
+  font-size: 10px;
+}
+
+.badge {
+  border: 1px solid rgba(238,110,115,0.9);
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 25px;
+  color: rgba(238,110,115,0.9);
+  // background: rgba(238,110,115,0.9);
+  background: white;
+}

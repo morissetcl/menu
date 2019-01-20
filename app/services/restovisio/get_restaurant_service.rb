@@ -32,7 +32,7 @@ module Restovisio
 
       def get_all_data(restaurant)
         name = restaurant.css('a').first.text.strip
-        tags = restaurant.css('.etb_cat_amb').text.strip
+        tags = restaurant.css('.etb_cat_amb').text.strip.split(',')
         price = restaurant.css('.etb_price_range').text.strip
         address = restaurant.css('.etb_location_info').text.strip
         Restaurant.create(name: name, slug: name.parameterize,

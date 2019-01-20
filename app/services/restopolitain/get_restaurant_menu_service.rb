@@ -30,7 +30,7 @@ module Restopolitain
         get_menu_data(link).css('.tags__tag').each do |food|
           food_type << food.text
         end
-        @restaurant.update!(tags: food_type.join(','))
+        @restaurant.update!(tags: food_type)
       end
 
       def get_link(link)

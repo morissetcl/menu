@@ -7,4 +7,7 @@ json.call(@favorites) do |favorite|
   json.city favorite.city
   json.zip_code favorite.zip_code
   json.dishes_count favorite.dishes_count
+  json.tags favorite.tags
+  json.full_address favorite.full_address
+  json.tags favorite.first_three_tags
 end

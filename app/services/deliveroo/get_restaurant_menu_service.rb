@@ -21,7 +21,7 @@ module Deliveroo
         html_doc.css('.food').each do |a|
           food_type << a.text
         end
-        restaurant.update!(tags: food_type.join(','))
+        restaurant.update!(tags: food_type)
         FormatAddressesService.call(restaurant)
       end
 
