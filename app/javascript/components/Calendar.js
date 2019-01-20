@@ -7,21 +7,33 @@ class Calendar extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      eventsList: []
+    }
+  }
+
+  getEvents() {
+    $.getJSON('/private/1/calendrier',(res) =>
+    {
+      this.setState({eventsList: [...this.state.eventsList, jQuery.parseJSON(JSON.stringify(res))]});
+    });
+  }
+
+  componentDidMount() {
+    this.getEvents()
   }
 
 
   render(){
-    const localizer = BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
+    const localizer = BigCalendar.momentLocalizer(moment);
+    let myEventsList;
 
-    const myEventsList= [
-                          {
-                            'title': 'Event 1',
-                            'startDate': new Date(),
-                            'endDate': new Date()
-                          }
-                        ]
+    if (this.state.eventsList[0] != undefined) {
+      myEventsList = this.state.eventsList[0].events
+    } else {
+      myEventsList = this.state.eventsList
+    }
 
-    console.log(myEventsList)
     return (
       <div className='row'>
         <div className='col s12'>
@@ -33,8 +45,8 @@ class Calendar extends Component {
            step={60}
            timeevents={1}
            localizer={localizer}
-           startAccessor="startDate"
-           endAccessor="endDate"
+           startAccessor="start_date"
+           endAccessor="end_date"
         />
         </div>
       </div>

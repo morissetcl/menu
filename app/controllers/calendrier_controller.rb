@@ -5,6 +5,7 @@ class CalendrierController < ApplicationController
   layout 'users'
 
   def index
-    @calendier = Restaurant.last
+    @events = Event.where(user_id: current_user.id)
+    render :index
   end
 end
