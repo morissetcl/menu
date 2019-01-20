@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :favorite, except: [:new, :create]
     resources :calendrier, only: [:index]
   end
+  post '/event', to: "event#create"
   post '/favorite', to: "favorite#create"
   get '/restaurant/:id', to: "restaurant#show"
 end
