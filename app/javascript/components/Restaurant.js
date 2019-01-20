@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import GoogleMapReact from 'google-map-react';
 import FavoriteStar from './FavoriteStar';
 import Loader from './Loader';
+import AddToAgenda from './AddToAgenda';
 
 class Restaurant extends Component {
 
@@ -83,6 +84,7 @@ class Restaurant extends Component {
                     userId={this.state.current_user}
                     ></FavoriteStar>
                 </div>
+                <AddToAgenda/>
                 <li>{this.state.favorite}</li>
                 <li>{this.state.restaurant.name}</li>
                 <li>{this.state.restaurant.street}</li>
