@@ -5,6 +5,7 @@ import { faStar, faSearch, faSignOutAlt } from '@fortawesome/free-solid-svg-icon
 import LiveSearch from './LiveSearch'
 import Restaurant from './Restaurant'
 import Favorite from './Favorite'
+import Calendar from './Calendar'
 
 class PrivateNavbar extends Component {
 
@@ -38,6 +39,12 @@ class PrivateNavbar extends Component {
                     Mes favoris
                   </li>
                 </Link>
+                <Link to={`/private/${this.props.userId}/calendrier`}>
+                  <li className='navbar-link'>
+                    <FontAwesomeIcon icon={faStar}/>
+                    Calendrier
+                  </li>
+                </Link>
                 <a href='/users/sign_out' data-method="delete" rel="nofollow">
                   <li className='navbar-link'><FontAwesomeIcon icon={faSignOutAlt}/>Déconnexion</li>
                 </a>
@@ -61,6 +68,13 @@ class PrivateNavbar extends Component {
             <Route
               path='/private/:userId/favorite'
               component={Favorite}
+              userId={this.props.userId}
+            />
+          </div>
+          <div className='col s10 offset-s2'>
+            <Route
+              path='/private/:userId/calendrier'
+              component={Calendar}
               userId={this.props.userId}
             />
           </div>
