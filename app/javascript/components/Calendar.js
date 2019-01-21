@@ -45,6 +45,8 @@ class Calendar extends Component {
             localizer={localizer}
             startAccessor="date"
             endAccessor="date"
+            culture='fr'
+            messages={{'today': "Aujourd'hui", "previous":'Précédent', "next":"Suivant"}}
          />
         ) : (
           ''

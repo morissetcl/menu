@@ -41,7 +41,15 @@ class Restaurant extends Component {
         timeout: 2500
       })
     });
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+      i18n: {
+        months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre',
+          'Octobre','Novembre', 'Décembre'],
+        weekdays: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi',   'Dimanche'],
+        cancel: ['Annuler'],
+        done: ['Valider']
+      }
+    });
   }
 
   render(){

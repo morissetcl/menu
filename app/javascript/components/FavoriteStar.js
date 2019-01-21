@@ -33,11 +33,17 @@ class FavoriteStar extends Component {
     })
   }
 
+  componentDidMount() {
+    $('.tooltipped').tooltip();
+  }
+
   render(){
     return (
       <div>
-        <span id="infoClick" className='star waves-light
-' onClick={() => { this.handleFormSubmit(this.props.restaurantId, this.props.userId) }}><FontAwesomeIcon icon={faStar}/> </span>
+        <span id="infoClick" className='star waves-light tooltipped'
+        data-position="bottom"
+        data-tooltip="Ajouter cet établissement à mes favoris"
+        onClick={() => { this.handleFormSubmit(this.props.restaurantId, this.props.userId) }}><FontAwesomeIcon icon={faStar}/> </span>
       </div>
     )
   }

@@ -56,15 +56,22 @@ class AddToAgenda extends Component {
     return (
       <div>
         <FontAwesomeIcon icon={faCalendarWeek}/>
-        <input
-          type="text"
-          id='title_event'
-        />
-        <input
-          type="text"
-          className='datepicker'
-          id='date_event'
-        />
+        <div class="input-field">
+          <label for="title_event">Description de votre rendez-vous</label>
+          <input
+            type="text"
+            id='title_event'
+            className='input-field '
+          />
+        </div>
+        <div class="input-field">
+          <input
+            type="text"
+            id='date_event'
+            className='input-field datepicker'
+            placeholder='Date'
+          />
+        </div>
         <input type="submit" value="Update Post" onClick={() => { this.handleDateChange()}}/>
       </div>
     )
