@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faSearch, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faSearch, faSignOutAlt, faCalendarWeek } from '@fortawesome/free-solid-svg-icons'
 import LiveSearch from './LiveSearch'
 import Restaurant from './Restaurant'
 import Favorite from './Favorite'
@@ -41,8 +41,8 @@ class PrivateNavbar extends Component {
                 </Link>
                 <Link to={`/private/${this.props.userId}/calendar`}>
                   <li className='navbar-link'>
-                    <FontAwesomeIcon icon={faStar}/>
-                    Calendrier
+                    <FontAwesomeIcon icon={faCalendarWeek}/>
+                    Mon Agenda
                   </li>
                 </Link>
                 <a href='/users/sign_out' data-method="delete" rel="nofollow">

@@ -40,9 +40,8 @@ class FavoriteStar extends Component {
   render(){
     return (
       <div>
-        <span id="infoClick" className='star waves-light tooltipped'
+        <span id="infoClick" className='star waves-light'
         data-position="bottom"
-        data-tooltip="Ajouter cet établissement à mes favoris"
         onClick={() => { this.handleFormSubmit(this.props.restaurantId, this.props.userId) }}><FontAwesomeIcon icon={faStar}/> </span>
       </div>
     )

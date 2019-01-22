@@ -8,6 +8,7 @@ import AddToAgenda from './AddToAgenda';
 class Restaurant extends Component {
 
   constructor(props) {
+    $('.modal').modal();
     super(props);
     this.state = {
       restaurant: [],
@@ -19,18 +20,24 @@ class Restaurant extends Component {
   }
 
   componentDidMount() {
+    $('.modal').modal();
+
     $.getJSON('/restaurant/' + this.props.match.params.id,
     (res) =>
     {
+
       this.setState({restaurant: jQuery.parseJSON(JSON.stringify(res))});
       this.setState({dishes: this.state.restaurant.dishes});
       this.setState({current_user: this.state.restaurant.user_id});
       this.setState({favorite: this.state.restaurant.favorite});
+      this.setState({booked: this.state.restaurant.booked});
+
       this.setState({loaded: true})
     })
   }
 
   componentDidUpdate() {
+    $('.modal').modal();
     $('#infoClick').click(function () {
       $(this).addClass('already-favorite')
       iziToast.show({
@@ -54,6 +61,7 @@ class Restaurant extends Component {
 
   render(){
     const isFavorite = this.state.favorite;
+    const isBooked = this.state.booked;
 
     const MarkerMap = ({ text }) => (
       <div className='cluster-map'> </div>
@@ -85,7 +93,7 @@ class Restaurant extends Component {
               </table>
             </div>
             <div className='col s12 m3 map-wrapper'>
-              <div className='restaurant-content' style={{ width: '85%' }}>
+              <div className='restaurant-actions'>
                 <div className={isFavorite ? "already-favorite" : "not-yet-favorite"}>
                   <FavoriteStar
                     restaurantId={this.state.restaurant.id}
@@ -93,7 +101,9 @@ class Restaurant extends Component {
                     userId={this.state.current_user}
                     ></FavoriteStar>
                 </div>
-                <AddToAgenda/>
+                <AddToAgenda is_booked={isBooked}/>
+              </div>
+              <div className='restaurant-content' style={{ width: '85%' }}>
                 <li>{this.state.favorite}</li>
                 <li>{this.state.restaurant.name}</li>
                 <li>{this.state.restaurant.street}</li>
