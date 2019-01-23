@@ -21,7 +21,17 @@ class Calendar extends Component {
     });
   }
 
+
+
   render(){
+    function Event({ event }) {
+      return (
+        <span>
+          <strong>{event.restaurant.name}</strong>
+        </span>
+      )
+    }
+
     const localizer = BigCalendar.momentLocalizer(moment);
     let myEventsList;
 
@@ -47,6 +57,11 @@ class Calendar extends Component {
             endAccessor="date"
             culture='fr'
             messages={{'today': "Aujourd'hui", "previous":'Précédent', "next":"Suivant"}}
+            onSelectEvent={event => alert(event.restaurant.name)}
+            eventPropGetter={(this.eventStyleGetter)}
+            components={{
+              event: Event
+            }}
          />
         ) : (
           ''

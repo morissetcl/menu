@@ -101,7 +101,11 @@ class Restaurant extends Component {
                     userId={this.state.current_user}
                     ></FavoriteStar>
                 </div>
-                <AddToAgenda is_booked={isBooked}/>
+                <AddToAgenda
+                  is_booked={isBooked}
+                  restaurantId={this.state.restaurant.id}
+                  userId={this.state.current_user}
+                />
               </div>
               <div className='restaurant-content' style={{ width: '85%' }}>
                 <li>{this.state.favorite}</li>

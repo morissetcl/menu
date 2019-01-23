@@ -9,8 +9,8 @@ class AddToAgenda extends Component {
     super(props);
     this.state = {
       date: '',
-      restaurantId: 80435,
-      userId: 1,
+      restaurantId: props.restaurantId,
+      userId: props.userId,
       title: '',
       events: [],
       booked: props.is_booked
