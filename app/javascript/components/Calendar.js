@@ -21,8 +21,6 @@ class Calendar extends Component {
     });
   }
 
-
-
   render(){
     function Event({ event }) {
       return (
@@ -41,6 +39,21 @@ class Calendar extends Component {
       myEventsList = this.state.eventsList
     }
 
+    const messages = {
+      allDay: 'journée',
+      previous: 'précédent',
+      next: 'suivant',
+      today: 'aujourd\'hui',
+      month: 'mois',
+      week: 'semaine',
+      day: 'jour',
+      agenda: 'Agenda',
+      date: 'date',
+      time: 'heure',
+      event: 'événement', // Or anything you want
+      showMore: total => `voir ${total} de +`
+    }
+
     return (
       <div className='row'>
         <div className='col s12'>
@@ -56,7 +69,7 @@ class Calendar extends Component {
             startAccessor="date"
             endAccessor="date"
             culture='fr'
-            messages={{'today': "Aujourd'hui", "previous":'Précédent', "next":"Suivant"}}
+            messages={messages}
             onSelectEvent={event => alert(event.restaurant.name)}
             eventPropGetter={(this.eventStyleGetter)}
             components={{
