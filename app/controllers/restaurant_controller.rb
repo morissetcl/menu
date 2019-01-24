@@ -2,7 +2,7 @@
 
 class RestaurantController < ApplicationController
   layout false
-  layout 'users'
+  layout 'private'
 
   def show
     @restaurant = Restaurant.find params[:id]

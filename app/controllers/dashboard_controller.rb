@@ -2,7 +2,7 @@
 
 class DashboardController < ApplicationController
   layout false
-  layout 'users'
+  layout 'private'
 
   before_action :authenticate_user!
   load_and_authorize_resource

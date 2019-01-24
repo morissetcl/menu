@@ -3,7 +3,7 @@
 class FavoriteController < ApplicationController
   skip_before_action :verify_authenticity_token
   layout false
-  layout 'users'
+  layout 'private'
 
   def index
     restaurant_ids = Favorite.where(user: get_user).select(:restaurant_id)
