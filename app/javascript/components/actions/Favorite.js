@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import RestaurantCard from './RestaurantCard'
+import RestaurantCard from '../RestaurantCard'
 
 class Favorite extends Component {
 

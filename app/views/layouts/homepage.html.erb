@@ -1,4 +1,4 @@
-<%= react_component 'PublicNavbar', userSignedIn: user_signed_in?, currentUser: current_user%>
+<%= react_component 'navigation/PublicNavbar', userSignedIn: user_signed_in?, currentUser: current_user%>
 
 <% content_for :content do %>
   <%= content_for?(:homepage_content) ? yield(:homepage_content) : yield %>

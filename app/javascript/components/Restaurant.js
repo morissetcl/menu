@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import GoogleMapReact from 'google-map-react';
-import FavoriteStar from './FavoriteStar';
-import Loader from './Loader';
-import AddToAgenda from './AddToAgenda';
+import FavoriteStar from './card_components/FavoriteStar';
+import Loader from './reusable_components/Loader';
+import AddToAgenda from './card_components/AddToAgenda';
 
 class Restaurant extends Component {
 

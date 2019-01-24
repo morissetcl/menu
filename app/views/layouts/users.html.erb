@@ -1,5 +1,5 @@
 
-<%= react_component('PrivateNavbar', {userId: current_user.id}) %>
+<%= react_component('navigation/PrivateNavbar', {userId: current_user.id}) %>
 
 <% content_for :content do %>
   <%= content_for?(:users_content) ? yield(:users_content) : yield %>

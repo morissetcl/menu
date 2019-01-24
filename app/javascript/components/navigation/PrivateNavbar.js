@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faSearch, faSignOutAlt, faCalendarWeek } from '@fortawesome/free-solid-svg-icons'
-import LiveSearch from './LiveSearch'
-import Restaurant from './Restaurant'
-import Favorite from './Favorite'
-import Calendar from './Calendar'
+import LiveSearch from '../LiveSearch'
+import Restaurant from '../Restaurant'
+import Favorite from '../actions/Favorite'
+import Calendar from '../Calendar'
 
 class PrivateNavbar extends Component {
 

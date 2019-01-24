@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import RestaurantCard from './RestaurantCard'
-import Loader from './Loader';
+import Loader from './reusable_components/Loader';
 
 class LiveSearch extends Component {
 
