@@ -47,3 +47,20 @@ tbody tr {
   color: black;
   cursor: pointer;
 }
+
+#already-booked {
+  color: rgba(238,110,115,0.9);
+}
+
+.restaurant-actions {
+  width: 85%;
+  background-color: white;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.super {
+  cursor: pointer !important;
+}

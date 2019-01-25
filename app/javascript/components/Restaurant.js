@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import GoogleMapReact from 'google-map-react';
-import FavoriteStar from './FavoriteStar';
-import Loader from './Loader';
+import FavoriteStar from './card_components/FavoriteStar';
+import Loader from './reusable_components/Loader';
+import AddToAgenda from './card_components/AddToAgenda';
 
 class Restaurant extends Component {
 
   constructor(props) {
+    $('.modal').modal();
     super(props);
     this.state = {
       restaurant: [],
@@ -18,18 +20,24 @@ class Restaurant extends Component {
   }
 
   componentDidMount() {
+    $('.modal').modal();
+
     $.getJSON('/restaurant/' + this.props.match.params.id,
     (res) =>
     {
+
       this.setState({restaurant: jQuery.parseJSON(JSON.stringify(res))});
       this.setState({dishes: this.state.restaurant.dishes});
       this.setState({current_user: this.state.restaurant.user_id});
       this.setState({favorite: this.state.restaurant.favorite});
+      this.setState({booked: this.state.restaurant.booked});
+
       this.setState({loaded: true})
     })
   }
 
   componentDidUpdate() {
+    $('.modal').modal();
     $('#infoClick').click(function () {
       $(this).addClass('already-favorite')
       iziToast.show({
@@ -40,10 +48,20 @@ class Restaurant extends Component {
         timeout: 2500
       })
     });
+    $('.datepicker').datepicker({
+      i18n: {
+        months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre',
+          'Octobre','Novembre', 'Décembre'],
+        weekdays: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi',   'Dimanche'],
+        cancel: ['Annuler'],
+        done: ['Valider']
+      }
+    });
   }
 
   render(){
     const isFavorite = this.state.favorite;
+    const isBooked = this.state.booked;
 
     const MarkerMap = ({ text }) => (
       <div className='cluster-map'> </div>
@@ -75,7 +93,7 @@ class Restaurant extends Component {
               </table>
             </div>
             <div className='col s12 m3 map-wrapper'>
-              <div className='restaurant-content' style={{ width: '85%' }}>
+              <div className='restaurant-actions'>
                 <div className={isFavorite ? "already-favorite" : "not-yet-favorite"}>
                   <FavoriteStar
                     restaurantId={this.state.restaurant.id}
@@ -83,6 +101,13 @@ class Restaurant extends Component {
                     userId={this.state.current_user}
                     ></FavoriteStar>
                 </div>
+                <AddToAgenda
+                  is_booked={isBooked}
+                  restaurantId={this.state.restaurant.id}
+                  userId={this.state.current_user}
+                />
+              </div>
+              <div className='restaurant-content' style={{ width: '85%' }}>
                 <li>{this.state.favorite}</li>
                 <li>{this.state.restaurant.name}</li>
                 <li>{this.state.restaurant.street}</li>

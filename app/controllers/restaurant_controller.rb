@@ -2,14 +2,14 @@
 
 class RestaurantController < ApplicationController
   layout false
-  layout 'users'
+  layout 'private'
 
   def show
     @restaurant = Restaurant.find params[:id]
     @dishes = @restaurant.dishes.reverse
     @current_user_id = current_user.id
-    added_to_favorite = Favorite.find_by(user_id: @current_user_id, restaurant_id: @restaurant.id)
-    @favorite = added_to_favorite.present?
+    @favorite = Favorite.find_by(user_id: @current_user_id, restaurant_id: @restaurant.id).present?
+    @is_booked = Event.find_by(user_id: @current_user_id, restaurant_id: @restaurant.id).present?
     render :show
   end
 end
