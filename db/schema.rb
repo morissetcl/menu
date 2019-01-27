@@ -125,8 +125,10 @@ ActiveRecord::Schema.define(version: 2019_01_20_101756) do
   end
 
   add_foreign_key "dashboards", "users"
+  add_foreign_key "dishes", "restaurant_menus", on_delete: :cascade
   add_foreign_key "events", "restaurants"
   add_foreign_key "events", "users"
   add_foreign_key "favorites", "restaurants"
   add_foreign_key "favorites", "users"
+  add_foreign_key "restaurant_menus", "restaurants", on_delete: :cascade
 end
