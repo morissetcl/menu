@@ -5,7 +5,9 @@ require 'rails_helper'
 describe 'Favorite' do
   describe 'GET favorite' do
     let!(:user) { create :user }
-    let!(:restaurant) { create :restaurant, name: 'Burger Factory', slug: 'burger-factory', city: 'Paris' }
+    let!(:restaurant) do
+      create :restaurant, name: 'Burger Factory', slug: 'burger-factory', city: 'Paris'
+    end
     let!(:favorite) { create :favorite, user: user, restaurant: restaurant }
     let(:restaurant_menu) { create :restaurant_menu, restaurant: restaurant }
     let!(:dish) { create :dish, title: 'Raclette', restaurant_menu: restaurant_menu }
