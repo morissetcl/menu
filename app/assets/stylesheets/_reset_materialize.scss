@@ -3,11 +3,27 @@ body {
   overflow: scroll;
 }
 
-.collapsible {
-  margin-top: 100px !important;
+.interests {
+  margin-top: 100px ;
+  color: gray;
+  font-size: 18px;
+  .number {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  li {
+    margin-bottom: 20px;
+  }
 }
-
 
 li {
   list-style-type: none;
+}
+
+.special-word {
+  font-size: 18px;
+  background-color: rgba(246,178,181,0.2);
+  padding: 0 5px;
+  color: #ee6e73;
+  font-weight: bold;
 }
