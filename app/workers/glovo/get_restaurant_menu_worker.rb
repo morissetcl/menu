@@ -8,7 +8,7 @@ module Glovo
     include Sidekiq::Worker
 
     def perform(restaurant_id, link)
-      GetRestaurantMenuGlovoService.call(restaurant_id, link)
+      Glovo::GetRestaurantMenuGlovoService.call(restaurant_id, link)
     end
   end
 end

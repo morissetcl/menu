@@ -9,12 +9,12 @@
 
           <div class="input-field col s12 m8 offset-m2">
             <label for="password">Mot de passe</label>
-            <%= f.password_field :password, autocomplete: 'new-password' %>
+            <%= f.password_field :password, type: 'password', autocomplete: 'new-password' %>
           </div>
 
           <div class="input-field col s12 m8 offset-m2">
             <label for="password_confirmation">Confirmation mot de passe</label>
-            <%= f.password_field :password_confirmation %>
+            <%= f.password_field :password_confirmation, type: 'password'%>
           </div>
 
           <div class="actions center-align col s12 m8 offset-m2">

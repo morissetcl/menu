@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'sidekiq/testing'
 
-describe GetRestaurantMenuGlovoService do
+describe Glovo::GetRestaurantMenuGlovoService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 
@@ -23,7 +23,7 @@ describe GetRestaurantMenuGlovoService do
     link = '/fr/shz/store/semsema-2/'
     restaurant = Restaurant.create(name: 'semsema 2', slug: 'semsema-2')
     expect do
-      GetRestaurantMenuGlovoService.call(restaurant.id, link)
+      Glovo::GetRestaurantMenuGlovoService.call(restaurant.id, link)
     end.to change(Dish, :count)
   end
 end

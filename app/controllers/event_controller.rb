@@ -12,10 +12,6 @@ class EventController < ApplicationController
 
   private
 
-  def get_user
-    User.find(params[:user_id])
-  end
-
   def event_params
     params.require(:event).permit(:title, :id, :user_id, :restaurant_id, :date)
   end

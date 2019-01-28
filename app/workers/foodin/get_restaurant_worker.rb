@@ -9,7 +9,7 @@ module Foodin
 
     def perform(*_args)
       FOODIN_CITIES.each do |city|
-        GetRestaurantFoodinService.call(city)
+        Foodin::GetRestaurantFoodinService.call(city)
       end
     end
   end

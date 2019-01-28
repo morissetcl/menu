@@ -6,7 +6,7 @@ class FavoriteController < ApplicationController
   layout 'private'
 
   def index
-    restaurant_ids = Favorite.where(user: get_user).select(:restaurant_id)
+    restaurant_ids = Favorite.where(user: retrieve_user).select(:restaurant_id)
     @favorites = Restaurant.where(id: restaurant_ids)
     render :index
   end
@@ -18,13 +18,13 @@ class FavoriteController < ApplicationController
 
   def destroy
     favorite = Favorite.find_by(restaurant_id: params[:id],
-                                user: get_user)
+                                user: retrieve_user)
     favorite.destroy
   end
 
   private
 
-  def get_user
+  def retrieve_user
     User.find(params[:user_id])
   end
 

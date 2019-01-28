@@ -7,7 +7,7 @@ describe 'Authentication - User', type: :feature do
 
   scenario '#SignUp Users' do
     visit new_user_session_path
-    within find('#test1') do
+    within find('#sign_up') do
       expect do
         fill_in :user_email, with: 'albert@email.fr'
         fill_in :user_password, with: 'password'
@@ -20,7 +20,7 @@ describe 'Authentication - User', type: :feature do
 
   xscenario '#SignIn Users' do
     visit new_user_session_path
-    within find('#test2') do
+    within find('#sign_up') do
       fill_in :user_email, with: 'albert@email.fr'
       fill_in :user_password, with: 'password'
       click_on 'Se connecter'

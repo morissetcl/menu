@@ -95,7 +95,7 @@ end
 
 def sign_as_user
   visit new_user_session_path
-  within find('#test1') do
+  within find('#sign_up') do
     fill_in :user_email, with: 'albert@email.fr'
     fill_in :user_password, with: 'password'
     fill_in :user_password_confirmation, with: 'password'
