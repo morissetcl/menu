@@ -7,6 +7,9 @@ body {
   margin-top: 100px ;
   color: gray;
   font-size: 18px;
+  @media screen and (max-width: 600px) {
+    margin-top: 10px ;
+  }
   .number {
     font-size: 30px;
     font-weight: bold;

@@ -14,11 +14,14 @@ xdescribe 'Favorite' do
 
     before(:each) do
       get "/restaurant/#{restaurant.id}.json"
-      @json = JSON.parse(response.body).first
+      @json = JSON.parse(response.body)
     end
 
     it do
-      @json
+      expect(@json['name']).to eq 'Burger Factory'
+      expect(@json['city']).to eq 'Paris'
+      expect(@json['dishes'][0]['title']).to eq 'Fondue'
+      expect(@json['dishes'][1]['title']).to eq 'Raclette'
     end
   end
 end
