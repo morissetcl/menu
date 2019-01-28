@@ -7,13 +7,14 @@ class Favorite extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userId: props.match.params.userId,
       favoriteResults: []
     }
     this.handleDelete = this.handleDelete.bind(this)
   }
 
   getFavorites() {
-    $.getJSON('/private/1/favorite',(res) =>
+    $.getJSON('/private/' + this.state.userId + '/favorite',(res) =>
     {
       this.setState({favoriteResults: jQuery.parseJSON(JSON.stringify(res))});
     });
@@ -27,7 +28,7 @@ class Favorite extends Component {
      message: 'Restaurant retiré de vos favoris',
      timeout: 2500
    })
-   fetch(`/private/1/favorite/${id}`,
+   fetch(`/private/${this.state.userId}/favorite/${id}`,
    {
      method: 'DELETE',
      headers: {
