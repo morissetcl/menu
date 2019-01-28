@@ -52,3 +52,48 @@
   margin-top: 30px;
   padding-right: 30px;
 }
+
+.home-wrapper {
+  transform: skewY(4deg);
+  transform-origin: 100% 50% 0;
+  background: -webkit-linear-gradient(top left, #4776e6, #8e54e9);
+  height: 100vh;
+}
+
+.sisi {
+  padding-top: 20px;
+  position: absolute;
+  top: 125px;
+  img {
+    opacity: 1;
+    height: 50%;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+}
+
+.h1 {
+  font-size: 40px;
+  color:white;
+  margin: 0px;
+}
+
+.h2 {
+  color: rgba(255,255,255,0.7);
+  font-weight: 200;
+  line-height: 26px;
+  letter-spacing: 1px;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+.content-left, .content-right {
+  padding-left: 60px !important;
+  padding-top: 30px !important;
+}
+
+.brand-logo {
+  padding: 0 15px !important;
+}
+
+.forgot-password-container {
+}

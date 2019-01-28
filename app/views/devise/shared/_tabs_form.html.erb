@@ -1,13 +1,13 @@
 <div class="col s12 m6 ">
   <ul id="tabs-swipe-demo" class="tabs">
-    <li class="tab col s6 title"><a class="active" href="#test2">Se connecter</a></li>
-    <li class="tab col s6 title"><a href="#test1"> S'inscrire</a></li>
+    <li class="tab col s6 title"><a class="active" href="#sign_in">Se connecter</a></li>
+    <li class="tab col s6 title"><a href="#sign_up"> S'inscrire</a></li>
   </ul>
   <div class="col s12">
-    <div id="test1" >
+    <div id="sign_up" >
       <%= render 'devise/registrations/form'%>
     </div>
-    <div id="test2" >
+    <div id="sign_in" >
       <%= render 'devise/sessions/form'%>
     </div>
   </div>

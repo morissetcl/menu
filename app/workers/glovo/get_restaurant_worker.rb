@@ -9,7 +9,7 @@ module Glovo
 
     def perform(*_args)
       paris = 'https://glovoapp.com/fr/par/category/RESTAURANT'
-      GetRestaurantGlovoService.call(paris)
+      Glovo::GetRestaurantGlovoService.call(paris)
     end
   end
 end

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Restaurant', type: :integration, focus: true do
+describe 'Restaurant', type: :integration do
   let!(:restaurant) { create :restaurant, name: 'Bonjour Toi', slug: 'bonjour-toi' }
   let!(:restaurant_menu) { create :restaurant_menu, restaurant: restaurant }
   let!(:dish) { create :dish, title: 'Bruschetta', restaurant_menu: restaurant_menu }

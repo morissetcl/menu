@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'sidekiq/testing'
 
-describe GetRestaurantMenuFoodinService do
+describe Foodin::GetRestaurantMenuFoodinService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 
@@ -23,8 +23,7 @@ describe GetRestaurantMenuFoodinService do
     link = '/cart/196/El-Tio'
     restaurant = Restaurant.create(name: 'El Tio', slug: 'el-tio')
     expect do
-      GetRestaurantMenuFoodinService.call(link, restaurant.id)
-      p restaurant
+      Foodin::GetRestaurantMenuFoodinService.call(link, restaurant.id)
     end.to change(RestaurantMenu, :count)
       .and change(Dish, :count)
   end

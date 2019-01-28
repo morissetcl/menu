@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'sidekiq/testing'
 
-describe GetRestaurantGlovoService do
+describe Glovo::GetRestaurantGlovoService do
   ActiveJob::Base.queue_adapter = :test
   Sidekiq::Testing.fake!
 
@@ -22,7 +22,7 @@ describe GetRestaurantGlovoService do
   it 'Create a new restaurant and launch new worker' do
     address = 'https://glovoapp.com/fr/shz/category/RESTAURANT'
     expect do
-      GetRestaurantGlovoService.call(address)
+      Glovo::GetRestaurantGlovoService.call(address)
     end.to change(Restaurant, :count)
   end
 end
