@@ -18,12 +18,17 @@ describe 'Authentication - User', type: :feature do
     end
   end
 
-  xscenario '#SignIn Users' do
+  scenario 'Add subscription request' do
     visit new_user_session_path
     within find('#sign_up') do
-      fill_in :user_email, with: 'albert@email.fr'
-      fill_in :user_password, with: 'password'
-      click_on 'Se connecter'
+      expect do
+        fill_in :subscription_request_last_name, with: 'albert@email.fr'
+        fill_in :subscription_request_first_name, with: 'password'
+        fill_in :subscription_request_email, with: 'albert@email.fr'
+        fill_in :subscription_request_company, with: 'password'
+        fill_in :subscription_request_prospecting_area, with: 'password'
+        click_on 'Je demande un accès'
+      end.to change(SubscriptionRequest, :count)
     end
   end
 end
