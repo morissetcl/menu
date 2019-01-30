@@ -395,6 +395,9 @@ GEM
       redis (>= 3.3.5, < 5)
     sidekiq-limit_fetch (3.4.0)
       sidekiq (>= 4)
+    simple_form (4.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -492,6 +495,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.0)
   sidekiq
   sidekiq-limit_fetch
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
@@ -501,7 +505,7 @@ DEPENDENCIES
   webpacker
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.5.1p57
 
 BUNDLED WITH
    1.16.3

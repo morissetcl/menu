@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   # public-routes
   root to: 'home#show'
+  resources :subscription_request
   resources :user, path: 'private', except: [:index] do
     resources :dashboard, only: [:index] do
       collection do
