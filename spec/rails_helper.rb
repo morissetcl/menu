@@ -94,12 +94,12 @@ def sign_in_as_admin(admin)
 end
 
 def sign_as_user
+  user = create :user, email: 'other@email.fr', password: 'coucou', password_confirmation: 'coucou'
   visit new_user_session_path
-  within find('#sign_up') do
-    fill_in :user_email, with: 'albert@email.fr'
-    fill_in :user_password, with: 'password'
-    fill_in :user_password_confirmation, with: 'password'
-    click_on "S'inscrire"
+  within find('#new_user') do
+    fill_in :user_email, with: user.email
+    fill_in :user_password, with: user.password
+    click_on 'Se connecter'
   end
 end
 
