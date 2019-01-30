@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 describe 'Authentication - User', type: :feature do
-  let!(:other_user) { create :user, email: 'other@email.fr' }
-
   before { sign_as_user }
 
   scenario 'can access to my dashboard' do
