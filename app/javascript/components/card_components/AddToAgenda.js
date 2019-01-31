@@ -30,7 +30,7 @@ class AddToAgenda extends Component {
   handleFormSubmit(date, title){
     let body = JSON.stringify({event: {date: date, user_id: this.state.userId, restaurant_id: this.state.restaurantId, title: title }})
 
-    fetch('http://localhost:3000/event', {
+    fetch(process.env.BASE_URL + "/event", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

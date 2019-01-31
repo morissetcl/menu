@@ -15,7 +15,7 @@ class FavoriteStar extends Component {
   handleFormSubmit(restaurant, user){
     let body = JSON.stringify({favorite: {restaurant_id: restaurant, user_id: user} })
 
-  fetch('http://localhost:3000/favorite', {
+  fetch(process.env.BASE_URL + 'favorite', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
