@@ -15,7 +15,7 @@ class FavoriteStar extends Component {
   handleFormSubmit(restaurant, user){
     let body = JSON.stringify({favorite: {restaurant_id: restaurant, user_id: user} })
 
-  fetch(process.env.BASE_URL + 'favorite', {
+  fetch('https://menuapp-staging.herokuapp.com/favorite', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
