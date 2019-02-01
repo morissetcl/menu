@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+set -ex
+
+APP=menuapp-staging
+LOCAL_DB_NAME=menu_development
+
+heroku pg:backups capture -a $APP
+curl -o latest.dump `heroku pg:backups public-url -a $APP`
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -d $LOCAL_DB_NAME latest.dump
+rm latest.dump
