@@ -8,6 +8,10 @@ class PublicNavbar extends Component {
     super(props);
   };
 
+  componentDidMount() {
+    $('.sidenav').sidenav();
+  }
+
   render(){
     return(
       <Router>
@@ -23,6 +27,13 @@ class PublicNavbar extends Component {
               }
             </ul>
           </div>
+          <ul class="sidenav" id="mobile-demo">
+            {this.props.userSignedIn ?
+              <li><a href={`/private/${this.props.currentUser.id}/dashboard`} rel="nofollow">Dashboard</a></li>
+            :
+            <li><a href='/users/sign_in' rel="nofollow">Connexion</a></li>
+            }
+          </ul>
         </nav>
 
 

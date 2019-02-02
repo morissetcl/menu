@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import RestaurantCard from '../RestaurantCard'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBabyCarriage } from '@fortawesome/free-solid-svg-icons'
 
 class Favorite extends Component {
 
@@ -53,7 +55,20 @@ class Favorite extends Component {
     return (
       <div className='row'>
         <div className='col s12'>
-          { favoritesRestaurants }
+        {favoritesRestaurants.length > 0 ?
+          <div className="result-wrapper row">
+            { favoritesRestaurants }
+          </div>
+          :
+
+            <div className="no-favorites-yet"><p>
+              Oups vous n'avez pas encore de favoris..
+              </p><FontAwesomeIcon
+                icon={faBabyCarriage}
+                className='super'
+              />
+            </div>
+        }
         </div>
       </div>
     )

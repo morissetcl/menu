@@ -94,3 +94,18 @@
 .brand-logo {
   padding: 0 15px !important;
 }
+
+.sidenav-overlay {
+  z-index: 0 !important;
+}
+
+.no-favorites-yet {
+  color: #bbbbbb;
+  height: 10vh;
+  text-align: center;
+  margin-top: 10%;
+  p { font-size: 15px; }
+  .fa-baby-carriage {
+    font-size: 40px;
+  }
+}

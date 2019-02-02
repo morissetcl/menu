@@ -19,7 +19,6 @@
 //= require iziToast
 
 $(document).ready(function(){
-  $('.sidenav').sidenav();
   M.updateTextFields();
   $('.collapsible').collapsible();
   $('.tabs').tabs();
