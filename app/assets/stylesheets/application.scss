@@ -44,7 +44,7 @@
 }
 
 .nav-color {
-  background-color: #26a69a;
+  background-color: #113f67;
 }
 
 .rbc-calendar {
@@ -95,5 +95,17 @@
   padding: 0 15px !important;
 }
 
-.forgot-password-container {
+.sidenav-overlay {
+  z-index: 0 !important;
+}
+
+.no-favorites-yet {
+  color: #bbbbbb;
+  height: 10vh;
+  text-align: center;
+  margin-top: 10%;
+  p { font-size: 15px; }
+  .fa-baby-carriage {
+    font-size: 40px;
+  }
 }

@@ -71,17 +71,17 @@ class AddToAgenda extends Component {
           />
         </div>
         <div id="modal1" class="modal bottom-sheet">
-          <div class="modal-content">
+          <div className="modal-content">
             <h5>Ajouter cet établissement à votre agenda</h5>
-            <div class="input-field">
-              <label for="title_event">Description</label>
+            <div className="input-field">
+              <label>Description</label>
               <input
                 type="text"
                 id='title_event'
                 className='input-field '
               />
             </div>
-            <div class="input-field">
+            <div className="input-field">
               <input
                 type="text"
                 id='date_event'
