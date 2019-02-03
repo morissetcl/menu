@@ -8,10 +8,6 @@ class Restaurant < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode, if: ->(obj) { obj.address.present? && obj.address_changed? }
 
-  def full_address
-    "#{street}, #{zip_code} #{city}"
-  end
-
   def first_three_tags
     tags.first(3)
   end
