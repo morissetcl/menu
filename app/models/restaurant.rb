@@ -6,7 +6,7 @@ class Restaurant < ApplicationRecord
   validates :name, :slug, presence: true, uniqueness: true
 
   geocoded_by :full_address
-  after_validation :geocode, if: ->(obj) { obj.address.present? && obj.address_changed? }
+  after_validation :geocode, if: ->(obj) { obj.full_address.present? && obj.full_address_changed? }
 
   def first_three_tags
     tags.first(3)
