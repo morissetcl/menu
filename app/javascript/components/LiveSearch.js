@@ -15,7 +15,9 @@ class LiveSearch extends Component {
       showItemSelected: false,
       loaded: false
     };
+  }
 
+  componentDidMount() {
     $.getJSON('/private/:user_id/dashboard/recherche?q=' + this.state.term)
       .then(response => this.setState({ autoCompleteResults: response.restaurants, loaded: true }))
   }

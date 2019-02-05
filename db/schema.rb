@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_28_213020) do
+ActiveRecord::Schema.define(version: 2019_02_03_202044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2019_01_28_213020) do
     t.float "longitude"
     t.integer "dishes_count"
     t.text "tags", default: [], array: true
+    t.string "full_address"
   end
 
   create_table "subscription_requests", force: :cascade do |t|

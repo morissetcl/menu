@@ -143,7 +143,8 @@ addresses = [
   '117 rue de Claye 77400 Thorigny-sur-Marne',
   '5 rue du Teinturin 33970 Lège-Cap-Ferret',
   '660 avenue du Général de Gaulle 59910 Bondues',
-  '1 Avenue Gabriel Péri, MONTREUIL 93100'
+  '1 Avenue Gabriel Péri, MONTREUIL 93100',
+  '25 allée Antoine Pinay - chemin de Halage, La Barthelasse, 84000 Avignon'
 ]
 
 addresses.each do |adresse|

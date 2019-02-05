@@ -42,7 +42,8 @@ class FormatAddressesService
       department = DEPARTMENTS[zip_code.first(2)]
 
       @restaurant.update(zip_code: zip_code, city: city.strip,
-                         street: street, department: department)
+                         street: street, department: department,
+                         full_address: "#{street}, #{zip_code} #{city.strip}")
     end
 
     def fill_address_column_cleanly_restopolitain
@@ -53,7 +54,8 @@ class FormatAddressesService
       department = DEPARTMENTS[zip_code.first(2)]
 
       @restaurant.update(zip_code: zip_code, city: city.strip,
-                         street: street, department: department)
+                         street: street, department: department,
+                         full_address: "#{street}, #{zip_code} #{city.strip}")
     end
 
     def fill_address_column_cleanly_restovisio
@@ -63,7 +65,8 @@ class FormatAddressesService
       department = DEPARTMENTS[zip_code.first(2)]
 
       @restaurant.update(zip_code: zip_code, city: city,
-                         street: street.chomp(zip_code).strip, department: department)
+                         street: street.chomp(zip_code).strip, department: department,
+                         full_address: "#{street.chomp(zip_code).strip}, #{zip_code} #{city.strip}")
     end
 
     def fill_address_column_cleanly
@@ -73,7 +76,8 @@ class FormatAddressesService
       department = DEPARTMENTS[zip_code.first(2)]
 
       @restaurant.update(zip_code: zip_code, city: city.capitalize,
-                         street: street, department: department)
+                         street: street, department: department,
+                         full_address: "#{street}, #{zip_code} #{city.capitalize}")
     end
 
     def need_to_be_update?
