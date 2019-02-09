@@ -66,7 +66,7 @@ class FormatAddressesService
 
       @restaurant.update(zip_code: zip_code, city: city,
                          street: street.chomp(zip_code).strip, department: department,
-                         full_address: "#{street.chomp(zip_code).strip}, #{zip_code} #{city.strip}")
+                         full_address: "#{street.chomp(zip_code).strip} #{zip_code} #{city.strip}")
     end
 
     def fill_address_column_cleanly
