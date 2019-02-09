@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   end
   post '/event', to: "event#create"
   post '/favorite', to: "favorite#create"
+  post '/comment', to: "comment#create"
   get '/restaurant/:id', to: "restaurant#show"
 end

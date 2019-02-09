@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import FavoriteStar from './card_components/FavoriteStar';
 import Loader from './reusable_components/Loader';
 import AddToAgenda from './card_components/AddToAgenda';
+import Comments from './card_components/Comments';
 
 class Restaurant extends Component {
 
@@ -103,6 +104,10 @@ class Restaurant extends Component {
                 </div>
                 <AddToAgenda
                   is_booked={isBooked}
+                  restaurantId={this.state.restaurant.id}
+                  userId={this.state.current_user}
+                />
+                <Comments
                   restaurantId={this.state.restaurant.id}
                   userId={this.state.current_user}
                 />
