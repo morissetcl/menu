@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 
-class CommentController < ApplicationController
+class CommentsController < ApplicationController
   skip_before_action :verify_authenticity_token
   layout false
   layout 'private'
+
+  def index
+    comments = Comment.where(user_id: params[:user_id], restaurant_id: params[:restaurant_id])
+    render json: comments
+  end
 
   def create
     comment = Comment.create!(comment_params)

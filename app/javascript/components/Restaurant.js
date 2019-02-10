@@ -22,11 +22,9 @@ class Restaurant extends Component {
 
   componentDidMount() {
     $('.modal').modal();
-
     $.getJSON('/restaurant/' + this.props.match.params.id,
     (res) =>
     {
-
       this.setState({restaurant: jQuery.parseJSON(JSON.stringify(res))});
       this.setState({dishes: this.state.restaurant.dishes});
       this.setState({current_user: this.state.restaurant.user_id});

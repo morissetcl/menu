@@ -6,11 +6,13 @@ import { faCalendarWeek } from '@fortawesome/free-solid-svg-icons'
 class Comments extends Component {
 
   constructor(props) {
+    console.log(props)
     super(props);
     this.state = {
       restaurantId: props.restaurantId,
       userId: props.userId,
-      body: ''
+      body: '',
+      commentResults: []
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   };
@@ -21,10 +23,17 @@ class Comments extends Component {
     this.handleFormSubmit(body)
   }
 
+  getComments() {
+    $.getJSON('/private/' + this.state.restaurantId + '/restaurant/' + this.state.userId + '/comments',(res) =>
+    {
+      this.setState({commentsResults: jQuery.parseJSON(JSON.stringify(res))});
+    });
+  }
+
   handleFormSubmit(body){
     let payload = JSON.stringify({comment: {body: body, user_id: this.state.userId, restaurant_id: this.state.restaurantId }})
 
-    fetch(process.env.BASE_URL + "/comment", {
+    fetch(process.env.BASE_URL + '/private/' + this.state.restaurantId + '/restaurant/' + this.state.userId + '/comments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -43,13 +52,18 @@ class Comments extends Component {
       })
   }
 
-  addNewComment(event){
+  addNewComment(comment){
     this.setState({
-      comments: this.state.comments.concat(comment)
+      commentResults: this.state.commentResults.concat(comment)
     })
   }
 
   render(){
+    let commentsRestaurant = this.state.commentResults.map((response, index) => {
+      return <div key={index} className='cool'>
+              <p>{response}</p>
+             </div>
+    });
     return (
       <div>
         <div className="modal-trigger" href="#modal2">
@@ -60,6 +74,9 @@ class Comments extends Component {
         </div>
         <div id="modal2" class="modal bottom-sheet">
           <div className="modal-content">
+            <div className='comments-wrapper'>
+              <p>hahaha</p>
+            </div>
             <div className="modal-content">
               <h5>Ajouter un commentaire</h5>
               <div className="input-field">
