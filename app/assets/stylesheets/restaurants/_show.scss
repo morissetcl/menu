@@ -43,7 +43,11 @@ tbody tr {
   color: rgba(238,110,115,0.9);
 }
 
-.not-yet-favorite {
+.already-commented {
+  color: rgba(238,110,115,0.9) !important;
+}
+
+.not-yet-favorite, .not-yet-commented {
   color: black;
   cursor: pointer;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarWeek } from '@fortawesome/free-solid-svg-icons'
+import { faComment } from '@fortawesome/free-solid-svg-icons'
 
 class Comments extends Component {
 
@@ -20,6 +20,14 @@ class Comments extends Component {
     var body = $('#body_comment').val();
     this.setState({body: body});
     this.handleFormSubmit(body)
+    $('.not-yet-commented').addClass('already-commented')
+    iziToast.show({
+      backgroundColor: 'rgba(238,110,115,0.9)',
+        theme: 'dark',
+      icon: 'fa fa-star',
+      message: 'Commentaire ajouté',
+      timeout: 2500
+    })
   }
 
   fetchComments(){
@@ -42,13 +50,6 @@ class Comments extends Component {
       .then((comment)=>{
         this.addNewComment(comment)
       })
-
-      iziToast.show({
-        backgroundColor: 'rgba(238,110,115,0.9)',
-        theme: 'dark',
-        message: 'Commentaire ajouté',
-        timeout: 2500
-      })
   }
 
   addNewComment(comment){
@@ -67,7 +68,7 @@ class Comments extends Component {
       <div>
         <div className="modal-trigger" href="#modal2">
           <FontAwesomeIcon
-            icon={faCalendarWeek}
+            icon={faComment}
             className='super'
             onClick={() => { this.fetchComments()}}
           />
