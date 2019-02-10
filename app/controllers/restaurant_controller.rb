@@ -31,6 +31,7 @@ class RestaurantController < ApplicationController
   end
 
   def commented
-    @is_commented = Comment.find_by(user_id: @current_user_id, restaurant_id: @restaurant.id).present?
+    @is_commented = Comment.find_by(user_id: @current_user_id, restaurant_id: @restaurant.id)
+                           .present?
   end
 end

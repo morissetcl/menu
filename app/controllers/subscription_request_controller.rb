@@ -4,7 +4,7 @@ class SubscriptionRequestController < ApplicationController
   def create
     @subscription_request = SubscriptionRequest.create(subscription_request_params)
     if @subscription_request.save
-      redirect_to root_path, notice: 'Merci pour votre inscription nous vous recontactons rapidement'
+      redirect_to root_path, notice: 'Merci, nous vous recontactons rapidement'
     else
       redirect_to new_user_session_path, alert: 'oups'
     end
