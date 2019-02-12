@@ -70,7 +70,7 @@ class AddToAgenda extends Component {
             className='super'
           />
         </div>
-        <div id="modal1" class="modal bottom-sheet">
+        <div id="modal1" className="modal bottom-sheet">
           <div className="modal-content">
             <h5>Ajouter cet établissement à votre agenda</h5>
             <div className="input-field">

@@ -17,7 +17,7 @@ class Restaurant extends Component {
       current_user: '',
       favorite: false,
       loaded: false,
-      commented: false
+      commented: false,
     };
   }
 

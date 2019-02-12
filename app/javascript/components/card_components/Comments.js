@@ -61,7 +61,7 @@ class Comments extends Component {
   render(){
     let commentsRestaurant = this.state.commentsResults.map((response, index) => {
       return <div key={index} className='cool'>
-              <p>{response.body}</p>
+                <p>{response.body}</p>
              </div>
     });
     return (
@@ -73,7 +73,7 @@ class Comments extends Component {
             onClick={() => { this.fetchComments()}}
           />
         </div>
-        <div id="modal2" class="modal bottom-sheet">
+        <div id="modal2" className="modal bottom-sheet">
           <div className="modal-content">
             <div className='comments-wrapper'>
               {commentsRestaurant}
