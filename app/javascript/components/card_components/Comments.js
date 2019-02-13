@@ -60,8 +60,11 @@ class Comments extends Component {
 
   render(){
     let commentsRestaurant = this.state.commentsResults.map((response, index) => {
-      return <div key={index} className='cool'>
-                <p>{response.body}</p>
+      return <div key={index}>
+               <div class="collection-item">
+                 <p>{response.created_at}</p>
+                 <p>{response.body}</p>
+               </div>
              </div>
     });
     return (
@@ -74,21 +77,25 @@ class Comments extends Component {
           />
         </div>
         <div id="modal2" className="modal bottom-sheet">
-          <div className="modal-content">
-            <div className='comments-wrapper'>
-              {commentsRestaurant}
-            </div>
-            <div className="modal-content">
-              <h5>Ajouter un commentaire</h5>
-              <div className="input-field">
-                <label>commentaire</label>
-                <input
-                  type="text"
-                  id='body_comment'
-                  className='input-field '
-                />
+          <div className="modal-content super-wrapper row">
+            <div className='comments-wrapper col s6'>
+              <div class="collection">
+                {commentsRestaurant}
               </div>
-              <input className='modal-close' type="submit" value="Ajouter" onClick={() => { this.handleChange()}}/>
+            </div>
+            <div className="modal-content col s6">
+              <div className='fixed-form'>
+              <h5>Ajouter un commentaire</h5>
+                <div className="input-field">
+                  <label>commentaire</label>
+                  <input
+                    type="text"
+                    id='body_comment'
+                    className='input-field '
+                  />
+                </div>
+                <input className='modal-close' type="submit" value="Ajouter" onClick={() => { this.handleChange()}}/>
+              </div>
             </div>
           </div>
         </div>

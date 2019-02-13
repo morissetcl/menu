@@ -30,3 +30,17 @@ li {
   color: #ee6e73;
   font-weight: bold;
 }
+
+.collection-item {
+  border-bottom: 2px solid #e0e0e0 !important;
+}
+
+.super-wrapper {
+  display: flex;
+  color: black !important;
+}
+
+.fixed-form {
+  position: fixed;
+  width: 45%
+}

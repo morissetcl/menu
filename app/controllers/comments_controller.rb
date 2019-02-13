@@ -6,7 +6,8 @@ class CommentsController < ApplicationController
   layout 'private'
 
   def index
-    comments = Comment.where(user_id: params[:user_id], restaurant_id: params[:restaurant_id])
+    comments = Comment.order(created_at: :desc)
+                      .where(user_id: params[:user_id], restaurant_id: params[:restaurant_id])
     render json: comments
   end
 
