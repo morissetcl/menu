@@ -70,7 +70,7 @@ class AddToAgenda extends Component {
             className='super'
           />
         </div>
-        <div id="modal1" className="modal bottom-sheet">
+        <div id="modal1" className="modal">
           <div className="modal-content">
             <h5>Ajouter cet établissement à votre agenda</h5>
             <div className="input-field">
@@ -89,7 +89,7 @@ class AddToAgenda extends Component {
                 placeholder='Date'
               />
             </div>
-            <input className='modal-close' type="submit" value="Ajouter" onClick={() => { this.handleDateChange()}}/>
+            <input className='modal-close waves-effect waves-light btn' type="submit" value="Ajouter" onClick={() => { this.handleDateChange()}}/>
           </div>
         </div>
       </div>

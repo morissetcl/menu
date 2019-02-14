@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
+import { faMehBlank } from '@fortawesome/free-solid-svg-icons'
 
 class Comments extends Component {
 
@@ -76,25 +77,38 @@ class Comments extends Component {
             onClick={() => { this.fetchComments()}}
           />
         </div>
-        <div id="modal2" className="modal bottom-sheet">
+        <div id="modal2" className="modal">
           <div className="modal-content super-wrapper row">
             <div className='comments-wrapper col s6'>
               <div class="collection">
-                {commentsRestaurant}
+              {commentsRestaurant.length > 0 ?
+                <div className="result-wrapper row">
+                  { commentsRestaurant }
+                </div>
+                :
+                <div className='empty-comment'>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faMehBlank}
+                      className='empty-icone'
+                    />
+                  </div>
+                  <p>Oups, littéralement rien à déclarer pour l'instant</p>
+                </div>
+              }
               </div>
             </div>
             <div className="modal-content col s6">
               <div className='fixed-form'>
-              <h5>Ajouter un commentaire</h5>
                 <div className="input-field">
-                  <label>commentaire</label>
+                  <label>Ajoutez un commentaire</label>
                   <input
                     type="text"
                     id='body_comment'
                     className='input-field '
                   />
                 </div>
-                <input className='modal-close' type="submit" value="Ajouter" onClick={() => { this.handleChange()}}/>
+                <input className='modal-close waves-effect waves-light btn' type="submit" value="Ajouter" onClick={() => { this.handleChange()}}/>
               </div>
             </div>
           </div>
@@ -103,5 +117,6 @@ class Comments extends Component {
     )
   }
 }
+
 
 export default Comments

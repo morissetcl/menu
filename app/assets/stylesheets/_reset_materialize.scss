@@ -31,16 +31,28 @@ li {
   font-weight: bold;
 }
 
-.collection-item {
-  border-bottom: 2px solid #e0e0e0 !important;
+.collection {
+  border: none !important;
 }
 
 .super-wrapper {
   display: flex;
   color: black !important;
+  min-height: 200px;
 }
 
 .fixed-form {
   position: fixed;
-  width: 45%
+  width: 40%;
+  padding:24px;
+}
+
+.empty-comment{
+  text-align: center;
+  color: #bbbbbb;
+}
+
+.empty-icone {
+  font-size: 60px;
+
 }
