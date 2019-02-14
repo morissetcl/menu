@@ -80,7 +80,7 @@ class Comments extends Component {
         <div id="modal2" className="modal">
           <div className="modal-content super-wrapper row">
             <div className='comments-wrapper col s6'>
-              <div class="collection">
+              <div className="collection">
               {commentsRestaurant.length > 0 ?
                 <div className="result-wrapper row">
                   { commentsRestaurant }
