@@ -106,9 +106,9 @@ end
 Geocoder.configure(lookup: :test)
 
 addresses = [
-  '1 impasse de la Gaité, Paris, 75014',
-  '1 Avenue du Dr Jean Mac, 72100 Le Mans, France',
-  '1, place Jean Jaurès, 81100 Castres',
+  '1 impasse de la Gaité, 75014 Paris',
+  '1 Avenue du Dr Jean Mac, 72100 Le Mans',
+  '1 place Jean Jaurès, 81100 Castres',
   '17 chemin de Ghesles 59700 Marcq-en-Barœul',
   "2 ruelle d'Ascq 59650 Villeneuve-d'Ascq",
   'Calle de Minerva, 11, 08006 Barcelona',
@@ -118,7 +118,7 @@ addresses = [
   '2 place de Rouen 76000 Rouen',
   '18 Quai de la Tourelle 95000 Cergy',
   '163 Avenue Jean Jaurès, AUBERVILLIERS 93300',
-  '34 Rue Notre Dame de Recouvrance, 45000 Orléans, France',
+  '34 Rue Notre Dame de Recouvrance,rance',
   '4 Avenue de Verdun, ROMAINVILLE 93230',
   'Sous Le Pont De Fresnes, Entre Villey Saint Etienne et Liverdun 54200 Villey-Saint-Étienne',
   '180 Avenue du Général Leclerc, PANTIN 93500',
@@ -143,7 +143,7 @@ addresses = [
   '117 rue de Claye 77400 Thorigny-sur-Marne',
   '5 rue du Teinturin 33970 Lège-Cap-Ferret',
   '660 avenue du Général de Gaulle 59910 Bondues',
-  '1 Avenue Gabriel Péri, MONTREUIL 93100',
+  '1 Avenue Gabriel Péri, 93100 Montreuil',
   '25 allée Antoine Pinay - chemin de Halage, La Barthelasse, 84000 Avignon'
 ]
 

@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import FavoriteStar from './card_components/FavoriteStar';
 import Loader from './reusable_components/Loader';
 import AddToAgenda from './card_components/AddToAgenda';
+import Comments from './card_components/Comments';
 
 class Restaurant extends Component {
 
@@ -15,22 +16,22 @@ class Restaurant extends Component {
       dishes: [],
       current_user: '',
       favorite: false,
-      loaded: false
+      loaded: false,
+      commented: false,
     };
   }
 
   componentDidMount() {
     $('.modal').modal();
-
     $.getJSON('/restaurant/' + this.props.match.params.id,
     (res) =>
     {
-
       this.setState({restaurant: jQuery.parseJSON(JSON.stringify(res))});
       this.setState({dishes: this.state.restaurant.dishes});
       this.setState({current_user: this.state.restaurant.user_id});
       this.setState({favorite: this.state.restaurant.favorite});
       this.setState({booked: this.state.restaurant.booked});
+      this.setState({commented: this.state.restaurant.commented});
 
       this.setState({loaded: true})
     })
@@ -60,6 +61,7 @@ class Restaurant extends Component {
   }
 
   render(){
+    const isCommented = this.state.commented;
     const isFavorite = this.state.favorite;
     const isBooked = this.state.booked;
 
@@ -106,6 +108,12 @@ class Restaurant extends Component {
                   restaurantId={this.state.restaurant.id}
                   userId={this.state.current_user}
                 />
+                <div className={isCommented ? "already-commented" : "not-yet-commented"}>
+                  <Comments
+                    restaurantId={this.state.restaurant.id}
+                    userId={this.state.current_user}
+                  />
+                </div>
               </div>
               <div className='restaurant-content' style={{ width: '85%' }}>
                 <li>{this.state.favorite}</li>

@@ -19,7 +19,7 @@ describe Restopolitain::GetRestaurantMenuService do
     stub_restaurant_menu_restopolitain
   end
 
-  it 'Create a new restaurant_menu and dish' do
+  xit 'Create a new restaurant_menu and dish' do
     restaurant = Restaurant.create!(name: 'creperie 21 martorell', slug: 'creperie-21-martorell')
     link = 'https://www.restopolitan.es/restaurante/barcelona-162105/al-cafe-310275.html'
     expect do

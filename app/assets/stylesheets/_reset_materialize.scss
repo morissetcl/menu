@@ -30,3 +30,29 @@ li {
   color: #ee6e73;
   font-weight: bold;
 }
+
+.collection {
+  border: none !important;
+}
+
+.super-wrapper {
+  display: flex;
+  color: black !important;
+  min-height: 200px;
+}
+
+.fixed-form {
+  position: fixed;
+  width: 40%;
+  padding:24px;
+}
+
+.empty-comment{
+  text-align: center;
+  color: #bbbbbb;
+}
+
+.empty-icone {
+  font-size: 60px;
+
+}

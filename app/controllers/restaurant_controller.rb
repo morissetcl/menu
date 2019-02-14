@@ -19,6 +19,7 @@ class RestaurantController < ApplicationController
     @current_user_id = current_user.id
     favorite
     booked
+    commented
   end
 
   def favorite
@@ -27,5 +28,10 @@ class RestaurantController < ApplicationController
 
   def booked
     @is_booked = Event.find_by(user_id: @current_user_id, restaurant_id: @restaurant.id).present?
+  end
+
+  def commented
+    @is_commented = Comment.find_by(user_id: @current_user_id, restaurant_id: @restaurant.id)
+                           .present?
   end
 end

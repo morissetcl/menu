@@ -25,7 +25,11 @@ Rails.application.routes.draw do
       end
     end
     resources :favorite, except: [:new, :create]
+    resources :comment, only: [:index]
     resources :calendar, only: [:index]
+    resources :restaurant, only: :show do
+      resources :comments, only: [:index, :new, :create]
+    end
   end
   post '/event', to: "event#create"
   post '/favorite', to: "favorite#create"

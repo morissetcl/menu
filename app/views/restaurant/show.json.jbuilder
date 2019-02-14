@@ -16,3 +16,4 @@ end
 json.user_id @current_user_id
 json.favorite @favorite
 json.booked @is_booked
+json.commented @is_commented
