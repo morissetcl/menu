@@ -5,6 +5,7 @@ import FavoriteStar from './card_components/FavoriteStar';
 import Loader from './reusable_components/Loader';
 import AddToAgenda from './card_components/AddToAgenda';
 import Comments from './card_components/Comments';
+import FormCalendar from './card_components/FormCalendar';
 
 class Restaurant extends Component {
 
@@ -115,25 +116,32 @@ class Restaurant extends Component {
                   />
                 </div>
               </div>
-              <div className='restaurant-content' style={{ width: '85%' }}>
-                <li>{this.state.favorite}</li>
-                <li>{this.state.restaurant.name}</li>
-                <li>{this.state.restaurant.street}</li>
-                <li>{this.state.restaurant.city}</li>
-                <li>{this.state.restaurant.zip_code}</li>
-                <li>{this.state.restaurant.tags}</li>
+              <div className='restaurant-informations-container'>
+                <div className='restaurant-content' style={{ width: '85%' }}>
+                  <li>{this.state.favorite}</li>
+                  <li>{this.state.restaurant.name}</li>
+                  <li>{this.state.restaurant.street}</li>
+                  <li>{this.state.restaurant.city}</li>
+                  <li>{this.state.restaurant.zip_code}</li>
+                  <li>{this.state.restaurant.tags}</li>
+                </div>
+                <div style={{ height: '335px', width: '85%', paddingBottom: '10px'}}>
+                  <GoogleMapReact
+                    bootstrapURLKeys={{ key: '' }}
+                    center={{lat: this.state.restaurant.latitude, lng: this.state.restaurant.longitude}}
+                    defaultZoom={15}>
+                    <MarkerMap
+                      lat={this.state.restaurant.latitude}
+                      lng={this.state.restaurant.longitude}
+                    />
+                  </GoogleMapReact>
+                </div>
               </div>
-              <div style={{ height: '335px', width: '85%', paddingBottom: '10px'}}>
-                <GoogleMapReact
-                  bootstrapURLKeys={{ key: '' }}
-                  center={{lat: this.state.restaurant.latitude, lng: this.state.restaurant.longitude}}
-                  defaultZoom={15}>
-                  <MarkerMap
-                    lat={this.state.restaurant.latitude}
-                    lng={this.state.restaurant.longitude}
-                  />
-                </GoogleMapReact>
-              </div>
+              <FormCalendar
+                restaurantId={this.state.restaurant.id}
+                userId={this.state.current_user}
+                isBooked={this.isBooked}
+              />
             </div>
           </div>
           :  <Loader/>
