@@ -51,6 +51,7 @@ class Comments extends Component {
       .then((comment)=>{
         this.addNewComment(comment)
       })
+      $('input').val('');
   }
 
   addNewComment(comment){

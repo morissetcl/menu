@@ -21,7 +21,7 @@ class AddToAgenda extends Component {
     const isBooked = this.state.booked;
     return (
       <div>
-        <div id="calendar-icon" id={isBooked ? "already-booked" : "not-yet-favorite"} href="#modal1" onClick={() => { this.displayFormCalendar()}}>
+        <div id="calendar-icon" id={isBooked ? "already-booked" : "not-yet-booked"} href="#modal1" onClick={() => { this.displayFormCalendar()}}>
           <FontAwesomeIcon
             icon={faCalendarWeek}
             className='super'

@@ -25,8 +25,8 @@ class FormCalendar extends Component {
     var title = $('#title_event').val();
     this.setState({date: date, title: title});
     this.handleFormSubmit(date, title)
-    $('#calendar-form').toggleClass('hidden')
-    $('.restaurant-informations-container').toggleClass('hidden')
+    $('#calendar-form').toggleClass('hidden').fadeIn(10000)
+    $('.restaurant-informations-container').toggleClass('hidden').fadeIn(10000)
   }
 
   handleFormSubmit(date, title){
@@ -50,6 +50,8 @@ class FormCalendar extends Component {
         timeout: 2500
       })
       this.setState({booked: true});
+      $('#not-yet-booked').attr('id', 'already-booked');
+      $('input').val('');
   }
 
   addNewEvent(event){
