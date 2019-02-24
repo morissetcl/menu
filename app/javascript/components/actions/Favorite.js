@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import RestaurantCard from '../RestaurantCard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBabyCarriage } from '@fortawesome/free-solid-svg-icons'
+import Loader from '../reusable_components/Loader';
 
 class Favorite extends Component {
 
@@ -10,15 +11,17 @@ class Favorite extends Component {
     super(props);
     this.state = {
       userId: props.match.params.userId,
-      favoriteResults: []
+      favoriteResults: [],
+      loaded: false
     }
+    console.log(this.state.loaded)
     this.handleDelete = this.handleDelete.bind(this)
   }
 
   getFavorites() {
     $.getJSON('/private/' + this.state.userId + '/favorite',(res) =>
     {
-      this.setState({favoriteResults: jQuery.parseJSON(JSON.stringify(res))});
+      this.setState({loaded: true, favoriteResults: jQuery.parseJSON(JSON.stringify(res))});
     });
   }
 
@@ -55,20 +58,24 @@ class Favorite extends Component {
     return (
       <div className='row'>
         <div className='col s12'>
-        {favoritesRestaurants.length > 0 ?
-          <div className="result-wrapper row">
-            { favoritesRestaurants }
-          </div>
-          :
-
-            <div className="no-favorites-yet"><p>
-              Oups vous n'avez pas encore de favoris..
-              </p><FontAwesomeIcon
-                icon={faBabyCarriage}
-                className='super'
-              />
+          {this.state.loaded ?
+            <div>
+            {favoritesRestaurants.length > 0 ?
+              <div className="result-wrapper row">
+                { favoritesRestaurants }
+              </div>
+              :
+              <div className="no-favorites-yet"><p>
+                Oups vous n'avez pas encore de favoris..
+                </p><FontAwesomeIcon
+                  icon={faBabyCarriage}
+                  className='super'
+                />
+              </div>
+            }
             </div>
-        }
+            : <Loader/>
+          }
         </div>
       </div>
     )

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CalendarController < ApplicationController
-  layout false
   layout 'private'
 
   def index

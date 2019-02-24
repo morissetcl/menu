@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class DashboardController < ApplicationController
-  layout false
   layout 'private'
 
   before_action :authenticate_user!

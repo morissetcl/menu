@@ -25,7 +25,7 @@ class Comments extends Component {
     iziToast.show({
       backgroundColor: 'rgba(238,110,115,0.9)',
         theme: 'dark',
-      icon: 'fa fa-star',
+      icon: 'fa fa-comment',
       message: 'Commentaire ajouté',
       timeout: 2500
     })
