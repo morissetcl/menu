@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class RestaurantController < ApplicationController
-  layout false
   layout 'private'
 
   def show
