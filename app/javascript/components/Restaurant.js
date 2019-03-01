@@ -95,7 +95,7 @@ class Restaurant extends Component {
                 </tbody>
               </table>
             </div>
-            <div className='col s12 m3 map-wrapper'>
+            <div className='col s12 m3 map-wrapper hide-on-small-only'>
               <div className='restaurant-actions'>
                 <div className={isFavorite ? "already-favorite" : "not-yet-favorite"}>
                   <FavoriteStar

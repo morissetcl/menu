@@ -24,10 +24,16 @@ $(document).ready(function(){
   $('.tabs').tabs();
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
-    if (scroll >= 21) {
+    if ($(window).width() < 920) {
       $(".map-wrapper").addClass("fixed");
-    } else {
-      $(".map-wrapper").removeClass("fixed");
+      $(".map-wrapper").css('margin-top',90);
+    }
+    else {
+      if (scroll >= 21) {
+        $(".map-wrapper").addClass("fixed");
+      } else {
+        $(".map-wrapper").removeClass("fixed");
+      }
     }
   });
 });

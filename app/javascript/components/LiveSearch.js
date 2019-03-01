@@ -43,9 +43,9 @@ class LiveSearch extends Component {
       <div className='header-filter'>
         <input ref={ (input) => { this.searchBar = input } } value={ this.state.term } onChange={ this.getAutoCompleteResults.bind(this) } type='text' placeholder="Recherche par nom ou adresse" className='recherche-input' />
         {autoCompleteList.length == 250 ? (
-          <span className='counter'>+ de { autoCompleteList.length }</span>
+          <span className='counter badge hide-on-small-only'>+ de { autoCompleteList.length }</span>
         ) : (
-          <span className='counter'>{ autoCompleteList.length }</span>
+          <span className='counter badge'>{ autoCompleteList.length }</span>
         )}
       </div>
       {this.state.loaded ?
