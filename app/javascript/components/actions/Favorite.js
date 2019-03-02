@@ -14,7 +14,6 @@ class Favorite extends Component {
       favoriteResults: [],
       loaded: false
     }
-    console.log(this.state.loaded)
     this.handleDelete = this.handleDelete.bind(this)
   }
 

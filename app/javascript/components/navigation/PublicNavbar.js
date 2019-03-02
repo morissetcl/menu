@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 class PublicNavbar extends Component {
 
   constructor(props) {
-    console.log(props)
     super(props);
   };
 
