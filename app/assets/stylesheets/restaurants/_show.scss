@@ -8,6 +8,11 @@
   margin-bottom: 20px;
 }
 
+.cp-city {
+  display: flex;
+  li { margin-right: 5px }
+}
+
 .star {
   cursor: pointer;
 }
@@ -26,16 +31,18 @@
   font-size: 10px;
 }
 
-tbody tr {
-  font-size: 14px;
-  td:first-child {
-    padding: 10px;
-    max-width: 30%;
-  }
-  td:nth-child(2) {
-    padding: 10px;
-    max-width: 60%;
-  }
+.dish-table {
+  tbody tr {
+    font-size: 14px;
+    td:first-child {
+      padding: 10px;
+      max-width: 30%;
+    }
+    td:nth-child(2) {
+      padding: 10px;
+      max-width: 60%;
+    }
+  }  
 }
 
 .already-favorite {
