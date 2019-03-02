@@ -60,11 +60,16 @@ class Comments extends Component {
     })
   }
 
+  formatedDate(date){
+    return new Date(date).toLocaleDateString()
+  }
+
   render(){
+
     let commentsRestaurant = this.state.commentsResults.map((response, index) => {
       return <div key={index}>
                <div class="collection-item">
-                 <p>{response.created_at}</p>
+                 <p className='date'>{this.formatedDate(response.created_at)}</p>
                  <p>{response.body}</p>
                </div>
              </div>
