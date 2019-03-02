@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_08_211613) do
+ActiveRecord::Schema.define(version: 2019_03_02_142553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,15 @@ ActiveRecord::Schema.define(version: 2019_02_08_211613) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "work_areas", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "department_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_work_areas_on_department_id"
+    t.index ["user_id"], name: "index_work_areas_on_user_id"
+  end
+
   add_foreign_key "comments", "restaurants", on_delete: :cascade
   add_foreign_key "comments", "users", on_delete: :cascade
   add_foreign_key "dashboards", "users"
@@ -154,4 +163,6 @@ ActiveRecord::Schema.define(version: 2019_02_08_211613) do
   add_foreign_key "favorites", "restaurants"
   add_foreign_key "favorites", "users"
   add_foreign_key "restaurant_menus", "restaurants", on_delete: :cascade
+  add_foreign_key "work_areas", "departments"
+  add_foreign_key "work_areas", "users"
 end

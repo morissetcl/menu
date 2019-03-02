@@ -68,7 +68,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  config.filter_run_when_matching :focus
+  config.run_all_when_everything_filtered = true
+  config.filter_run :focus
 end
 
 Shoulda::Matchers.configure do |config|
