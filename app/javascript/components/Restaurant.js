@@ -78,7 +78,7 @@ class Restaurant extends Component {
               <table className='highlight dish-table'>
                 <thead>
                   <tr>
-                    <th>Titre</th>
+                    <th>Plat</th>
                     <th>Description</th>
                     <th>Prix (€)</th>
                   </tr>
@@ -95,7 +95,7 @@ class Restaurant extends Component {
                 </tbody>
               </table>
             </div>
-            <div className='col s12 m3 map-wrapper'>
+            <div className='col s12 m3 map-wrapper hide-on-small-only'>
               <div className='restaurant-actions'>
                 <div className={isFavorite ? "already-favorite" : "not-yet-favorite"}>
                   <FavoriteStar
@@ -117,13 +117,13 @@ class Restaurant extends Component {
                 </div>
               </div>
               <div className='restaurant-informations-container'>
-                <div className='restaurant-content' style={{ width: '85%' }}>
-                  <li>{this.state.favorite}</li>
-                  <li>{this.state.restaurant.name}</li>
+                <div className='restaurant-content' style={{ width: '85%', padding: '10px' }}>
+                  <li style={{ fontWeight: 'bold' }}>{this.state.restaurant.name}</li>
                   <li>{this.state.restaurant.street}</li>
-                  <li>{this.state.restaurant.city}</li>
-                  <li>{this.state.restaurant.zip_code}</li>
-                  <li>{this.state.restaurant.tags}</li>
+                  <div class='cp-city'>
+                    <li>{this.state.restaurant.city}</li>
+                    <li>{this.state.restaurant.zip_code}</li>
+                  </div>
                 </div>
                 <div style={{ height: '335px', width: '85%', paddingBottom: '10px'}}>
                   <GoogleMapReact

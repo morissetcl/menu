@@ -38,8 +38,7 @@ class FormCalendar extends Component {
           'Content-Type': 'application/json'
         },
         body: body,
-      }).then((response) => {return response.json()})
-      .then((event)=>{
+      }).then((event)=>{
         this.addNewEvent(event)
       })
 

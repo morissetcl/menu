@@ -1,6 +1,8 @@
 .map-wrapper {
   padding-left: 20px !important;
-  position: absolute;
+  @media screen and (min-width: 920px) {
+    position: absolute;
+  }
 }
 
 .cluster-map {

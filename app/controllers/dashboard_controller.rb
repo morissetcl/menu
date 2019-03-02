@@ -26,8 +26,4 @@ class DashboardController < ApplicationController
     Department.where(id: current_user.department_ids)
               .pluck(:name)
   end
-
-  def force_json
-    request.format = :json
-  end
 end

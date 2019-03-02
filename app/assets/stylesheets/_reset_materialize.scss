@@ -3,6 +3,8 @@ body {
   overflow: scroll;
 }
 
+h1 { font-size: 30px }
+
 .interests {
   margin-top: 100px ;
   color: gray;
@@ -54,5 +56,12 @@ li {
 
 .empty-icone {
   font-size: 60px;
+}
 
+span.counter.badge {
+  height: 25px;
+  background-color: #113f67;
+  color: white;
+  border: none;
+  padding: 1px 6px;
 }

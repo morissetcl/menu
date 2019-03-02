@@ -24,7 +24,7 @@ class PrivateNavbar extends Component {
     return(
       <Router>
         <div className= 'row'>
-          <div className= 'col s1 revert-padding-col'>
+          <div className= 'col s12 revert-padding-col'>
             <div className='private-nav'>
               <ul style={{ listStyleType: "none", padding: 0 }}>
                 <Link to={`/private/${this.props.userId}/dashboard`}>
@@ -48,27 +48,27 @@ class PrivateNavbar extends Component {
               </ul>
             </div>
           </div>
-          <div className='col s11 offset-s1'>
+          <div className='col s12 l11 offset-l1'>
             <Route
               exact path='/private/:userId/dashboard'
               component={LiveSearch}
               userId={this.props.userId}
             />
           </div>
-          <div className='col s11 offset-s1'>
+          <div className='col s12 l11 offset-l1'>
             <Route
               exact path='/restaurant/:id'
               component={Restaurant}
             />
           </div>
-          <div className='col s11 offset-s1'>
+          <div className='col s12 l11 offset-l1'>
             <Route
               path='/private/:userId/favorite'
               component={Favorite}
               userId={this.props.userId}
             />
           </div>
-          <div className='col s11 offset-s1'>
+          <div className='col s12 l11 offset-l1'>
             <Route
               path='/private/:userId/calendar'
               component={Calendar}

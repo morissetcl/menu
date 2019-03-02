@@ -1,21 +1,31 @@
 .private-nav {
   background-color: #113f67;
-  height: 100vh;
-  float: left;
   display: block;
-  position: fixed;
   text-align: center;
-  padding-top: 5px;
+  float: none;
+  position: unset;
+  ul {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 !important;
+  }
+  @media screen and (min-width: 920px) {
+    float: left;
+    position: fixed;
+    height: 100vh;
+    ul {
+      margin-top: -10px !important;
+      display: unset;
+      justify-content: center;
+    }
+  }
   a {
     text-decoration: none;
   }
-  ul {
-    margin-top: -10px !important;
-  }
+
   li {
     color: white;
     padding: 30px;
-    margin: 5px 0px;
   }
 }
 
