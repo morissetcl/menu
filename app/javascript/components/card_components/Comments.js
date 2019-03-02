@@ -47,7 +47,8 @@ class Comments extends Component {
           'Content-Type': 'application/json'
         },
         body: payload,
-      }).then((comment)=>{
+      }).then((response) => {return response.json()})
+      .then((comment)=>{
         this.addNewComment(comment)
       })
       $('input').val('');
