@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, department_ids: []
+  permit_params :email, :password, :password_confirmation, department_ids: [], work_areas_attributes: %i[id department_id user_id _destroy]
 
   index do
     selectable_column

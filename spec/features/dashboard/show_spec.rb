@@ -5,8 +5,11 @@ require 'rails_helper'
 describe 'Authentication - User', type: :feature do
   before { sign_as_user }
 
+  let!(:current_user) { User.last }
+  let(:department) { build :department, zip_code: '95', name: "Val d'Oise" }
+  let!(:work_area) { create :work_area, user: current_user, department: department }
+
   scenario 'can access to my dashboard' do
-    current_user = User.last
     visit user_dashboard_index_path current_user
     expect(current_path).to eq user_dashboard_index_path current_user
   end
