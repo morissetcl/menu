@@ -19,6 +19,21 @@
     "react_ujs": "^2.4.4"
   },
   "devDependencies": {
+    "babel-jest": "^24.1.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^24.1.0",
     "webpack-dev-server": "^2.11.1"
+  },
+  "jest": {
+    "roots": [
+      "spec/javascript"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "app/javascript"
+    ]
+  },
+   "scripts": {
+    "test": "jest --config package.json"
   }
 }
