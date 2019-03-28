@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :departments, through: :work_areas
   accepts_nested_attributes_for :work_areas, allow_destroy: true
 
+  enum role: { manager: 0, commercial: 1 }
+
   def fullname
     "#{first_name} #{last_name}"
   end

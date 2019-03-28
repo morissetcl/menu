@@ -16,4 +16,16 @@ describe 'Admin - User', type: :feature do
     visit admin_user_path user
     expect(page).to have_content 'Yvelines'
   end
+
+  scenario '#New User' do
+    visit new_admin_user_path
+    expect do
+      select 'Manager'
+      fill_in :user_email, with: 'juanpaulo@email.com'
+      fill_in :user_password, with: 'password'
+      fill_in :user_password_confirmation, with: 'password'
+      click_on 'Create User'
+    end.to change(User, :count)
+    expect(User.last.reload.role).to eq 'manager'
+  end
 end

@@ -13,8 +13,8 @@ describe 'Restaurant', type: :integration do
   scenario 'Delete on cascade restaurant_menu and dish' do
     expect do
       restaurant.destroy!
-    end.to change { RestaurantMenu.count }
-      .and change { Dish.count }
-      .and change { Comment.count }
+    end.to change(RestaurantMenu, :count)
+      .and change(Dish, :count)
+      .and change(Comment, :count)
   end
 end
