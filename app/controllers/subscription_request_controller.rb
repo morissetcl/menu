@@ -13,6 +13,7 @@ class SubscriptionRequestController < ApplicationController
   private
 
   def subscription_request_params
-    params.require(:subscription_request).permit(:last_name, :first_name, :company, :email, :prospecting_area)
+    params.require(:subscription_request).permit(:last_name, :first_name, :company,
+                                                 :email, :prospecting_area)
   end
 end

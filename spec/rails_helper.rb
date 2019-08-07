@@ -143,7 +143,9 @@ addresses = [
   '5 rue du Teinturin 33970 Lège-Cap-Ferret',
   '660 avenue du Général de Gaulle 59910 Bondues',
   '1 Avenue Gabriel Péri, 93100 Montreuil',
-  '25 allée Antoine Pinay - chemin de Halage, La Barthelasse, 84000 Avignon'
+  '25 allée Antoine Pinay - chemin de Halage, La Barthelasse, 84000 Avignon',
+  '1 allée de la liberté 06400 Cannes',
+  'Boulevard du Midi Louise Moreau 06150 Cannes'
 ]
 
 addresses.each do |adresse|
