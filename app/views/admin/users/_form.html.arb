@@ -2,16 +2,19 @@
 
 active_admin_form_for [:admin, resource] do |f|
   f.inputs 'User' do
+    f.input :team_id, as: :select, collection: Team.all.pluck(:name, :id)
     f.input :role, as: :select
     f.input :email
     f.input :password
     f.input :password_confirmation
-    f.inputs do
-      f.has_many :work_areas, heading: 'Zones de prospection',
-                              allow_destroy: true,
-                              new_record: true do |a|
-        a.input :user, as: :hidden
-        a.input :department
+    if resource.role == 'commercial'
+      f.inputs do
+        f.has_many :work_areas, heading: 'Zones de prospection',
+                                allow_destroy: true,
+                                new_record: true do |a|
+          a.input :user, as: :hidden
+          a.input :department
+        end
       end
     end
   end
