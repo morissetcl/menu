@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.0'
+ruby '2.5.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
@@ -20,6 +20,7 @@ gem 'geocoder'
 gem 'hpricot'
 gem 'izitoast'
 gem 'kaminari'
+gem 'mini_racer', platforms: :ruby
 gem 'puma', '~> 3.11'
 gem 'rails-observers'
 gem 'ransack', github: 'activerecord-hackery/ransack'
