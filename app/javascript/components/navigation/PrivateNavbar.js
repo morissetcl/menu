@@ -11,13 +11,32 @@ class PrivateNavbar extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      activeDashboard: false,
+      activeFavorite: false,
+      activeCalendar: false,
+    }
   };
 
-  componentDidMount() {
-    $('.navbar-link').click(function () {
-      $('.navbar-link').removeClass("active-link");
-      $(this).addClass("active-link");
-    });
+  addClassActiveLink(param) {
+    switch(param) {
+    case 'dashboard':
+      return this.setState({ activeDashboard: true, activeFavorite: false, activeCalendar: false });
+    case 'favorite':
+      return this.setState({ activeDashboard: false, activeFavorite: true, activeCalendar: false });
+    case 'calendar':
+      return this.setState({ activeDashboard: false, activeFavorite: false, activeCalendar: true });
+    default:
+      return 'foo';
+    }
+  }
+
+  buildLink(link, state, icon) {
+    return <Link to={`/private/${this.props.userId}/${link}`} onClick={() => this.addClassActiveLink(link)}>
+              <li className={"navbar-link" + (state ? ' active-link' : '')}>
+                <FontAwesomeIcon icon={icon}/>
+              </li>
+            </Link>
   }
 
   render(){
@@ -27,21 +46,9 @@ class PrivateNavbar extends Component {
           <div className= 'col s12 revert-padding-col'>
             <div className='private-nav'>
               <ul style={{ listStyleType: "none", padding: 0 }}>
-                <Link to={`/private/${this.props.userId}/dashboard`}>
-                  <li className='navbar-link'>
-                    <FontAwesomeIcon icon={faSearch}/>
-                  </li>
-                </Link>
-                <Link to={`/private/${this.props.userId}/favorite`}>
-                  <li className='navbar-link'>
-                    <FontAwesomeIcon icon={faStar}/>
-                  </li>
-                </Link>
-                <Link to={`/private/${this.props.userId}/calendar`}>
-                  <li className='navbar-link'>
-                    <FontAwesomeIcon icon={faCalendarWeek}/>
-                  </li>
-                </Link>
+                { this.buildLink('dashboard', this.state.activeDashboard, faSearch)}
+                { this.buildLink('favorite', this.state.activeFavorite, faStar)}
+                { this.buildLink('calendar', this.state.activeCalendar, faCalendarWeek)}
                 <a href='/users/sign_out' data-method="delete" rel="nofollow">
                   <li className='navbar-link'><FontAwesomeIcon icon={faSignOutAlt}/></li>
                 </a>
