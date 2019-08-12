@@ -11,6 +11,14 @@ class PublicNavbar extends Component {
     $('.sidenav').sidenav();
   }
 
+  checkIfUserIsConnected(signIn) {
+    if (signIn) {
+      return <li><a href={`/private/${this.props.currentUser.id}/dashboard`} rel="nofollow">Dashboard</a></li>
+    } else {
+      return <li><a href='/users/sign_in' rel="nofollow">Connexion</a></li>
+    }
+  }
+
   render(){
     return(
       <Router>
@@ -19,23 +27,13 @@ class PublicNavbar extends Component {
             <a href="/" class="brand-logo">Menu</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              {this.props.userSignedIn ?
-                <li><a href={`/private/${this.props.currentUser.id}/dashboard`} rel="nofollow">Dashboard</a></li>
-              :
-              <li><a href='/users/sign_in' rel="nofollow">Connexion</a></li>
-              }
+              { this.checkIfUserIsConnected(this.props.userSignedIn) }
             </ul>
           </div>
-          <ul class="sidenav" id="mobile-demo">
-            {this.props.userSignedIn ?
-              <li><a href={`/private/${this.props.currentUser.id}/dashboard`} rel="nofollow">Dashboard</a></li>
-            :
-            <li><a href='/users/sign_in' rel="nofollow">Connexion</a></li>
-            }
-          </ul>
+            <ul class="sidenav" id="mobile-demo">
+              { this.checkIfUserIsConnected(this.props.userSignedIn) }
+            </ul>
         </nav>
-
-
       </Router>
     )
   };
