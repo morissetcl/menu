@@ -25,7 +25,9 @@ class Restaurant extends Component {
 
   componentDidMount() {
     $('.modal').modal();
-    $.getJSON('/restaurant/' + this.props.match.params.id,
+    const restaurant_params = this.props.match ? this.props.match.params : this.props.restaurant
+
+    $.getJSON('/restaurant/' + restaurant_params.id,
     (res) =>
     {
       this.setState({restaurant: jQuery.parseJSON(JSON.stringify(res))});
@@ -41,16 +43,6 @@ class Restaurant extends Component {
 
   componentDidUpdate() {
     $('.modal').modal();
-    $('#infoClick').click(function () {
-      $(this).addClass('already-favorite')
-      iziToast.show({
-        backgroundColor: 'rgba(238,110,115,0.9)',
-        theme: 'dark',
-        icon: 'fa fa-star',
-        message: 'Ajouté à vos favoris',
-        timeout: 2500
-      })
-    });
     $('.datepicker').datepicker({
       i18n: {
         months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre',

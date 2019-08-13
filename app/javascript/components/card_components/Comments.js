@@ -20,7 +20,7 @@ class Comments extends Component {
 
   handleChange() {
     this.handleFormSubmit(this.state.body);
-    this.setState({ isCommented: true }, () => console.log('Hoooo Djadja'))
+    this.setState({ isCommented: true, body: '' }, () => console.log(''))
     iziToast.show({
       backgroundColor: 'rgba(238,110,115,0.9)',
         theme: 'dark',
@@ -56,7 +56,6 @@ class Comments extends Component {
       .then((comment)=>{
         this.addNewComment(comment)
       })
-      $('input').val('');
   }
 
   addNewComment(comment){
@@ -117,6 +116,7 @@ class Comments extends Component {
                     type="text"
                     id='body_comment'
                     className='input-field '
+                    value= {this.state.body}
                     onChange={(e) => {this.updateInputValue(e)}}
                   />
                 </div>

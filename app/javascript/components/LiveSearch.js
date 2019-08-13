@@ -59,14 +59,4 @@ class LiveSearch extends Component {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  var new_row = document.createElement("div");
-  new_row.setAttribute("class", "livesearch-container row" );
-
-  ReactDOM.render(
-    <LiveSearch />,
-    document.body.appendChild(new_row),
-  )
-});
-
 export default LiveSearch

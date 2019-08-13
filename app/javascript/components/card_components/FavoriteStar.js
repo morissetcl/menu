@@ -29,7 +29,18 @@ class FavoriteStar extends Component {
     this.setState({ isFavorite: true }, () => console.log("Y'a pas moyen Djadja"))
   }
 
+  displayToast() {
+    iziToast.show({
+      backgroundColor: 'rgba(238,110,115,0.9)',
+        theme: 'dark',
+      icon: 'fa fa-star',
+      message: 'Ajouté à vos favoris',
+      timeout: 2500
+    })
+  }
+
   addNewFavorite(favorite){
+    this.displayToast();
     this.setState({
       favorites: this.state.favorites.concat(favorite)
     })
@@ -41,10 +52,13 @@ class FavoriteStar extends Component {
 
   render(){
     return (
-      <div className={this.props.isFavorite ? "already-favorite" : "not-yet-favorite"}>
-        <span id="infoClick" className='star waves-light'
-        data-position="bottom"
-        onClick={() => { this.handleFormSubmit(this.props.restaurantId, this.props.userId) }}><FontAwesomeIcon icon={faStar}/> </span>
+      <div className={this.state.isFavorite ? "already-favorite" : "not-yet-favorite"}>
+        <span
+          className='star waves-light'
+          data-position="bottom"
+          onClick={() => { this.handleFormSubmit(this.props.restaurantId, this.props.userId) }}>
+          <FontAwesomeIcon icon={faStar}/>
+        </span>
       </div>
     )
   }
