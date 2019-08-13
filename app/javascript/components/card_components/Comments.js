@@ -12,16 +12,15 @@ class Comments extends Component {
       restaurantId: props.restaurantId,
       userId: props.userId,
       body: '',
-      commentsResults: []
+      commentsResults: [],
+      isCommented: props.isCommented
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   };
 
   handleChange() {
-    var body = $('#body_comment').val();
-    this.setState({body: body});
-    this.handleFormSubmit(body)
-    $('.not-yet-commented').addClass('already-commented')
+    this.handleFormSubmit(this.state.body);
+    this.setState({ isCommented: true }, () => console.log('Hoooo Djadja'))
     iziToast.show({
       backgroundColor: 'rgba(238,110,115,0.9)',
         theme: 'dark',
@@ -29,6 +28,12 @@ class Comments extends Component {
       message: 'Commentaire ajouté',
       timeout: 2500
     })
+  }
+
+  updateInputValue(e) {
+    this.setState({
+      body: e.target.value
+    });
   }
 
   fetchComments(){
@@ -39,7 +44,7 @@ class Comments extends Component {
   }
 
   handleFormSubmit(body){
-    let payload = JSON.stringify({comment: {body: body, user_id: this.state.userId, restaurant_id: this.state.restaurantId }})
+    let payload = JSON.stringify({ comment: { body: body, user_id: this.state.userId, restaurant_id: this.state.restaurantId } })
 
     fetch(process.env.BASE_URL + '/private/' + this.state.userId + '/restaurant/' + this.state.restaurantId + '/comments', {
         method: 'POST',
@@ -75,7 +80,7 @@ class Comments extends Component {
              </div>
     });
     return (
-      <div>
+      <div className={this.state.isCommented ? "already-commented" : "not-yet-commented"}>
         <div className="modal-trigger" href="#modal2">
           <FontAwesomeIcon
             icon={faComment}
@@ -112,6 +117,7 @@ class Comments extends Component {
                     type="text"
                     id='body_comment'
                     className='input-field '
+                    onChange={(e) => {this.updateInputValue(e)}}
                   />
                 </div>
                 <input className='modal-close waves-effect waves-light btn' type="submit" value="Ajouter" onClick={() => { this.handleChange()}}/>

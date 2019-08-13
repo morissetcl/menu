@@ -12,24 +12,22 @@ class Actions extends Component {
   render(){
     return (
       <div className='restaurant-actions'>
-        <div className={this.props.isFavorite ? "already-favorite" : "not-yet-favorite"}>
-          <FavoriteStar
-            restaurantId={this.props.restaurant.id}
-            restaurantName={this.props.restaurant.name}
-            userId={this.props.currentUser}
-            ></FavoriteStar>
-        </div>
+        <FavoriteStar
+          restaurantId={this.props.restaurant.id}
+          restaurantName={this.props.restaurant.name}
+          userId={this.props.currentUser}
+          isFavorite={this.props.isFavorite}
+          ></FavoriteStar>
         <AddToAgenda
           is_booked={this.props.isBooked}
           restaurantId={this.props.restaurant.id}
           userId={this.props.currentUser}
         />
-        <div className={this.props.isCommented ? "already-commented" : "not-yet-commented"}>
-          <Comments
-            restaurantId={this.props.restaurant.id}
-            userId={this.props.currentUser}
-          />
-        </div>
+        <Comments
+          restaurantId={this.props.restaurant.id}
+          userId={this.props.currentUser}
+          isCommented={this.props.isCommented}
+        />
       </div>
     )
   }

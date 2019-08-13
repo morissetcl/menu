@@ -8,23 +8,25 @@ class FavoriteStar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favorites: []
+      favorites: [],
+      isFavorite: props.isFavorite,
     };
   };
 
   handleFormSubmit(restaurant, user){
-    let body = JSON.stringify({favorite: {restaurant_id: restaurant, user_id: user} })
+    let body = JSON.stringify({ favorite: { restaurant_id: restaurant, user_id: user } })
 
-  fetch(process.env.BASE_URL + '/favorite', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: body,
-    }).then((response) => {return response.json()})
-    .then((favorite)=>{
-      this.addNewFavorite(favorite)
-    })
+    fetch(process.env.BASE_URL + '/favorite', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: body,
+      }).then((response) => {return response.json()})
+      .then((favorite)=>{
+        this.addNewFavorite(favorite)
+      })
+    this.setState({ isFavorite: true }, () => console.log("Y'a pas moyen Djadja"))
   }
 
   addNewFavorite(favorite){
@@ -39,7 +41,7 @@ class FavoriteStar extends Component {
 
   render(){
     return (
-      <div>
+      <div className={this.props.isFavorite ? "already-favorite" : "not-yet-favorite"}>
         <span id="infoClick" className='star waves-light'
         data-position="bottom"
         onClick={() => { this.handleFormSubmit(this.props.restaurantId, this.props.userId) }}><FontAwesomeIcon icon={faStar}/> </span>
