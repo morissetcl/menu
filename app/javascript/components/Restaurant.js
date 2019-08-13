@@ -6,6 +6,7 @@ import Loader from './reusable_components/Loader';
 import AddToAgenda from './card_components/AddToAgenda';
 import Comments from './card_components/Comments';
 import FormCalendar from './card_components/FormCalendar';
+import Actions from './restaurant/Actions';
 
 class Restaurant extends Component {
 
@@ -62,10 +63,6 @@ class Restaurant extends Component {
   }
 
   render(){
-    const isCommented = this.state.commented;
-    const isFavorite = this.state.favorite;
-    const isBooked = this.state.booked;
-
     const MarkerMap = ({ text }) => (
       <div className='cluster-map'> </div>
     );
@@ -96,31 +93,18 @@ class Restaurant extends Component {
               </table>
             </div>
             <div className='col s12 m3 map-wrapper hide-on-small-only'>
-              <div className='restaurant-actions'>
-                <div className={isFavorite ? "already-favorite" : "not-yet-favorite"}>
-                  <FavoriteStar
-                    restaurantId={this.state.restaurant.id}
-                    restaurantName={this.state.restaurant.name}
-                    userId={this.state.current_user}
-                    ></FavoriteStar>
-                </div>
-                <AddToAgenda
-                  is_booked={isBooked}
-                  restaurantId={this.state.restaurant.id}
-                  userId={this.state.current_user}
-                />
-                <div className={isCommented ? "already-commented" : "not-yet-commented"}>
-                  <Comments
-                    restaurantId={this.state.restaurant.id}
-                    userId={this.state.current_user}
-                  />
-                </div>
-              </div>
+              <Actions
+                currentUser={this.state.current_user}
+                restaurant={this.state.restaurant}
+                userId={this.state.current_user}
+                isCommented={this.state.commented}
+                isFavorite={this.state.favorite}
+                isBooked={this.state.booked}/>
               <div className='restaurant-informations-container'>
                 <div className='restaurant-content' style={{ width: '85%', padding: '10px' }}>
                   <li style={{ fontWeight: 'bold' }}>{this.state.restaurant.name}</li>
                   <li>{this.state.restaurant.street}</li>
-                  <div class='cp-city'>
+                  <div className='cp-city'>
                     <li>{this.state.restaurant.city}</li>
                     <li>{this.state.restaurant.zip_code}</li>
                   </div>

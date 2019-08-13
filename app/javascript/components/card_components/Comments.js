@@ -68,7 +68,7 @@ class Comments extends Component {
 
     let commentsRestaurant = this.state.commentsResults.map((response, index) => {
       return <div key={index}>
-               <div class="collection-item">
+               <div className="collection-item">
                  <p className='date'>{this.formatedDate(response.created_at)}</p>
                  <p>{response.body}</p>
                </div>
