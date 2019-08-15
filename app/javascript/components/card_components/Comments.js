@@ -69,7 +69,6 @@ class Comments extends Component {
   }
 
   render(){
-
     let commentsRestaurant = this.state.commentsResults.map((response, index) => {
       return <div key={index}>
                <div className="collection-item">

@@ -46,10 +46,6 @@ class FavoriteStar extends Component {
     })
   }
 
-  componentDidMount() {
-    $('.tooltipped').tooltip();
-  }
-
   render(){
     return (
       <div className={this.state.isFavorite ? "already-favorite" : "not-yet-favorite"}>
