@@ -13,7 +13,8 @@ class LiveSearch extends Component {
       autoCompleteResults: [],
       itemSelected: {},
       showItemSelected: false,
-      loaded: false
+      loaded: false,
+      userId: this.props.match.params.userId
     };
   }
 
@@ -34,7 +35,7 @@ class LiveSearch extends Component {
   render(){
     let autoCompleteList = this.state.autoCompleteResults.map((response, index) => {
       return <div key={index} className='restaurant-wrapper col s12 m4 l3'>
-              <RestaurantCard response= { response } userId= { this.props.match.params.userId } restaurantId={response.id}/>
+              <RestaurantCard response= { response } userId= { this.state.userId } restaurantId={response.id}/>
              </div>
     });
 

@@ -11,7 +11,7 @@ import { shallow } from 'enzyme';
 import FavoriteStar from '../../app/javascript/components/card_components/FavoriteStar';
 
 describe('<Comments />', () => {
-  it.only('colorize or not icon according to the restaurant is already added to favorite', () => {
+  it('colorize or not icon according to the restaurant is already added to favorite', () => {
     const wrapper = shallow(<FavoriteStar isFavorite={false}/>);
     expect(wrapper.exists('.already-favorite')).toEqual(false);
     wrapper.setState({ isFavorite: true });
