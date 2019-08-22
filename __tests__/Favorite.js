@@ -18,10 +18,10 @@ describe('<Favorite />', () => {
     const mockJsonPromise = Promise.resolve([{0: { name:'El Ganso', city: 'Toronto'} }, {1: { name:'Buffalo Grill', city: 'Toronto'} }]);
     const mockFetchPromise = Promise.resolve({ json: () => mockJsonPromise });
     jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
+    wrapper = shallow(<Favorite match={{ params: { userId: '1' }}}/>);
   });
 
   it('display restaurants informations', done => {
-    const wrapper = shallow(<Favorite match={{ params: { userId: '1' }}}/>);
     expect(global.fetch).toHaveBeenCalledTimes(1);
     expect(global.fetch).toHaveBeenCalledWith('/private/1/favorite.json');
     process.nextTick(() => {

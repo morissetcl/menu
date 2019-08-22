@@ -34,7 +34,7 @@ class LiveSearch extends Component {
 
   render(){
     let autoCompleteList = this.state.autoCompleteResults.map((response, index) => {
-      return <div key={index} className='restaurant-wrapper col s12 m4 l3'>
+      return <div key={index} className='restaurant-wrapper col s12 m4 l4'>
               <RestaurantCard response= { response } userId= { this.state.userId } restaurantId={response.id}/>
              </div>
     });

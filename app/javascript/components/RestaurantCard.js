@@ -29,7 +29,7 @@ class RestaurantCard extends Component {
             <span className="grey-text text-darken-4 truncate">{this.props.response.name}</span>
           </div>
           <div className='restaurant-informations'>
-            <p><FontAwesomeIcon icon={faMapMarkerAlt}/><span>{this.props.response.full_address}</span></p>
+            <p className="truncate"><FontAwesomeIcon icon={faMapMarkerAlt}/><span >{this.props.response.full_address}</span></p>
             <p><FontAwesomeIcon icon={faUtensils}/><span>{this.props.response.dishes_count}</span></p>
             <div className='badges-wrapper'>
               {this.props.response.tags.map(function (item, i) {
