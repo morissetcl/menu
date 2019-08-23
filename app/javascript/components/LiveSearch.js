@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import RestaurantCard from './RestaurantCard'
 import Loader from './reusable_components/Loader';
+import { autoCompleteResult } from '../apis/LiveSearch'
 
 class LiveSearch extends Component {
 
@@ -19,16 +20,18 @@ class LiveSearch extends Component {
   }
 
   componentDidMount() {
-    $.getJSON('/private/:user_id/dashboard/recherche?q=' + this.state.term)
-      .then(response => this.setState({ autoCompleteResults: response.restaurants, loaded: true }))
+    autoCompleteResult(this.state.term).then(response => {
+      this.setState({ autoCompleteResults: response.restaurants, loaded: true })
+    });
   }
 
   getAutoCompleteResults(e){
     this.setState({
       term: e.target.value
     }, () => {
-      $.getJSON('/private/:user_id/dashboard/recherche?q=' + this.state.term)
-        .then(response => this.setState({ autoCompleteResults: response.restaurants }))
+      autoCompleteResult(this.state.term).then(response => {
+        this.setState({ autoCompleteResults: response.restaurants, loaded: true })
+      });
     });
   }
 
