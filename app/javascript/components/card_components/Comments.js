@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
 import { faMehBlank } from '@fortawesome/free-solid-svg-icons'
+import { getComments } from '../../apis/Comments'
 
 class Comments extends Component {
 
@@ -37,9 +38,8 @@ class Comments extends Component {
   }
 
   fetchComments(){
-    $.getJSON('/private/' + this.state.userId + '/restaurant/' + this.state.restaurantId + '/comments',(res) =>
-    {
-      this.setState({commentsResults: jQuery.parseJSON(JSON.stringify(res))});
+    getComments(this.state.userId, this.state.restaurantId).then(data => {
+      this.setState({commentsResults: data });
     });
   }
 
@@ -73,7 +73,7 @@ class Comments extends Component {
       return <div key={index}>
                <div className="collection-item">
                  <p className='date'>{this.formatedDate(response.created_at)}</p>
-                 <p>{response.body}</p>
+                 <p  className='comment-body'>{response.body}</p>
                </div>
              </div>
     });

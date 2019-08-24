@@ -9,6 +9,7 @@ import chaiEnzyme from 'chai-enzyme'
 import { shallow } from 'enzyme';
 
 import Favorite from '../app/javascript/components/Favorite';
+import RestaurantCard from '../app/javascript/components/RestaurantCard';
 
 describe('<Favorite />', () => {
   let wrapper;
@@ -32,6 +33,7 @@ describe('<Favorite />', () => {
       expect(restaurant1.name).toEqual('El Ganso');
       expect(restaurant2.name).toEqual('Buffalo Grill');
       expect(restaurant1.city).toEqual('Toronto');
+      expect(wrapper.find(RestaurantCard)).toHaveLength(2);
       done();
     });
   });

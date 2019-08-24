@@ -47,7 +47,6 @@ class Favorite extends Component {
               <RestaurantCard response= { response } fromFavorite={true} handleDelete={this.handleDelete}/>
              </div>
     });
-
     return (
       <div className='row'>
         <div className='col s12'>

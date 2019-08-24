@@ -15,6 +15,11 @@ describe('<LiveSearch />', () => {
   let wrapper;
 
   beforeEach(() => {
+    const mockSuccessResponse = { };
+    const mockJsonPromise = Promise.resolve({});
+    const mockFetchPromise = Promise.resolve({ json: () => mockJsonPromise });
+    jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
+
     wrapper = shallow(<LiveSearch match={{ params: { userId: '1' }}} />);
   });
 
@@ -25,7 +30,7 @@ describe('<LiveSearch />', () => {
 
   describe('with restaurants', () => {
     beforeEach(() => {
-      wrapper.setState({ loaded: true, autoCompleteResults: [{city: " paris", name: "Africa Délices", street: "3 Rue Moret", full_address: "3 Rue Moret, 75011  paris", tags: ["Africain", "Halal"] }, {city: "rouen", dishes_count: 3, name: "French Délices" }] });
+      wrapper.setState({ loaded: true, autoCompleteResults: [{city: "Rouen", name: "Africa Délices", street: "3 Rue Moret", full_address: "3 Rue Moret, 76000 Rouen", tags: ["African", "Halal"] }, {city: "Elbeuf", name: "French Délices", street: "23 Rue Marveille", full_address: "23 Rue Marveille, 76500 Elbeuf", tags: ["French", "Organic"] }] });
     });
 
     it('render the correct number of RestaurantCard', () => {
@@ -36,7 +41,7 @@ describe('<LiveSearch />', () => {
     it("render the correct restaurant's informations", () => {
       var restaurant = wrapper.find(RestaurantCard).first();
       expect(restaurant.props().response.name).toEqual("Africa Délices");
-      expect(restaurant.props().response.full_address).toEqual("3 Rue Moret, 75011  paris");
+      expect(restaurant.props().response.full_address).toEqual("3 Rue Moret, 76000 Rouen");
     });
   });
 });
