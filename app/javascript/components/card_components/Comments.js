@@ -21,14 +21,19 @@ class Comments extends Component {
 
   handleChange() {
     this.handleFormSubmit(this.state.body);
-    this.setState({ isCommented: true, body: '' }, () => console.log(''))
-    iziToast.show({
-      backgroundColor: 'rgba(238,110,115,0.9)',
-        theme: 'dark',
-      icon: 'fa fa-comment',
-      message: 'Commentaire ajouté',
-      timeout: 2500
-    })
+    this.setState({ isCommented: true, body: '' }, () => this.displayToast());
+  }
+
+  displayToast() {
+    if (process.env.NODE_ENV != 'test') {
+      return iziToast.show({
+               backgroundColor: 'rgba(238,110,115,0.9)',
+               theme: 'dark',
+               icon: 'fa fa-comment',
+               message: 'Commentaire ajouté',
+               timeout: 2500
+            })
+    }
   }
 
   updateInputValue(e) {
