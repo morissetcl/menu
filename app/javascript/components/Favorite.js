@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import RestaurantCard from '../RestaurantCard'
+import RestaurantCard from './RestaurantCard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBabyCarriage } from '@fortawesome/free-solid-svg-icons'
-import Loader from '../reusable_components/Loader';
+import Loader from './reusable_components/Loader';
+import { getFavorites, deleteFavorite } from '../apis/Favorite'
 
 class Favorite extends Component {
 
@@ -17,13 +18,6 @@ class Favorite extends Component {
     this.handleDelete = this.handleDelete.bind(this)
   }
 
-  getFavorites() {
-    $.getJSON('/private/' + this.state.userId + '/favorite',(res) =>
-    {
-      this.setState({loaded: true, favoriteResults: jQuery.parseJSON(JSON.stringify(res))});
-    });
-  }
-
   handleDelete(id){
    iziToast.show({
      backgroundColor: 'rgba(238,110,115,0.9)',
@@ -32,19 +26,19 @@ class Favorite extends Component {
      message: 'Restaurant retiré de vos favoris',
      timeout: 2500
    })
-   fetch(`/private/${this.state.userId}/favorite/${id}`,
-   {
-     method: 'DELETE',
-     headers: {
-       'Content-Type': 'application/json'
-     }
-   }).then((response) => {
-       this.getFavorites()
-     })
+   deleteFavorite(this.state.userId, id).then(data => {
+     this.retrieveFavoriteRestaurant();
+   });
   }
 
   componentDidMount() {
-    this.getFavorites()
+    this.retrieveFavoriteRestaurant();
+  }
+
+  retrieveFavoriteRestaurant() {
+    getFavorites(this.state.userId).then(data => {
+      this.setState({loaded: true, favoriteResults: data})
+    });
   }
 
   render(){
@@ -53,7 +47,6 @@ class Favorite extends Component {
               <RestaurantCard response= { response } fromFavorite={true} handleDelete={this.handleDelete}/>
              </div>
     });
-
     return (
       <div className='row'>
         <div className='col s12'>

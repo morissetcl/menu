@@ -19,7 +19,7 @@ class RestaurantCard extends Component {
       <div>
       <div className='restaurant-card card'>
       { this.props.fromFavorite
-        ? <div className='trash-favorite'onClick={() => this.props.handleDelete(restaurantId)}>
+        ? <div className='trash-favorite' onClick={() => this.props.handleDelete(restaurantId)}>
             <FontAwesomeIcon icon={faTrashAlt}/>
           </div>
         : null
@@ -29,8 +29,8 @@ class RestaurantCard extends Component {
             <span className="grey-text text-darken-4 truncate">{this.props.response.name}</span>
           </div>
           <div className='restaurant-informations'>
-            <span><FontAwesomeIcon icon={faMapMarkerAlt}/>{this.props.response.full_address}</span>
-            <p><FontAwesomeIcon icon={faUtensils}/> {this.props.response.dishes_count}</p>
+            <p className="truncate"><FontAwesomeIcon icon={faMapMarkerAlt}/><span >{this.props.response.full_address}</span></p>
+            <p><FontAwesomeIcon icon={faUtensils}/><span>{this.props.response.dishes_count}</span></p>
             <div className='badges-wrapper'>
               {this.props.response.tags.map(function (item, i) {
                 return <div key={i} className='badge truncate'>

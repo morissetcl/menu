@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import RestaurantCard from './RestaurantCard'
 import Loader from './reusable_components/Loader';
+import { autoCompleteResult } from '../apis/LiveSearch'
 
 class LiveSearch extends Component {
 
@@ -13,28 +14,31 @@ class LiveSearch extends Component {
       autoCompleteResults: [],
       itemSelected: {},
       showItemSelected: false,
-      loaded: false
+      loaded: false,
+      userId: this.props.match.params.userId
     };
   }
 
   componentDidMount() {
-    $.getJSON('/private/:user_id/dashboard/recherche?q=' + this.state.term)
-      .then(response => this.setState({ autoCompleteResults: response.restaurants, loaded: true }))
+    autoCompleteResult(this.state.term).then(response => {
+      this.setState({ autoCompleteResults: response.restaurants, loaded: true })
+    });
   }
 
   getAutoCompleteResults(e){
     this.setState({
       term: e.target.value
     }, () => {
-      $.getJSON('/private/:user_id/dashboard/recherche?q=' + this.state.term)
-        .then(response => this.setState({ autoCompleteResults: response.restaurants }))
+      autoCompleteResult(this.state.term).then(response => {
+        this.setState({ autoCompleteResults: response.restaurants, loaded: true })
+      });
     });
   }
 
   render(){
     let autoCompleteList = this.state.autoCompleteResults.map((response, index) => {
-      return <div key={index} className='restaurant-wrapper col s12 m4 l3'>
-              <RestaurantCard response= { response } userId= { this.props.match.params.userId } restaurantId={response.id}/>
+      return <div key={index} className='restaurant-wrapper col s12 m4 l4'>
+              <RestaurantCard response= { response } userId= { this.state.userId } restaurantId={response.id}/>
              </div>
     });
 

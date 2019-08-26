@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import GoogleMapReact from 'google-map-react';
-import FavoriteStar from './card_components/FavoriteStar';
 import Loader from './reusable_components/Loader';
-import AddToAgenda from './card_components/AddToAgenda';
-import Comments from './card_components/Comments';
 import FormCalendar from './card_components/FormCalendar';
 import Actions from './restaurant/Actions';
+import { getRestaurant } from '../apis/Restaurant'
 
 class Restaurant extends Component {
 
   constructor(props) {
-    $('.modal').modal();
     super(props);
     this.state = {
       restaurant: [],
@@ -24,13 +21,10 @@ class Restaurant extends Component {
   }
 
   componentDidMount() {
-    $('.modal').modal();
     const restaurant_params = this.props.match ? this.props.match.params : this.props.restaurant
 
-    $.getJSON('/restaurant/' + restaurant_params.id,
-    (res) =>
-    {
-      this.setState({restaurant: jQuery.parseJSON(JSON.stringify(res))});
+    getRestaurant((restaurant_params.id)).then(data => {
+      this.setState({restaurant: jQuery.parseJSON(JSON.stringify(data))});
       this.setState({dishes: this.state.restaurant.dishes});
       this.setState({current_user: this.state.restaurant.user_id});
       this.setState({favorite: this.state.restaurant.favorite});
@@ -38,7 +32,7 @@ class Restaurant extends Component {
       this.setState({commented: this.state.restaurant.commented});
 
       this.setState({loaded: true})
-    })
+    });
   }
 
   componentDidUpdate() {
@@ -58,7 +52,6 @@ class Restaurant extends Component {
     const MarkerMap = ({ text }) => (
       <div className='cluster-map'> </div>
     );
-
     return (
       <div className='restaurant-show'>
         {this.state.loaded ?
@@ -75,9 +68,9 @@ class Restaurant extends Component {
                   <tbody>
                   {this.state.dishes.map(function (item, i) {
                     return <tr key={i}>
-                              <td>{item.title}</td>
+                              <td className='dish-title'>{item.title}</td>
                               <td className='dish-description'>{item.description}</td>
-                              <td>{item.price}</td>
+                              <td className='dish-price'>{item.price}</td>
                             </tr>
 
                   })}
@@ -94,7 +87,7 @@ class Restaurant extends Component {
                 isBooked={this.state.booked}/>
               <div className='restaurant-informations-container'>
                 <div className='restaurant-content' style={{ width: '85%', padding: '10px' }}>
-                  <li style={{ fontWeight: 'bold' }}>{this.state.restaurant.name}</li>
+                  <li className='cou' style={{ fontWeight: 'bold' }}>{this.state.restaurant.name}</li>
                   <li>{this.state.restaurant.street}</li>
                   <div className='cp-city'>
                     <li>{this.state.restaurant.city}</li>

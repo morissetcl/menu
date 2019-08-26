@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faSearch, faSignOutAlt, faCalendarWeek } from '@fortawesome/free-solid-svg-icons'
 import LiveSearch from '../LiveSearch'
 import Restaurant from '../Restaurant'
-import Favorite from '../actions/Favorite'
+import Favorite from '../Favorite'
 import Calendar from '../Calendar'
 
 class PrivateNavbar extends Component {
@@ -12,7 +12,7 @@ class PrivateNavbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeDashboard: false,
+      activeDashboard: true,
       activeFavorite: false,
       activeCalendar: false,
     }
