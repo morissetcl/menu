@@ -15,8 +15,7 @@ module Restopolitain
           links.each do |restaurant|
             sleep 2 unless Rails.env.test?
             get_link_and_name(restaurant)
-            restaurant = create_restaurant(name)
-            next if restaurant.id.nil?
+            restaurant = find_create_restaurant(name)
 
             Restopolitain::GetRestaurantMenuWorker.perform_async(link, restaurant.id)
           end
@@ -31,10 +30,10 @@ module Restopolitain
         Nokogiri::HTML(html_file)
       end
 
-      def create_restaurant(name)
-        Restaurant.create(name: name,
+      def find_create_restaurant(name)
+        Restaurant.where(name: name,
                           slug: name.parameterize,
-                          source: 'restopolitain')
+                          source: 'restopolitain').first_or_create
       end
 
       def get_link_and_name(restaurant)

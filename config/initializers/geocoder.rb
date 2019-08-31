@@ -1,7 +1,8 @@
 Geocoder.configure(
   # Geocoding options
   # timeout: 3,                 # geocoding service timeout (secs)
-  lookup: :yandex          # name of geocoding service (symbol)
+  lookup: :bing, api_key: ENV['BING_API_KEY']  # name of geocoding service (symbol)
+
   # ip_lookup: :freegeoip,      # name of IP address geocoding service (symbol)
   # language: :en,              # ISO-639 language code
   # use_https: false,           # use HTTPS for lookup requests? (if supported)

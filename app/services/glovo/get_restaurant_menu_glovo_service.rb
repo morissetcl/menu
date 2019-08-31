@@ -7,8 +7,7 @@ module Glovo
         sleep 2 unless Rails.env.test?
         restaurant = Restaurant.find restaurant_id
         html_doc = fetch_html(link)
-        restaurant_menu = create_restaurant_menu(restaurant)
-        create_dishes(html_doc, restaurant_menu)
+        create_dishes(html_doc, restaurant)
       end
 
       private
@@ -19,15 +18,11 @@ module Glovo
         Nokogiri::HTML(html_file)
       end
 
-      def create_restaurant_menu(restaurant)
-        RestaurantMenu.create(restaurant: restaurant)
-      end
-
-      def create_dishes(html_doc, restaurant_menu)
+      def create_dishes(html_doc, restaurant)
         html_doc.css('.collection-item').each do |element|
           title = element.css('.title').text.strip
           price = element.css('.price').text.strip
-          Dish.create(title: title, restaurant_menu_id: restaurant_menu.id, price: price)
+          Dish.create(title: title, restaurant_id: restaurant.id, price: price)
         end
       end
     end

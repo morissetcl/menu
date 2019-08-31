@@ -8,7 +8,7 @@ module Restovisio
     class << self
       def call(page)
         html_doc = fetch_html(page)
-        create_restaurant(html_doc)
+        find_or_create_restaurant(html_doc)
       end
 
       private
@@ -20,12 +20,13 @@ module Restovisio
         Nokogiri::HTML(html_file)
       end
 
-      def create_restaurant(html_doc)
+      def find_or_create_restaurant(html_doc)
         html_doc.css('.item_infos').each do |restaurant|
           resto = get_all_data(restaurant)
           get_link(restaurant)
           retrieve_address(resto)
           sleep 2 unless Rails.env.test?
+
           Restovisio::GetRestaurantMenuWorker.perform_async(@link, resto.id)
         end
       end
@@ -35,9 +36,9 @@ module Restovisio
         tags = restaurant.css('.etb_cat_amb').text.strip.split(',')
         price = restaurant.css('.etb_price_range').text.strip
         address = restaurant.css('.etb_location_info').text.strip
-        Restaurant.create(name: name, slug: name.parameterize,
+        Restaurant.where(name: name, slug: name.parameterize,
                           address: address, tags: tags,
-                          price_range: price, source: 'restovisio')
+                          price_range: price, source: 'restovisio').first_or_create
       end
 
       def retrieve_address(resto)

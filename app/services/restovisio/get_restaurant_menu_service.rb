@@ -8,9 +8,8 @@ module Restovisio
     class << self
       def call(link, restaurant_id)
         html_doc = fetch_html(link)
-        restaurant_menu = RestaurantMenu.create!(restaurant_id: restaurant_id)
         html_doc.css('.menu_block_content').each do |restaurant|
-          create_dish(restaurant, restaurant_menu)
+          create_dish(restaurant, restaurant_id)
         end
       end
 
@@ -20,13 +19,13 @@ module Restovisio
         Nokogiri::HTML(html_file)
       end
 
-      def create_dish(restaurant, restaurant_menu)
+      def create_dish(restaurant, restaurant_id)
         title = restaurant.css('.menu_title').text.strip
         description = restaurant.css('.menu_desc').text.strip
         price = restaurant.css('.menu_price').text.strip
         Dish.create(title: title,
                     description: description,
-                    restaurant_menu: restaurant_menu,
+                    restaurant_id: restaurant_id,
                     price: price)
       end
     end

@@ -14,12 +14,11 @@ module Restopolitain
       private
 
       def get_menu(link, restaurant_id)
-        @menu = RestaurantMenu.create!(restaurant_id: restaurant_id)
         get_food_tags(link)
         get_menu_data(link).search('.catalog__item > span:first').each do |dish|
           next if dish.text.include?('/')
 
-          create_dish(@menu, dish)
+          create_dish(dish)
         end
         address = get_menu_data(link).css('.restaurant__info > p:first > span').text
         get_address(address)
@@ -47,14 +46,13 @@ module Restopolitain
         Nokogiri::HTML(html_file)
       end
 
-      def create_dish(menu, dish)
-        Dish.create!(restaurant_menu_id: menu.id, title: dish.text)
+      def create_dish(dish)
+        Dish.create!(restaurant_id: @restaurant.id, title: dish.text)
       end
 
       def get_address(address)
-        restaurant = @menu.restaurant
-        restaurant.update(address: address)
-        FormatAddressesService.call(restaurant)
+        @restaurant.update(address: address)
+        FormatAddressesService.call(@restaurant)
       end
     end
   end

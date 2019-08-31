@@ -12,8 +12,7 @@ module Deliveroo
         html_doc = fetch_html(link)
         assign_tags_to_restaurant(html_doc, restaurant)
         get_address_and_update_restaurant(html_doc, restaurant)
-        restaurant_menu = create_restaurant_menu(restaurant)
-        create_dishes(html_doc, restaurant_menu)
+        create_dishes(html_doc, restaurant)
       end
 
       def assign_tags_to_restaurant(html_doc, restaurant)
@@ -35,15 +34,11 @@ module Deliveroo
         restaurant.update(address: address)
       end
 
-      def create_restaurant_menu(restaurant)
-        RestaurantMenu.create(restaurant: restaurant)
-      end
-
-      def create_dishes(html_doc, restaurant_menu)
+      def create_dishes(html_doc, restaurant)
         html_doc.css('.menu-index-page__item-content').each do |element|
           title = element.css('.menu-index-page__item-title').text
           price = element.css('.menu-index-page__item-price').text
-          Dish.create(title: title, restaurant_menu_id: restaurant_menu.id, price: price)
+          Dish.create(title: title, restaurant_id: restaurant.id, price: price)
         end
       end
     end

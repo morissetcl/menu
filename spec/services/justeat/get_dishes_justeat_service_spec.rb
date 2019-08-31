@@ -14,9 +14,8 @@ describe Justeat::GetDishesService do
 
   it 'Create new dishes' do
     resto = Restaurant.create(name: 'Doudou', slug: 'doudou')
-    resto_menu = RestaurantMenu.create(restaurant: resto)
     expect do
-      Justeat::GetDishesService.call(@doc, resto_menu)
+      Justeat::GetDishesService.call(@doc, resto)
     end.to change(Dish, :count)
   end
 end
