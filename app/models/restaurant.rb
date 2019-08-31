@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Restaurant < ApplicationRecord
-  has_one :restaurant_menu
-  has_many :dishes, through: :restaurant_menu
+  has_many :dishes, dependent: :destroy
   validates :name, :slug, presence: true, uniqueness: true
 
   geocoded_by :full_address

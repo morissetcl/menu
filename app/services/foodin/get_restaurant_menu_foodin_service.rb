@@ -8,10 +8,9 @@ module Foodin
     class << self
       def call(link, restaurant_id)
         html_doc = fetch_html(link)
-        restaurant_menu = RestaurantMenu.create(restaurant_id: restaurant_id)
         add_address_to_restaurant(html_doc, restaurant_id)
         html_doc.css('.block-regie-plat').each do |restaurant|
-          create_dish(html_doc, restaurant, restaurant_menu)
+          create_dish(html_doc, restaurant, restaurant_id)
         end
       end
 
@@ -28,13 +27,13 @@ module Foodin
         FormatAddressesService.call(restaurant)
       end
 
-      def create_dish(_html_doc, restaurant, restaurant_menu)
+      def create_dish(_html_doc, restaurant, restaurant_id)
         title = restaurant.css('.title-cart-block').text.strip
         description = restaurant.css('.discription-cart-block').text.strip
         price = restaurant.css('.price-plat').text.strip
         Dish.create(title: title,
                     description: description,
-                    restaurant_menu: restaurant_menu,
+                    restaurant_id: restaurant_id,
                     price: price)
       end
     end

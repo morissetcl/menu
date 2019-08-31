@@ -145,7 +145,8 @@ addresses = [
   '1 Avenue Gabriel Péri, 93100 Montreuil',
   '25 allée Antoine Pinay - chemin de Halage, La Barthelasse, 84000 Avignon',
   '1 allée de la liberté 06400 Cannes',
-  'Boulevard du Midi Louise Moreau 06150 Cannes'
+  'Boulevard du Midi Louise Moreau 06150 Cannes',
+  '34 Rue Notre Dame de Recouvrance, rance'
 ]
 
 addresses.each do |adresse|

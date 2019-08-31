@@ -23,8 +23,9 @@ module Glovo
           name = restaurant.css('.title').text
           tags = restaurant.css('.description').text
           link = restaurant.first[1]
-          restaurant = Restaurant.create(name: name, slug: name.parameterize,
-                                         tags: tags, source: 'glovo')
+          restaurant = Restaurant.where(name: name, slug: name.parameterize,
+                                        source: 'glovo').first_or_create
+          restaurant.update(tags: tags)
           sleep 2 unless Rails.env.test?
           Glovo::GetRestaurantMenuWorker.perform_async(restaurant.id, link)
         end

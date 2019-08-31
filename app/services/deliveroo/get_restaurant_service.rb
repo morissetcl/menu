@@ -18,8 +18,7 @@ module Deliveroo
           links.each do |restaurant|
             next if get_data(restaurant).blank?
 
-            restaurant_created = assign_attributes_to_restaurant(restaurant)
-            next if restaurant_created.id.nil?
+            restaurant_created = find_create_restaurant(restaurant)
 
             Deliveroo::GetRestaurantMenuWorker.perform_async(restaurant['href'],
                                                              get_data(restaurant))
@@ -27,10 +26,10 @@ module Deliveroo
         end
       end
 
-      def assign_attributes_to_restaurant(restaurant)
-        Restaurant.create(name: get_name(get_data(restaurant)),
-                          slug: get_data(restaurant),
-                          source: 'deliveroo')
+      def find_create_restaurant(restaurant)
+        Restaurant.where(name: get_name(get_data(restaurant)),
+                         slug: get_data(restaurant),
+                         source: 'deliveroo').first_or_create
       end
 
       def get_data(restaurant)

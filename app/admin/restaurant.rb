@@ -21,14 +21,6 @@ ActiveAdmin.register Restaurant do
   end
 
   show do
-    render partial: 'show', locals: { dishes: restaurant_menu.dishes.sort, restaurant: restaurant }
-  end
-
-  controller do
-    helper_method :restaurant_menu
-
-    def restaurant_menu
-      RestaurantMenu.find_by(restaurant: resource)
-    end
+    render partial: 'show', locals: { dishes: resource.dishes, restaurant: restaurant }
   end
 end

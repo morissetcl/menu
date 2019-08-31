@@ -19,12 +19,11 @@ describe Foodin::GetRestaurantMenuFoodinService do
     stub_restaurant_menu_foodin
   end
 
-  xit 'Create a new restaurant menu and dish' do
+  xit 'Create a new dish' do
     link = '/cart/196/El-Tio'
     restaurant = Restaurant.create(name: 'El Tio', slug: 'el-tio')
     expect do
       Foodin::GetRestaurantMenuFoodinService.call(link, restaurant.id)
-    end.to change(RestaurantMenu, :count)
-      .and change(Dish, :count)
+    end.to change(Dish, :count)
   end
 end

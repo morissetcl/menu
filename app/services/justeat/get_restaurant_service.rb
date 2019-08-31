@@ -14,9 +14,6 @@ module Justeat
           get_link_and_name(element)
           restaurant_created = Restaurant.create(name: @name, slug: @name.parameterize,
                                                  address: @address, source: 'justeat')
-
-          next if restaurant_created.id.nil?
-
           Justeat::GetRestaurantMenuWorker.perform_async(@link, @name.parameterize)
         end
       end

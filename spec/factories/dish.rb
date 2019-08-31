@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :dish do
-    association :restaurant_menu, factory: :restaurant_menu
+    association :restaurant, factory: :restaurant
     title { 'Gratin dauphinois' }
     price { '10' }
     description { 'Pomme de terre with cheese' }

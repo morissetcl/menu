@@ -14,7 +14,7 @@ class DishObserver < ActiveRecord::Observer
   private
 
   def restaurant(dish)
-    dish.restaurant_menu.restaurant
+    dish.restaurant
   end
 
   def retrieve_dishes_count(dish)

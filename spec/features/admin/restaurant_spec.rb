@@ -5,15 +5,14 @@ require 'rails_helper'
 describe 'Admin - Restaurant', type: :feature do
   let(:admin) { create :admin_user }
   let(:restaurant_1) { create :restaurant, name: 'The Garden', slug: 'the-garden' }
-  let(:restaurant_menu) { create :restaurant_menu, restaurant: restaurant_1 }
   let!(:dish_1) do
-    create :dish, restaurant_menu: restaurant_menu,
+    create :dish, restaurant: restaurant_1,
                   title: 'Panacotta',
                   description: 'cream with cheese',
                   price: '10'
   end
   let!(:dish_2) do
-    create :dish, restaurant_menu: restaurant_menu,
+    create :dish, restaurant: restaurant_1,
                   title: 'Raclette',
                   description: 'french cheese with ham',
                   price: '25'

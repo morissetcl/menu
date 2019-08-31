@@ -9,8 +9,7 @@ describe 'Favorite' do
       create :restaurant, name: 'Burger Factory', slug: 'burger-factory', city: 'Paris'
     end
     let!(:favorite) { create :favorite, user: user, restaurant: restaurant }
-    let(:restaurant_menu) { create :restaurant_menu, restaurant: restaurant }
-    let!(:dish) { create :dish, title: 'Raclette', restaurant_menu: restaurant_menu }
+    let!(:dish) { create :dish, title: 'Raclette', restaurant: restaurant }
 
     before(:each) do
       get "/private/#{user.id}/favorite.json"
