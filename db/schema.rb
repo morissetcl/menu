@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_115857) do
+ActiveRecord::Schema.define(version: 2019_09_01_064155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,14 +67,12 @@ ActiveRecord::Schema.define(version: 2019_08_31_115857) do
 
   create_table "dishes", force: :cascade do |t|
     t.string "title"
-    t.bigint "restaurant_menu_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "price"
     t.text "description"
     t.bigint "restaurant_id"
     t.index ["restaurant_id"], name: "index_dishes_on_restaurant_id"
-    t.index ["restaurant_menu_id"], name: "index_dishes_on_restaurant_menu_id"
     t.index ["title"], name: "index_dishes_on_title"
   end
 
@@ -96,13 +94,6 @@ ActiveRecord::Schema.define(version: 2019_08_31_115857) do
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_favorites_on_restaurant_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
-  end
-
-  create_table "restaurant_menus", force: :cascade do |t|
-    t.bigint "restaurant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["restaurant_id"], name: "index_restaurant_menus_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -169,13 +160,11 @@ ActiveRecord::Schema.define(version: 2019_08_31_115857) do
   add_foreign_key "comments", "restaurants", on_delete: :cascade
   add_foreign_key "comments", "users", on_delete: :cascade
   add_foreign_key "dashboards", "users"
-  add_foreign_key "dishes", "restaurant_menus", on_delete: :cascade
   add_foreign_key "dishes", "restaurants"
   add_foreign_key "events", "restaurants"
   add_foreign_key "events", "users"
   add_foreign_key "favorites", "restaurants"
   add_foreign_key "favorites", "users"
-  add_foreign_key "restaurant_menus", "restaurants", on_delete: :cascade
   add_foreign_key "work_areas", "departments"
   add_foreign_key "work_areas", "users"
 end
