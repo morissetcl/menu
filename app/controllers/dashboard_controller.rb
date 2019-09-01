@@ -24,6 +24,6 @@ class DashboardController < ApplicationController
 
   def authorized_departments
     Department.where(id: current_user.department_ids)
-              .pluck(:name)
+              .select(:name)
   end
 end

@@ -5,45 +5,20 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
     "@fortawesome/free-solid-svg-icons": "^5.6.3",
     "@fortawesome/react-fontawesome": "^0.1.3",
-    "@rails/webpacker": "^4.0.7",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "@rails/webpacker": "3.5",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "dotenv": "^6.2.0",
     "google-map-react": "^1.1.2",
-    "jest-fetch-mock": "^2.1.2",
-    "jest-mock": "^24.8.0",
-    "jquery": "^3.4.1",
     "moment": "^2.23.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-big-calendar": "^0.20.3",
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1",
-    "react_ujs": "^2.6.0"
+    "react_ujs": "^2.4.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^24.8.0",
-    "babel-loader": "^8.0.6",
-    "babel-preset-env": "^1.7.0",
-    "chai": "^4.2.0",
-    "chai-enzyme": "^1.0.0-beta.1",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "jest": "^24.8.0",
-    "webpack": "^4.39.3"
-  },
-  "scripts": {
-    "test": "jest"
-  },
-  "jest": {
-    "setupFiles": [
-      "<rootDir>/test-env.js"
-    ]
+    "webpack-dev-server": "^2.11.1"
   }
 }
