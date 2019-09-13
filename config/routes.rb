@@ -19,11 +19,12 @@ Rails.application.routes.draw do
   root to: 'home#show'
   resources :subscription_request
   resources :user, path: 'private', except: [:index] do
-    resources :dashboard, only: [:index] do
+    resources :search, only: [:index] do
       collection do
         get :recherche
       end
     end
+    get '/dashboard', to: "dashboard#index"
     resources :favorite, except: [:new, :create]
     resources :comment, only: [:index]
     resources :calendar, only: [:index]
