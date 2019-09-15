@@ -5,6 +5,6 @@ class Ability
 
   def initialize(current_user)
     current_user ||= User.new
-    can :manage, Dashboard, user_id: current_user.id
+    can :manage, Search, user_id: current_user.id
   end
 end

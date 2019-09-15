@@ -37,8 +37,8 @@ module Restovisio
         price = restaurant.css('.etb_price_range').text.strip
         address = restaurant.css('.etb_location_info').text.strip
         Restaurant.where(name: name, slug: name.parameterize,
-                          address: address, tags: tags,
-                          price_range: price, source: 'restovisio').first_or_create
+                         address: address, tags: tags,
+                         price_range: price, source: 'restovisio').first_or_create
       end
 
       def retrieve_address(resto)

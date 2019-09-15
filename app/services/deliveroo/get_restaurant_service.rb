@@ -18,7 +18,7 @@ module Deliveroo
           links.each do |restaurant|
             next if get_data(restaurant).blank?
 
-            restaurant_created = find_create_restaurant(restaurant)
+            find_create_restaurant(restaurant)
 
             Deliveroo::GetRestaurantMenuWorker.perform_async(restaurant['href'],
                                                              get_data(restaurant))

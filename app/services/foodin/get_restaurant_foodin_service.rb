@@ -25,7 +25,7 @@ module Foodin
           tags = restaurant.css('.speciality').text.split('-')
           get_link(restaurant)
           resto = Restaurant.where(name: name, slug: name.parameterize,
-                                    tags: tags, source: 'foodin').first_or_create
+                                   tags: tags, source: 'foodin').first_or_create
           sleep 2 unless Rails.env.test?
           Foodin::GetRestaurantMenuWorker.perform_async(@link, resto.id)
         end

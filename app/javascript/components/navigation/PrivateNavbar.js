@@ -1,31 +1,35 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faSearch, faSignOutAlt, faCalendarWeek } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faSearch, faSignOutAlt, faCalendarWeek, faConciergeBell } from '@fortawesome/free-solid-svg-icons'
 import LiveSearch from '../LiveSearch'
 import Restaurant from '../Restaurant'
 import Favorite from '../Favorite'
 import Calendar from '../Calendar'
+import Dashboard from '../Dashboard'
 
 class PrivateNavbar extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      activeDashboard: true,
+      activeSearch: false,
       activeFavorite: false,
       activeCalendar: false,
+      activeDashboard: true,
     }
   };
 
   addClassActiveLink(param) {
     switch(param) {
     case 'dashboard':
-      return this.setState({ activeDashboard: true, activeFavorite: false, activeCalendar: false });
+      return this.setState({ activeSearch: false, activeFavorite: false, activeCalendar: false, activeDashboard: true });
+    case 'search':
+      return this.setState({ activeSearch: true, activeFavorite: false, activeCalendar: false, activeDashboard: false });
     case 'favorite':
-      return this.setState({ activeDashboard: false, activeFavorite: true, activeCalendar: false });
+      return this.setState({ activeSearch: false, activeFavorite: true, activeCalendar: false, activeDashboard: false });
     case 'calendar':
-      return this.setState({ activeDashboard: false, activeFavorite: false, activeCalendar: true });
+      return this.setState({ activeSearch: false, activeFavorite: false, activeCalendar: true, activeDashboard: false });
     default:
       return 'foo';
     }
@@ -46,7 +50,8 @@ class PrivateNavbar extends Component {
           <div className= 'col s12 revert-padding-col'>
             <div className='private-nav'>
               <ul style={{ listStyleType: "none", padding: 0 }}>
-                { this.buildLink('dashboard', this.state.activeDashboard, faSearch)}
+                { this.buildLink('dashboard', this.state.activeDashboard, faConciergeBell)}
+                { this.buildLink('search', this.state.activeSearch, faSearch)}
                 { this.buildLink('favorite', this.state.activeFavorite, faStar)}
                 { this.buildLink('calendar', this.state.activeCalendar, faCalendarWeek)}
                 <a href='/users/sign_out' data-method="delete" rel="nofollow">
@@ -58,6 +63,13 @@ class PrivateNavbar extends Component {
           <div className='col s12 l11 offset-l1'>
             <Route
               exact path='/private/:userId/dashboard'
+              component={Dashboard}
+              userId={this.props.userId}
+            />
+          </div>
+          <div className='col s12 l11 offset-l1'>
+            <Route
+              exact path='/private/:userId/search'
               component={LiveSearch}
               userId={this.props.userId}
             />
