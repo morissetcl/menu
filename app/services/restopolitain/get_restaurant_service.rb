@@ -32,8 +32,8 @@ module Restopolitain
 
       def find_create_restaurant(name)
         Restaurant.where(name: name,
-                          slug: name.parameterize,
-                          source: 'restopolitain').first_or_create
+                         slug: name.parameterize,
+                         source: 'restopolitain').first_or_create
       end
 
       def get_link_and_name(restaurant)

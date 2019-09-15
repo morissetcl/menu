@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import RestaurantCard from './RestaurantCard'
 import Loader from './reusable_components/Loader';
-import { PieChart, Pie, Sector, Cell } from 'recharts';
+import { PieChart, Pie, Sector, Cell , ResponsiveContainer } from 'recharts';
 import { getDataArea } from '../apis/Dashboard'
 
 class AreaChart extends Component {
@@ -10,9 +10,9 @@ class AreaChart extends Component {
     super(props);
     this.state = {
       userId: props.userId,
-      areaData: []
+      areaData: props.areaData,
+      activeIndex: 1
     }
-    this.collectDataArea();
   }
 
   onPieEnter = (data, index) => {
@@ -20,18 +20,6 @@ class AreaChart extends Component {
       activeIndex: index,
     });
   };
-
-  collectDataArea() {
-    getDataArea(this.state.userId).then(data => {
-      data[Object.keys(data)[0]].map((response, index) => {
-        const key = response[0]
-        const value = Object.values(response[1]).join()
-        console.log(parseInt(value))
-        this.state.areaData.push({ name: key, value: parseInt(value) })
-      });
-      this.forceUpdate();
-    });
-  }
 
   render(){
     const renderActiveShape = (props) => {
@@ -52,7 +40,7 @@ class AreaChart extends Component {
 
     return (
       <g>
-        <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
+        <text className='haba' x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
         <Sector
           cx={cx}
           cy={cy}
@@ -73,7 +61,7 @@ class AreaChart extends Component {
         />
         <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
         <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
+        <text  x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#7d7d7d">
           {`${(percent * 100).toFixed(2)}%`}
         </text>
       </g>
@@ -81,16 +69,16 @@ class AreaChart extends Component {
   };
   const COLORS = ['#c70d3a', '#230338', '#ed5107', '#02383c', '#47e4bb', '#584b42'];
     return (
-      <div className='filter-container'>
-        <PieChart width={400} height={600}>
+      <ResponsiveContainer height={400} width="100%">
+        <PieChart>
           <Pie
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape}
             data={this.state.areaData}
-            cx={200}
-            cy={200}
-            innerRadius={60}
-            outerRadius={80}
+            cx="50%"
+            cy="50%"
+            innerRadius="60%"
+            outerRadius="80%"
             fill="#8884d8"
             dataKey="value"
             onMouseEnter={this.onPieEnter}
@@ -100,7 +88,7 @@ class AreaChart extends Component {
             }
           </Pie>
         </PieChart>
-      </div>
+      </ResponsiveContainer>
 
     )
   }

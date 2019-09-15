@@ -27,6 +27,7 @@ describe 'Admin - Restaurant', type: :feature do
 
   scenario '#Index Restaurants' do
     visit admin_restaurants_path
+
     expect(page).to have_content 'The Garden'
     expect(page).to have_content 'restaurant 0'
   end

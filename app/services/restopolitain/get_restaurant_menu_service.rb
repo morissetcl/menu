@@ -13,7 +13,7 @@ module Restopolitain
 
       private
 
-      def get_menu(link, restaurant_id)
+      def get_menu(link, _restaurant_id)
         get_food_tags(link)
         get_menu_data(link).search('.catalog__item > span:first').each do |dish|
           next if dish.text.include?('/')

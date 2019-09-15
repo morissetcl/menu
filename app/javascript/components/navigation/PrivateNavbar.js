@@ -13,10 +13,10 @@ class PrivateNavbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeSearch: true,
+      activeSearch: false,
       activeFavorite: false,
       activeCalendar: false,
-      activeDashboard: false,
+      activeDashboard: true,
     }
   };
 

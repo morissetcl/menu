@@ -13,6 +13,6 @@ describe 'Restaurant', type: :integration do
     expect do
       restaurant.destroy!
     end.to change(Dish, :count)
-       .and change(Comment, :count)
+      .and change(Comment, :count)
   end
 end
