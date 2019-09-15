@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class Dashboard < ApplicationRecord
+class Search < ApplicationRecord
   belongs_to :user
 end

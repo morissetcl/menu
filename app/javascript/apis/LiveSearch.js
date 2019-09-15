@@ -1,6 +1,6 @@
 const autoCompleteResult = (term) => {
   const searchTerm = (term.length > 3) ? term : ''
-  const url = `/private/:user_id/dashboard/recherche?q=${searchTerm}`;
+  const url = `/private/:user_id/search/recherche?q=${searchTerm}`;
   return fetch(url)
     .then(response => {
       return response

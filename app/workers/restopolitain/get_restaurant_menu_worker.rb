@@ -10,7 +10,7 @@ module Restopolitain
     def perform(link, restaurant_id)
       restautant_without_dishes = Restaurant.left_joins(:dishes).merge(Dish.where(id: nil)).ids
       return if restautant_without_dishes.include?(restaurant_id)
-      
+
       Restopolitain::GetRestaurantMenuService.call(link, restaurant_id)
     end
   end

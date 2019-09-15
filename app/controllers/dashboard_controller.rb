@@ -3,24 +3,34 @@
 class DashboardController < ApplicationController
   layout 'private'
 
-  before_action :authenticate_user!
-  load_and_authorize_resource
-
-  def index; end
-
-  def restaurant
-    @restaurant = Restaurant.find params[:id]
-  end
-
-  def recherche
-    @restaurants = Restaurant.where(department: authorized_departments)
-                             .ransack(name_or_address_or_dishes_title_cont: params[:q])
-                             .result(distinct: true)
-                             .page(params[:page])
-    fresh_when(@restaurants)
+  def index
+    @famous_tags = collect_6_famous_tags
+    @restaurant_counter = restaurants.count
+    @dish_counter = Dish.where(restaurant_id: restaurants.ids).count
+    @last_three_restaurant = restaurants.last(3)
   end
 
   private
+
+  def collect_6_famous_tags
+    bon_array = collect_restaurants_tags.flatten
+    array = bon_array.each_with_object(Hash.new(0)) { |tag, counts| counts[tag] += 1 }.sort_by(&:last).last(6)
+    array.map do |a|
+      [a[0], value: a[1]]
+    end
+  end
+
+  def collect_restaurants_tags
+    popular_tags = []
+    restaurants.all.select do |a|
+      popular_tags << a.tags.select(&:strip)
+    end
+    popular_tags
+  end
+
+  def restaurants
+    Restaurant.where(department: authorized_departments)
+  end
 
   def authorized_departments
     Department.where(id: current_user.department_ids)
