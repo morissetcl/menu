@@ -1,8 +1,3 @@
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new Adapter() });
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme'
