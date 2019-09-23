@@ -1,10 +1,6 @@
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import FormCalendar from '../app/javascript/components/card_components/FormCalendar';
 import Actions from '../app/javascript/components/restaurant/Actions';
 
-Enzyme.configure({ adapter: new Adapter() });
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme'
