@@ -14,7 +14,7 @@ class SearchController < ApplicationController
 
   def recherche
     @restaurants = Restaurant.where(department: authorized_departments)
-                             .ransack(name_or_address_or_dishes_title_cont: params[:q])
+                             .ransack(dishes_title_cont: params[:q])
                              .result(distinct: true)
                              .page(params[:page])
     fresh_when(@restaurants)
