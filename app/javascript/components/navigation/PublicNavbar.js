@@ -13,7 +13,7 @@ class PublicNavbar extends Component {
 
   checkIfUserIsConnected(signIn) {
     if (signIn) {
-      return <li><a href={`/private/${this.props.currentUser.id}/search`} rel="nofollow">Search</a></li>
+      return <li><a href={`/private/${this.props.currentUser.id}/dashboard`} rel="nofollow">Dashboard</a></li>
     } else {
       return <li><a href='/users/sign_in' rel="nofollow">Connexion</a></li>
     }
