@@ -2,6 +2,8 @@
 @import "font-awesome";
 
 @import "components/*";
+@import "footer";
+@import "homepage";
 @import "typography";
 @import "reset_materialize";
 @import "restaurants/*";
@@ -53,28 +55,30 @@
   padding-right: 30px;
 }
 
-.home-wrapper {
-  transform: skewY(4deg);
-  transform-origin: 100% 50% 0;
-  background: -webkit-linear-gradient(top left, #4776e6, #8e54e9);
-  height: 100vh;
-}
-
 .sisi {
   padding-top: 20px;
   position: absolute;
   top: 70px;
+  display: flex;
+  align-items: center;
   img {
-    opacity: 1;
-    height: 50%;
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    width: 80%;
+    border-radius: 5%;
+    min-width: 390px;
   }
 }
 
+.content-rigth {
+  display: flex;
+  justify-content: center;
+}
+
 .h1 {
-  font-size: 40px;
   color:white;
-  margin: 0px;
+  font-family: 'Roboto';
+  font-size: 50px;
+  line-height: 56px;
+  font-weight: 700;
 }
 
 .h2 {
@@ -84,6 +88,10 @@
   letter-spacing: 1px;
   font-size: 18px;
   margin-top: 30px;
+
+  font-size: 21px;
+  line-height: 31px;
+  font-weight: 300;
 }
 
 .content-left, .content-right {

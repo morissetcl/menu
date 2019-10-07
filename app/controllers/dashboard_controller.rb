@@ -33,7 +33,9 @@ class DashboardController < ApplicationController
   end
 
   def authorized_departments
-    Department.where(id: current_user.department_ids)
+    user = User.find params[:user_id]
+    p user.department_ids
+    Department.where(id: user.department_ids)
               .select(:name)
   end
 end
