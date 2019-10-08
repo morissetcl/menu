@@ -9,7 +9,10 @@ describe 'Dashboard', focus: true do
     let!(:work_area) { create :work_area, department: department, user: user }
 
     let!(:restaurant) do
-      create :restaurant, name: 'Burger Factory', slug: 'burger-factory', city: 'Paris', department: 'Paris'
+      create :restaurant, name: 'Burger Factory',
+                          slug: 'burger-factory',
+                          city: 'Paris',
+                          department: 'Paris'
     end
     let!(:dish) { create :dish, title: 'Raclette', restaurant: restaurant }
     let!(:dish2) { create :dish, title: 'Fondue', restaurant: restaurant }

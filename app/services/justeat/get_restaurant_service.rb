@@ -12,8 +12,8 @@ module Justeat
         html_doc = initialize_crawl(page)
         html_doc.css('.restaurantDetails').each do |element|
           get_link_and_name(element)
-          restaurant_created = Restaurant.create(name: @name, slug: @name.parameterize,
-                                                 address: @address, source: 'justeat')
+          Restaurant.create(name: @name, slug: @name.parameterize,
+                            address: @address, source: 'justeat')
           Justeat::GetRestaurantMenuWorker.perform_async(@link, @name.parameterize)
         end
       end

@@ -14,7 +14,9 @@ class DashboardController < ApplicationController
 
   def collect_6_famous_tags
     bon_array = collect_restaurants_tags.flatten
-    array = bon_array.each_with_object(Hash.new(0)) { |tag, counts| counts[tag] += 1 }.sort_by(&:last).last(6)
+    array = bon_array.each_with_object(Hash.new(0)) do |tag, counts|
+      counts[tag] += 1
+    end.sort_by(&:last).last(6)
     array.map do |a|
       [a[0], value: a[1]]
     end

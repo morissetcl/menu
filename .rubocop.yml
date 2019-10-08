@@ -17,6 +17,13 @@ AllCops:
 Metrics/LineLength:
   Max: 100
 
+Metrics/AbcSize:
+  Exclude:
+    - 'app/services/**/*'
+    - 'app/controllers/devise/sessions_controller.rb'
+Security/Open:
+  Exclude:
+    - 'spec/services/justeat/get_dishes_justeat_service_spec.rb'
 Metrics/BlockLength:
   Exclude:
     - 'lib/tasks/**/*'
