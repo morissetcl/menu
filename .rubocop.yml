@@ -1,3 +1,6 @@
+inherit_mode:
+  merge:
+    - Exclude
 Documentation:
   Enabled: false
 AllCops:
