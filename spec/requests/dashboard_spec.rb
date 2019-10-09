@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Dashboard', focus: true do
+describe 'Dashboard' do
   describe 'GET informations about sector' do
     let!(:user) { create :user }
     let!(:department) { create :department, zip_code: '75000', name: 'Paris' }
@@ -19,14 +19,13 @@ describe 'Dashboard', focus: true do
 
     before(:each) do
       get "/private/#{user.id}/dashboard.json"
-      @json = JSON.parse(response.body).first
+      @json = JSON.parse(response.body)
     end
 
     it do
-      p @json
-      expect(@json['body']).to eq 'Hmm yummy !'
-      expect(@json['restaurant_id']).to eq restaurant.id
-      expect(@json['user_id']).to eq user.id
+      expect(@json['dish_counter']).to eq 2
+      expect(@json['restaurant_counter']).to eq 1
+      expect(@json['last_three_restaurant'][0]['name']).to eq 'Burger Factory'
     end
   end
 end

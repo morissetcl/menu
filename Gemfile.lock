@@ -333,6 +333,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rb-readline (0.5.5)
     redis (4.1.3)
     regexp_parser (1.6.0)
     require_all (1.5.0)
@@ -502,6 +503,7 @@ DEPENDENCIES
   rails-jquery-autocomplete
   rails-observers
   ransack!
+  rb-readline
   react-rails!
   rspec-rails (~> 3.7)
   rspec-sidekiq
