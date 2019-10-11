@@ -5,8 +5,6 @@ require 'nokogiri'
 
 module Justeat
   class GetRestaurantService
-    attr_reader :name, :link, :address
-
     class << self
       def call(page)
         html_doc = initialize_crawl(page)
