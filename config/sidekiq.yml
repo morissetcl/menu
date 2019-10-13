@@ -10,3 +10,9 @@
   restaurant_restopolitain: 5
   restaurant_deliveroo: 5
   menu_deliveroo: 5
+
+
+:schedule:
+  restaurant_init_worker:
+    cron: '5 4 * * sun'   # Runs once per minute
+    class: RestaurantInitWorker
