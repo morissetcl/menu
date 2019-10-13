@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sidekiq-scheduler'
+
 class RestaurantInitWorker
   include Sidekiq::Worker
 
