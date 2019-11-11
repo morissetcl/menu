@@ -25,6 +25,8 @@ describe('<Restaurant />', () => {
         modal: jest.fn(),
         datepicker: jest.fn()
       }
+
+      
     });
 
     expect(global.fetch).toHaveBeenCalledTimes(1);
