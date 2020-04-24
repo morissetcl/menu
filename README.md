@@ -1,24 +1,12 @@
-# README
+# Menu
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+You can check it out here
 
-Things you may want to cover:
+[monsecteur.com/](https://www.monsecteur.com/)
 
-* Ruby version
+with the following credentials:
+**email**: couscous@bourguignon.com
+**passord**: password
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+###### Disclaimer: Menu is deprecated. A new version is on the go.

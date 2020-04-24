@@ -15,5 +15,12 @@ module Menu
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{*/}')]
     config.autoload_paths += Dir[Rails.root.join('app', 'services', '{*/}')]
     config.active_record.observers = :dish_observer
+
+    config.middleware.insert_before 0, Rack::Cors do
+     allow do
+       origins '*'
+       resource '*', headers: :any, methods: [:get, :post, :patch, :delete, :options]
+     end
+   end
   end
 end
