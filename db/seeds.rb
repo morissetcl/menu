@@ -11,3 +11,4 @@
 DEPARTMENTS.each do |department|
   Department.create!(zip_code: department[0], name: department[1])
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

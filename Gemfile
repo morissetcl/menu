@@ -3,12 +3,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
-gem 'pg', '~> 0.18.4'
+gem 'pg'
 # Use Puma as the app server
 gem 'activeadmin'
 gem 'activeadmin_addons'
@@ -23,7 +23,7 @@ gem 'kaminari'
 gem 'mini_racer', platforms: :ruby
 gem 'puma', '~> 3.12'
 gem 'rails-observers'
-gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'ransack'
 gem 'react-rails', git: 'https://github.com/reactjs/react-rails.git', branch: 'master'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
@@ -32,6 +32,7 @@ gem 'sidekiq-scheduler'
 gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jquery-rails'
 gem 'mechanize'
