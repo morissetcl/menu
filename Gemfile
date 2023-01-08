@@ -21,7 +21,7 @@ gem 'hpricot'
 gem 'izitoast'
 gem 'kaminari'
 gem 'mini_racer', platforms: :ruby
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 gem 'rails-observers'
 gem 'ransack'
 gem 'react-rails', git: 'https://github.com/reactjs/react-rails.git', branch: 'master'
